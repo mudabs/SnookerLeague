@@ -1,0 +1,420 @@
+Uri: https://platform.twitter.com/widgets.js
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\widgets.js
+Content Type: application/javascript
+
+Uri: https://slma.isratechyt.com/assets/1.png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\1.png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/bahrain/b2.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\bahrain\b2.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/assets/bahrain/b3.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\bahrain\b3.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/assets/bahrain/b5.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\bahrain\b5.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/assets/bahrain/b7.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\bahrain\b7.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/assets/bahrain/b8.jpeg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\bahrain\b8.jpeg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/assets/bahrain/b9.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\bahrain\b9.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/assets/bahrain/capt3.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\bahrain\capt3.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/assets/bahrain/h4.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\bahrain\h4.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/assets/bahrain/saudi2.png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\bahrain\saudi2.png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logo-blue-dark.png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logo-blue-dark.png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/logo (1).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\logo (1).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/logo (2).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\logo (2).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/logo (3).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\logo (3).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/team (1).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\team (1).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/team (2).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\team (2).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/team (3).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\team (3).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/team (4).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\team (4).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/team (5).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\team (5).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/team (6).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\team (6).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/assets/logos/team (8).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\assets\logos\team (8).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/index
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\index.html
+Content Type: text/html
+
+Uri: https://slma.isratechyt.com/main.css
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\main.css
+Content Type: text/css
+
+Uri: https://slma.isratechyt.com/main.js
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\main.js
+Content Type: application/x-javascript
+
+Uri: https://slma.isratechyt.com/swiper-bundle.min.css
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\swiper-bundle.min.css
+Content Type: text/css
+
+Uri: https://slma.isratechyt.com/swiper-bundle.min.js
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\swiper-bundle.min.js
+Content Type: application/x-javascript
+
+Uri: https://slma.isratechyt.com/uploads/smlaahly-players-talaee-2020.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlaahly-players-talaee-2020.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/uploads/smlab3.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlab3.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/uploads/smlab5.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlab5.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/uploads/smlab7.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlab7.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/uploads/smlab8.jpeg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlab8.jpeg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/uploads/smlacapt5.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlacapt5.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/uploads/smlacapt6.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlacapt6.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/uploads/smlah4.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlah4.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/uploads/smlasaudi2.png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlasaudi2.png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlasaudi3.jpg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlasaudi3.jpg
+Content Type: image/jpeg
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (1).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (1).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (10).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (10).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (2).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (2).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (3).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (3).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (4).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (4).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (5).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (5).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (6).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (6).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (7).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (7).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (8).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (8).png
+Content Type: image/png
+
+Uri: https://slma.isratechyt.com/uploads/smlateam (9).png
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\uploads\smlateam (9).png
+Content Type: image/png
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/css/line.css
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\css\line.css
+Content Type: text/css
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-0.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-0.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-0.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-0.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-0.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-0.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-0.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-0.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-0.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-0.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-1.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-1.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-1.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-1.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-1.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-1.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-1.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-1.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-1.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-1.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-10.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-10.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-10.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-10.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-10.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-10.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-10.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-10.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-10.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-10.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-11.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-11.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-11.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-11.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-11.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-11.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-11.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-11.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-11.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-11.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-12.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-12.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-12.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-12.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-12.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-12.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-12.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-12.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-12.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-12.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-13.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-13.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-13.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-13.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-13.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-13.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-13.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-13.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-13.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-13.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-14.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-14.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-14.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-14.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-14.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-14.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-14.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-14.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-14.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-14.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-15.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-15.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-15.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-15.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-15.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-15.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-15.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-15.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-15.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-15.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-16.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-16.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-16.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-16.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-16.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-16.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-16.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-16.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-16.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-16.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-17.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-17.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-17.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-17.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-17.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-17.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-17.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-17.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-17.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-17.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-18.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-18.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-18.svg
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-18.svg
+Content Type: image/svg+xml
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-18.ttf
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-18.ttf
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-18.woff
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-18.woff
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-18.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-18.woff2
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-19.eot
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-19.eot
+Content Type: binary/octet-stream
+
+Uri: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-19.woff2
+File Name: C:\Downloaded Web Sites\slma.isratechyt.com\release\v4.0.0\fonts\line\unicons-19.woff2
+Content Type: binary/octet-stream
+
