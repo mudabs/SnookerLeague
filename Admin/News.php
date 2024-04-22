@@ -6,7 +6,7 @@ require_once('../databaseConn.php');
 
 ?>
 
-
+<!-- Create -->
 <?php
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
@@ -37,6 +37,7 @@ if (isset($_POST['submit'])) {
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     $new_img_name = $title . '.' . $img_ex_lc;
                     $img_upload_path = 'images/uploads/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
+                    $image = $new_img_name;
 
                     // Check if upload is successful using move_uploaded_file return value
                     if (move_uploaded_file($tmp_name, $img_upload_path)) {
@@ -69,7 +70,45 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
+
+
+// Delete
+
+if (isset($_POST['delete_id'])) {
+    $delete_id = $_POST['delete_id'];
+
+    // Basic validation (optional, consider more robust validation)
+    if (is_numeric($delete_id)) {
+
+        // Prepare SQL statement with parameter to prevent SQL injection
+        $sql = "DELETE FROM `news` WHERE `id` = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+
+        // Bind parameter
+        mysqli_stmt_bind_param($stmt, "i", $delete_id);
+
+        // Execute the statement
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<script>alert('Record deleted successfully!');</script>";
+        } else {
+            echo "<script>alert('Failed to delete record: " . mysqli_error($conn) . "');</script>";
+        }
+
+        // Close statement and connection
+    } else {
+        echo "<script>alert('Invalid delete request!');</script>";
+    }
+
+    // mysqli_stmt_close($stmt);
+    // mysqli_close($conn);
+}
+
 ?>
+
+
+
+
 
 <div class="container" style="margin-left: 200px;">
     <!-- Clubs section =================================== -->
@@ -111,7 +150,8 @@ if (isset($_POST['submit'])) {
                 <h5><?php echo $row["title"] ?></h5>
 
                 <p><?php echo $row["feed"] ?></p>
-                <p style="position: relative; left:85%; bottom:60%;"><?php echo $row["date"] ?></p>
+                <p style="position: relative; left:85%; bottom:50%;"><?php echo date('D-d-M-Y', strtotime($row["date"])) ?></p>
+                <p style="position: relative; left:85%; bottom:55%;"><?php echo date('H-m', strtotime($row["date"])) ?></p>
             </div>
 
             <div class="col-md-2">
@@ -126,42 +166,28 @@ if (isset($_POST['submit'])) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="">
+                                <form method="POST" action="" enctype="multipart/form-data">
                                     <div class="mb-3">
-                                        <label for="team1" class="form-label">Team 1</label>
-                                        <select class="form-select" id="team1" name="team1" required>
-                                            <!-- Populate the team 1 options dynamically -->
-                                            <?php
-                                            $teamsQuery = "SELECT id, name FROM clubs";
-                                            $teamsResult = mysqli_query($conn, $teamsQuery);
-                                            while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
-                                            }
-                                            ?>
-                                        </select>
+                                        <label for="title" class="form-label">Title</label>
+                                        <input type="text" name="title" value="<?php echo $row["title"] ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="team2" class="form-label">Team 2</label>
-                                        <select class="form-select" id="team2" name="team2" required>
-                                            <!-- Populate the team 2 options dynamically -->
-                                            <?php
-                                            mysqli_data_seek($teamsResult, 0); // Reset the result pointer
-                                            while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="venue" class="form-label">Venue</label>
-                                        <input type="text" class="form-control" id="venue" name="venue" required>
+                                        <label for="feed" class="form-label">Feed</label>
+                                        <textarea type="text" name="feed" value="<?php echo $row["feed"] ?>" class="form-control" rows="10"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="date" class="form-label">Date</label>
-                                        <input type="date" class="form-control" id="date" name="date" required>
+                                        <input type="date" class="form-control" value="<?php echo $row["date"] ?> id=" date" name="date" required>
                                     </div>
-                                    <button type="submit" name="submit" class="btn btn-primary">Edit</button>
+
+                                    <div class="mb-3">
+                                        <label for="my_image" class="form-label">Cover Image</label>
+                                        <input type="file" class="form-control" id="my_image" name="my_image" required>
+                                        <img src="./images/news/<?php echo $row["coverImage"] ?>" alt="Image">
+                                    </div>
+                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
                                 </form>
+
                             </div>
                         </div>
                     </div>

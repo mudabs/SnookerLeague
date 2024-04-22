@@ -16,6 +16,38 @@ function getTeamLogo($logoFileName)
     }
 }
 
+
+// Delete
+
+
+if (isset($_POST['delete_id'])) {
+    $delete_id = $_POST['delete_id'];
+
+    // Basic validation (optional, consider more robust validation)
+    if (is_numeric($delete_id)) {
+
+        // Prepare SQL statement with parameter to prevent SQL injection
+        $sql = "DELETE FROM `fixtures` WHERE `id` = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+
+        // Bind parameter
+        mysqli_stmt_bind_param($stmt, "i", $delete_id);
+
+        // Execute the statement
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<script>alert('Record deleted successfully!');</script>";
+        } else {
+            echo "<script>alert('Failed to delete record: " . mysqli_error($conn) . "');</script>";
+        }
+
+        // Close statement and connection
+    } else {
+        echo "<script>alert('Invalid delete request!');</script>";
+    }
+
+    // mysqli_stmt_close($stmt);
+    // mysqli_close($conn);
+}
 ?>
 
 <div class="container" style="margin-left: 200px;">
@@ -99,6 +131,7 @@ function getTeamLogo($logoFileName)
                                                 <label for="team1" class="form-label">Team 1</label>
                                                 <select class="form-select" id="team1" name="team1" required>
                                                     <!-- Populate the team 1 options dynamically -->
+                                                    <option>Select Team 1</option>
                                                     <?php
                                                     $teamsQuery = "SELECT id, name FROM clubs";
                                                     $teamsResult = mysqli_query($conn, $teamsQuery);
@@ -111,6 +144,7 @@ function getTeamLogo($logoFileName)
                                             <div class="mb-3">
                                                 <label for="team2" class="form-label">Team 2</label>
                                                 <select class="form-select" id="team2" name="team2" required>
+                                                    <option>Select Team 2</option>
                                                     <!-- Populate the team 2 options dynamically -->
                                                     <?php
                                                     mysqli_data_seek($teamsResult, 0); // Reset the result pointer
@@ -206,6 +240,7 @@ function getTeamLogo($logoFileName)
                     <div class="mb-3">
                         <label for="team1" class="form-label">Team 1</label>
                         <select class="form-select" id="team1" name="team1" required>
+                            <option>Select Team 1</option>
                             <!-- Populate the team 1 options dynamically -->
                             <?php
                             $teamsQuery = "SELECT id, name FROM clubs";
@@ -219,6 +254,7 @@ function getTeamLogo($logoFileName)
                     <div class="mb-3">
                         <label for="team2" class="form-label">Team 2</label>
                         <select class="form-select" id="team2" name="team2" required>
+                            <option>Select Team 1</option>
                             <!-- Populate the team 2 options dynamically -->
                             <?php
                             mysqli_data_seek($teamsResult, 0); // Reset the result pointer
