@@ -13,44 +13,42 @@ if (isset($_POST['submit'])) {
     $feed = $_POST['feed'];
     $date = $_POST['date'];
 
-    $image = $_POST['image'];
+    $image = "image.png";
 
+    // Upload Image
+    if (isset($_FILES['my_image'])) {
+        // Extract the original filename without extension
+        $originalFilename = pathinfo($_FILES['my_image']['name'], PATHINFO_FILENAME);
 
-    if (isset($_FILES['image'])) {
-        // echo "<pre>";
-        // print_r($_FILES['my_image']);
-        // echo "</pre>";
-
-        $img_name = $_FILES['image']['name'];
-        $img_size = $_FILES['image']['size'];
-        $tmp_name = $_FILES['image']['tmp_name'];
-        $error = $_FILES['image']['error'];
+        $img_size = $_FILES['my_image']['size'];
+        $tmp_name = $_FILES['my_image']['tmp_name'];
+        $error = $_FILES['my_image']['error'];
 
         if ($error === 0) {
             if ($img_size > 125000) {
                 $em = "Sorry, your file is too large.";
                 echo "<script>$em</script>";
             } else {
-                $img_ex = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                $img_ex = pathinfo($_FILES['my_image']['name'], PATHINFO_EXTENSION);
                 $img_ex_lc = strtolower($img_ex);
 
-                $allowed_exs = array("png", "jpg", "jpeg");
+                $allowed_exs = array("jpg", "jpeg", "png");
 
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     $new_img_name = $title . '.' . $img_ex_lc;
-                    $img_upload_path = 'images/news/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
+                    $img_upload_path = 'images/uploads/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
 
                     // Check if upload is successful using move_uploaded_file return value
                     if (move_uploaded_file($tmp_name, $img_upload_path)) {
-                        $image = $new_img_name;
-                        echo "$image";
+                        $logo = $new_img_name;
+                        echo "Image uploaded successfully!";
                     } else {
                         $em = "Failed to upload image!";
                         echo "<script>$em</script>";
                     }
                 } else {
                     $em = "You can't upload files of this type";
-                    echo "<script>alert('$em')</script>";
+                    echo "<script>$em</script>";
                 }
             }
         } else {
@@ -58,16 +56,17 @@ if (isset($_POST['submit'])) {
             $em = "Unknown error occurred during upload!";
             echo "<script>$em</script>";
         }
-    }
 
-    // Assuming you have a table named "fixtures" with the respective columns
 
-    $insertQuery = "INSERT INTO `news`(`title`, `feed`, `date`, `coverImage`) VALUES ($title,$feed,$date,$image";
+        // Assuming you have a table named "fixtures" with the respective columns
 
-    if (mysqli_query($conn, $insertQuery)) {
-        // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
-    } else {
-        // There was an error inserting the record into the database. You can add any error handling code here.
+        $insertQuery = "INSERT INTO `news`(`title`, `feed`, `date`, `coverImage`) VALUES ('$title','$feed','$date','$image')";
+
+        if (mysqli_query($conn, $insertQuery)) {
+            // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
+        } else {
+            // There was an error inserting the record into the database. You can add any error handling code here.
+        }
     }
 }
 ?>
@@ -192,6 +191,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     <?php }
+
     ?>
     <hr>
 </div>
@@ -209,7 +209,7 @@ if (isset($_POST['submit'])) {
             <div class="modal-body">
                 <form method="POST" action="" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="team1" class="form-label">Title</label>
+                        <label for="title" class="form-label">Title</label>
                         <input type="text" name="title" class="form-control">
                     </div>
                     <div class="mb-3">
@@ -222,8 +222,8 @@ if (isset($_POST['submit'])) {
                     </div>
 
                     <div class="mb-3">
-                        <label for="Image" class="form-label">Cover Image</label>
-                        <input type="file" class="form-control" id="image" name="image" required>
+                        <label for="my_image" class="form-label">Cover Image</label>
+                        <input type="file" class="form-control" id="my_image" name="my_image" required>
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Add</button>
                 </form>
