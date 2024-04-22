@@ -108,10 +108,10 @@ if (isset($_POST['submit'])) {
 
             <div class="col">
 
-                <h5>Post Title</h5>
+                <h5><?php echo $row["title"] ?></h5>
 
-                <p>Post Feed</p>
-                <p style="position: relative; left:95%; bottom:60%;">Date</p>
+                <p><?php echo $row["feed"] ?></p>
+                <p style="position: relative; left:85%; bottom:60%;"><?php echo $row["date"] ?></p>
             </div>
 
             <div class="col-md-2">
