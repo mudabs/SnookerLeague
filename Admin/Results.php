@@ -126,7 +126,7 @@ function getTeamLogo($logoFileName)
                                             </div>
                                             <div class="mb-3">
                                                 <label for="date" class="form-label">Date</label>
-                                                <input type="date" class="form-control" id="date" name="date" required>
+                                                <input type="dateTime" class="form-control" id="date" name="date" required>
                                             </div>
                                             <button type="submit" name="submit" class="btn btn-primary">Edit</button>
                                         </form>
@@ -139,7 +139,7 @@ function getTeamLogo($logoFileName)
                         <br>
                         <div class="row">
                             <!-- Delete -->
-                            <a href="" class="btn btn-primary" style="width: 55%; margin:0 auto; background-color:#fe2883;" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row["id"] ?>">Delete Feed</a>
+                            <a href="" class="btn btn-primary" style="width: 55%; margin:0 auto; background-color:#fe2883;" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row["id"] ?>">Delete Fixture</a>
 
                             <div class="modal fade" id="deleteModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -149,7 +149,7 @@ function getTeamLogo($logoFileName)
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Are you sure you want to delete this News feed? This action cannot be undone.</p>
+                                            <p>Are you sure you want to delete this fixture? This action cannot be undone.</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -160,7 +160,6 @@ function getTeamLogo($logoFileName)
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -234,7 +233,7 @@ function getTeamLogo($logoFileName)
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" name="date" required>
+                        <input type="text" class="form-control" id="date" name="date" required>
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Add</button>
                 </form>

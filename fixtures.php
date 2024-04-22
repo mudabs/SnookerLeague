@@ -177,158 +177,93 @@
 
         <!-- League Logs Section -->
         <section class="section container logSection sectionDesign">
-            <div class="sectionContainer">
-                <div class="sectionIntro">
-                    <h2>Ongoing Season</h2>
-                    <span class="sectionSubTitle">Our current league stats</span>
-                </div>
+    <div class="sectionContainer">
+        <div class="sectionIntro">
+            <h2>Ongoing Season</h2>
+            <span class="sectionSubTitle">Our current league stats</span>
+        </div>
 
-                <div class="sectionContent">    
-                    <div class="tableDiv">
-                        <div class="tableLogoDiv">
-                            <img src="./static/images/logo.png" alt="Logo" class="logo">
-                        </div>
-                        <div class="table">
-                            <table>
-                                <tr>
-                                    <th>Pos</th>
-                                    <th>Club</th>
-                                    <th>Pl</th>
-                                    <th>GD</th>
-                                    <th>Pts</th>
-                                </tr>
-                                <tr class="tr" style="padding: 1rem 0;">
-                                    <td class="pos green leader">1</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (1).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 1</div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>+5</td>
-                                    <td class="points">3</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos green">2</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (2).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 2</div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">3</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (3).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 3</div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">4</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (4).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 4</div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <!-- <tr class="tr">
-                                    <td class="pos">5</td>
-                                    <td class="flex">
-                                        <div class="name">Team 5</div>
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (5).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">6</td>
-                                    <td class="flex">
-                                        <div class="name">Team 6</div>
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (6).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">7</td>
-                                    <td class="flex">
-                                        <div class="name">Team 7</div>
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (7).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">8</td>
-                                    <td class="flex">
-                                        <div class="name">Team 8</div>
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (8).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos red">9</td>
-                                    <td class="flex">
-                                        <div class="name">Team 9</div>
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (9).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos red">10</td>
-                                    <td class="flex">
-                                        <div class="name">Team 10</div>
-                                        <div class="teamLogoDiv">
-                                            <img src="./assets/logos/team (10).png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>-5</td>
-                                    <td class="points">0</td>
-                                </tr> -->
-            
-                            </table>
-                            <div class="detailsLink">
-                                <a href="results.php">
-                                    <span>View Full Table  <i class="uil uil-arrow-right icon"></i></span>
-                                </a>
-                            </div>
-                        </div>
+        <div class="sectionContent">
+            <div class="tableDiv">
+                <div class="tableLogoDiv">
+                    <img src="./static/images/logo.png" alt="Logo" class="logo">
+                </div>
+                <div class="table">
+                    <table>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Club</th>
+                            <th>Pl</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+                       
+                        <?php
+                        // Database connection and data retrieval code here
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "snooker_league";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
+                      
+                        <?php
+// Modify this query based on your table structure
+$query = "SELECT * FROM logs ORDER BY position";
+
+$result = $conn->query($query);
+
+if ($result->num_rows > 0) {
+    // Output data of each row
+    while ($row = $result->fetch_assoc()) {
+        $position = $row["position"];
+        $teamLogo = $row["team_logo"];
+        $teamName = $row["team_name"];
+        $played = $row["played"];
+        $goalDifference = $row["goal_difference"];
+        $points = $row["points"];
+        
+        // Output the table row with the retrieved data
+        echo '<tr class="tr">
+                <td class="pos">' . $position . '</td>
+                <td class="flex">
+                    <div class="teamLogoDiv">
+                        <img src="' . $teamLogo . '" alt="Team Logo" class="teamLogo">
+                    </div>
+                    <div class="name">' . $teamName . '</div>
+                </td>
+                <td>' . $played . '</td>
+                <td>' . $goalDifference . '</td>
+                <td class="points">' . $points . '</td>
+              </tr>';
+    }
+} else {
+    echo "No data available";
+}
+
+// Close the database connection
+$conn->close();
+?>
+                        ?>
+                    </table>
+                    <div class="detailsLink">
+                        <a href="results.php">
+                            <span>View Full Table <i class="uil uil-arrow-right icon"></i></span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
         <!-- League Logs Section end -->
 
         <!-- Weekly Team Section Starts -->
