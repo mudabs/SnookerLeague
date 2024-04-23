@@ -16,6 +16,25 @@ function getTeamLogo($logoFileName)
     }
 }
 
+// Create
+
+        if (isset($_POST['submit'])) {
+            $team1 = $_POST['team1'];
+            $team2 = $_POST['team2'];
+            $venue = $_POST['venue'];
+            $date = $_POST['date'];
+
+            // Assuming you have a table named "fixtures" with the respective columns
+
+            $insertQuery = "INSERT INTO fixtures (team1id, team2id, venue, date) VALUES ('$team1', '$team2', '$venue', '$date')";
+
+            if (mysqli_query($conn, $insertQuery)) {
+                echo "<script>alert('Fixture added successfully')</script>";
+                // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
+            } else {
+                // There was an error inserting the record into the database. You can add any error handling code here.
+            }
+        }
 
 // Delete
 
@@ -205,25 +224,7 @@ if (isset($_POST['delete_id'])) {
         echo '</div>'; // Close the last row
         ?>
 
-        <?php
-        if (isset($_POST['submit'])) {
-            $team1 = $_POST['team1'];
-            $team2 = $_POST['team2'];
-            $venue = $_POST['venue'];
-            $date = $_POST['date'];
-            $logo = $_POST['logo'];
-
-            // Assuming you have a table named "fixtures" with the respective columns
-
-            $insertQuery = "INSERT INTO fixtures (team1id, team2id, venue, date) VALUES ('$team1', '$team2', '$venue', '$date')";
-
-            if (mysqli_query($conn, $insertQuery)) {
-                // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
-            } else {
-                // There was an error inserting the record into the database. You can add any error handling code here.
-            }
-        }
-        ?>
+        
     </div>
 </div>
 <div class="modal fade" id="addClubModal" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">

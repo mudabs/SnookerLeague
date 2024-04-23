@@ -67,7 +67,7 @@ if (isset($_POST['delete_id'])) {
                 <h6 style="color:#37003c; text-align:center;">2023/4</h6>
             </div>
         </div>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addClubModal">Add Results</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addResultsModal">Add Results</button>
         <br><br>
         <?php
         $sql = "SELECT c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name,
@@ -173,15 +173,13 @@ if (isset($_POST['delete_id'])) {
 
         <?php
         if (isset($_POST['submit'])) {
-            $team1 = $_POST['team1'];
-            $team2 = $_POST['team2'];
-            $venue = $_POST['venue'];
-            $date = $_POST['date'];
-            $logo = $_POST['logo'];
+            $fixtureId = $_POST['fixture'];
+            $team1Score = $_POST['team1Score'];
+            $team2Score = $_POST['team2Score'];
 
             // Assuming you have a table named "fixtures" with the respective columns
 
-            $insertQuery = "INSERT INTO results (team1id, team2id, venue, date) VALUES ('$team1', '$team2', '$venue', '$date')";
+            $insertQuery = "INSERT INTO `results`(`fixtureId`, `team1Score`, `team2Score`) VALUES ('$fixtureId', '$team1Score', '$team2Score')";
 
             if (mysqli_query($conn, $insertQuery)) {
                 // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
@@ -194,7 +192,7 @@ if (isset($_POST['delete_id'])) {
 </div>
 
 <!-- Create -->
-<div class="modal fade" id="addClubModal" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
+<div class="modal fade" id="addResultsModal" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
     <!-- Modal content here -->
     <div class="modal-dialog modal-dialog-centered">
 
@@ -206,40 +204,28 @@ if (isset($_POST['delete_id'])) {
             <div class="modal-body">
                 <form method="POST" action="">
                     <div class="mb-3">
-                        <label for="team1" class="form-label">Team 1</label>
-                        <select class="form-select" id="team1" name="team1" required>
+                        <label for="team1" class="form-label">Fixture</label>
+                        <select class="form-select" id="team1" name="fixture" required>
                             <option>Select Fixture</option>
                             <!-- Populate the team 1 options dynamically -->
                             <?php
-                            $teamsQuery = "SELECT id, fixture FROM fixtures";
+                            $teamsQuery = "SELECT id FROM fixtures";
                             $teamsResult = mysqli_query($conn, $teamsQuery);
                             while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
+                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["id"] . '</option>';
                             }
                             ?>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="team2" class="form-label">Team 2</label>
-                        <select class="form-select" id="team2" name="team2" required>
-                            <option>Select Team 1</option>
-                            <!-- Populate the team 2 options dynamically -->
-                            <?php
-                            mysqli_data_seek($teamsResult, 0); // Reset the result pointer
-                            while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
-                            }
-                            ?>
-                        </select>
+                        <label for="team1Score" class="form-label">Team 1 Score</label>
+                        <input type="text" name="team1Score" id="team1Score" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="venue" class="form-label">Venue</label>
-                        <input type="text" class="form-control" id="venue" name="venue" required>
+                        <label for="team2Score" class="form-label">Team 2 Score</label>
+                        <input type="text" name="team2Score" id="team1Score" class="form-control">
                     </div>
-                    <div class="mb-3">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" name="date" required>
-                    </div>
+                   
                     <button type="submit" name="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>

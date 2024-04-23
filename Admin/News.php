@@ -36,13 +36,11 @@ if (isset($_POST['submit'])) {
 
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     $new_img_name = $title . '.' . $img_ex_lc;
-                    $img_upload_path = 'images/uploads/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
-                    $image = $new_img_name;
-
+                    $img_upload_path = 'images/news/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
+                    
                     // Check if upload is successful using move_uploaded_file return value
                     if (move_uploaded_file($tmp_name, $img_upload_path)) {
-                        $logo = $new_img_name;
-                        echo "Image uploaded successfully!";
+                        $image = $new_img_name;
                     } else {
                         $em = "Failed to upload image!";
                         echo "<script>$em</script>";
@@ -64,6 +62,7 @@ if (isset($_POST['submit'])) {
         $insertQuery = "INSERT INTO `news`(`title`, `feed`, `date`, `coverImage`) VALUES ('$title','$feed','$date','$image')";
 
         if (mysqli_query($conn, $insertQuery)) {
+            echo "<script>alert('News feed added successfully')</script>";
             // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
         } else {
             // There was an error inserting the record into the database. You can add any error handling code here.
@@ -142,7 +141,7 @@ if (isset($_POST['delete_id'])) {
     ?>
         <div class="row">
             <div class="col-md-1">
-                <img src="../static/images/logo.png" alt="">
+                <img src="./images/news/<?php echo ($row["coverImage"]) ?>" alt="">
             </div>
 
             <div class="col">
