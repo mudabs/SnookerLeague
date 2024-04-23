@@ -166,7 +166,7 @@
 
             <div class="row">
                 <!-- <input type="button" name="submit" class="submitBtn" value="Login"> -->
-                <button  name="submit" class="submitBtn btn flex">Login <i class="uil uil-arrow-up-right icon"></i></button>
+                <a href="./Admin/adminIndex.php"  name="submit" class="submitBtn btn flex">Login <i class="uil uil-arrow-up-right icon"></i></a>
             </div>
             <span class='forgotPass flex'>Forgot Password!</span>
             <div class="infoCard">

@@ -23,7 +23,7 @@ include 'header.php';
                                 <img src="uploads/smlateam%20%282%29.png" alt="Team Logo" class="teamLogo">
                             </div>
                             <div class="clubName">
-                                <span class="name">Ntoda FC</span>
+                                <span class="name">HIT</span>
                                 <span class="classYear">Established: 2016</span>
                             </div>
                         </div>
@@ -49,7 +49,7 @@ include 'header.php';
                     <div class="resultsDiv borderTop">
                         <span class="matchNumber"> Matchweek 1 Results </span>
                         <div class="leagueLogo">
-                            <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                            <img src="./static/images/logo.png"" alt="Logo" class="logo">
                         </div>
                         <small>Results from week 1</small>
                         <div class="date">Sunday 21 April</div>
@@ -57,34 +57,34 @@ include 'header.php';
                             <div class="teamName_teamLogo flex">
                                 <div class="name">Team 9</div>
                                 <div class="teamLogoDiv">
-                                    <img src="assets/logos/team%20%288%29.png" alt="Team Logo" class="teamLogo">
+                                    <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                 </div>
                             </div>
                             <p class="results">2-0</p>
                             <div class="teamName_teamLogo flex">
                                 <div class="teamLogoDiv">
-                                    <img src="assets/logos/team%20%283%29.png" alt="Team Logo" class="teamLogo">
+                                    <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                 </div>
                                 <div class="name">Team 3</div>
                             </div>
                         </div>
-                        <span class="venue"><strong>Venue: </strong>Pitch Six</span>
+                        <span class="venue"><strong>Venue: </strong>Harare</span>
                         <div class="teams flex">
                             <div class="teamName_teamLogo flex">
                                 <div class="name">Team 1</div>
                                 <div class="teamLogoDiv">
-                                    <img src="assets/logos/team%20%281%29.png" alt="Team Logo" class="teamLogo">
+                                    <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                 </div>
                             </div>
                             <p class="results">1-4</p>
                             <div class="teamName_teamLogo flex">
                                 <div class="teamLogoDiv">
-                                    <img src="assets/logos/team%20%286%29.png" alt="Team Logo" class="teamLogo">
+                                    <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                 </div>
                                 <div class="name">Team 5</div>
                             </div>
                         </div>
-                        <span class="venue"><strong>Venue: </strong>Pitch Two</span>
+                        <span class="venue"><strong>Venue: </strong>Harare</span>
 
                         <div class="detailsLink">
                             <a href="results.php">
@@ -97,7 +97,7 @@ include 'header.php';
                         <span class="matchNumber"> Matchweek 2 Fixtures </span>
 
                         <div class="leagueLogo">
-                            <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                            <img src="./static/images/logo.png"" alt="Logo" class="logo">
                         </div>
                         <small>All times shown are local</small>
                         <div class="date">Thursday 28 April</div>
@@ -107,40 +107,40 @@ include 'header.php';
                                     <div class="name">Hyundai FC</div>
                                     <div class="teamLogoDiv">
 
-                                        <img src="uploads/smlateam%20%288%29.png" alt="Team Logo" class="teamLogo">
+                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                     </div>
                                 </div>
                                 <p class="time">13:17</p>
                                 <div class="teamName_teamLogo flex">
                                     <div class="teamLogoDiv">
 
-                                        <img src="uploads/smlateam%20%2810%29.png" alt="Team Logo" class="teamLogo">
+                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                     </div>
                                     <div class="name">Victory FC</div>
                                 </div>
                             </div>
-                            <span class="venue"><strong>Venue: </strong>Ulsan Munsu Stadium</span>
+                            <span class="venue"><strong>Venue: </strong>Harare</span>
 
                         </div>
                         <div class="singleFixture">
                             <div class="teams flex">
                                 <div class="teamName_teamLogo flex">
-                                    <div class="name">River Plate</div>
+                                    <div class="name">Ellusion 73</div>
                                     <div class="teamLogoDiv">
 
-                                        <img src="uploads/smlateam%20%285%29.png" alt="Team Logo" class="teamLogo">
+                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                     </div>
                                 </div>
                                 <p class="time">21:15</p>
                                 <div class="teamName_teamLogo flex">
                                     <div class="teamLogoDiv">
 
-                                        <img src="uploads/smlateam%20%286%29.png" alt="Team Logo" class="teamLogo">
+                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                     </div>
-                                    <div class="name">Lions United</div>
+                                    <div class="name">UZ Vikings</div>
                                 </div>
                             </div>
-                            <span class="venue"><strong>Venue: </strong>Vespucio Stadium</span>
+                            <span class="venue"><strong>Venue: </strong>Harare</span>
 
                         </div>
 
@@ -206,7 +206,7 @@ include 'header.php';
 
                     <div class="tableDiv">
                         <div class="tableLogoDiv">
-                            <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                            <img src="./static/images/logo.png"" alt="Logo" class="logo">
                         </div>
                         <div class="table">
                             <table>
@@ -221,7 +221,7 @@ include 'header.php';
                                     <td class="pos green leader">1</td>
                                     <td class="flex">
                                         <div class="teamLogoDiv">
-                                            <img src="assets/logos/team%20%281%29.png" alt="Team Logo" class="teamLogo">
+                                            <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                         </div>
                                         <div class="name">Team 1</div>
                                     </td>
@@ -245,7 +245,7 @@ include 'header.php';
                                     <td class="pos">3</td>
                                     <td class="flex">
                                         <div class="teamLogoDiv">
-                                            <img src="assets/logos/team%20%283%29.png" alt="Team Logo" class="teamLogo">
+                                            <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                         </div>
                                         <div class="name">Team 3</div>
                                     </td>
@@ -360,12 +360,12 @@ include 'header.php';
                 <div class="topScorer borderTop">
                     <span class="matchNumber"> Matchweek 1 </span>
                     <div class="leagueLogo">
-                        <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                        <img src="./static/images/logo.png"" alt="Logo" class="logo">
                     </div>
-                    <small>Golden Boot Contenders</small>
+                    <small></small>
                     <div class="menTitle">Top Scorer</div>
                     <div class="imgDiv">
-                        <img src="assets/bahrain/h4.jpg" alt="Top Scorer image">
+                        <img src="uploads/PERSON.jpg" alt="Top Scorer image">
                     </div>
                     <div class="infoDiv">
                         <span class="honor">He's been exeptional over the weekend</span>
@@ -378,12 +378,12 @@ include 'header.php';
                 <div class="pow borderTop">
                     <span class="matchNumber"> Matchweek 1 </span>
                     <div class="leagueLogo">
-                        <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                        <img src="./static/images/logo.png"" alt="Logo" class="logo">
                     </div>
-                    <small>MVP Contender</small>
+                    <small></small>
                     <div class="menTitle">Player of the week</div>
                     <div class="imgDiv">
-                        <img src="assets/bahrain/capt3.jpg" alt="Top Scorer image">
+                        <img src="uploads/PERSON.jpg" alt="Top Scorer image">
                     </div>
                     <div class="infoDiv">
                         <span class="honor">He's been exeptional over the weekend</span>
@@ -396,12 +396,12 @@ include 'header.php';
                 <div class="tow borderTop">
                     <span class="matchNumber"> Matchweek 1 </span>
                     <div class="leagueLogo">
-                        <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                        <img src="./static/images/logo.png"" alt="Logo" class="logo">
                     </div>
-                    <small>Best 5 of the week</small>
+                    <small></small>
                     <div class="menTitle">Team of the week</div>
                     <div class="imgDiv">
-                        <img src="assets/bahrain/b8.jpeg" alt="Top Scorer image">
+                        <img src="uploads/PERSON.jpg" alt="Top Scorer image">
                     </div>
                     <div class="infoDiv">
                         <span class="honor">They been exeptional in their respective teams</span>
@@ -443,12 +443,12 @@ include 'header.php';
                 <div class="singlePost flex">
                     <div class="postImg">
 
-                        <img src="uploads/smlab3.jpg" alt="Team Logo" class="">
+                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
                     </div>
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                                Aute ut harum eos dolor assumenda Aute eos dolor </span>
+                                Article 1 Title </span>
                         </a>
                         <p> It is a long established fact that a reader will be distracted by the readable content
                             of a page when looking at its layout. The point of using Lorem I</p>
@@ -457,12 +457,12 @@ include 'header.php';
                 <div class="singlePost flex">
                     <div class="postImg">
 
-                        <img src="uploads/smlacapt6.jpg" alt="Team Logo" class="">
+                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
                     </div>
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                                Libero quasi pariatur Tempora harum consectetur </span>
+                                Article 2 Title </span>
                         </a>
                         <p> There are many variations of passages of Lorem Ipsum available, but the majority have
                             suffered alteration in some form, by injected humour, or randomised words which don't
@@ -472,125 +472,19 @@ include 'header.php';
                 <div class="singlePost flex">
                     <div class="postImg">
 
-                        <img src="uploads/smlab5.jpg" alt="Team Logo" class="">
+                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
                     </div>
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                                Pariatur Atque nemo quaerat aut eos sequi aperiam </span>
+                                Article 3 Title </span>
                         </a>
                         <p> There are many variations of passages of Lorem Ipsum available, but the majority have
                             suffered alteration in some form, by injected humour, or randomised words which don't
                             look even slightly believable. If you are going to use a passage of Lorem Ipsum, yo</p>
                     </div>
                 </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlab8.jpeg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Ducimus quaerat exercitation perspiciatis home </span>
-                        </a>
-                        <p> It is a long established fact that a reader will be distracted by the readable content
-                            of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed </p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlab7.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Velit sit debitis quia sit cumque et eum ipsam au </span>
-                        </a>
-                        <p> It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop pu</p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlah4.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Autem eos a quibusdam ut hic Autem eos a quibusdam </span>
-                        </a>
-                        <p> Many variations of passages of Lorem Ipsum available, but the majority have suffered
-                            alteration in some form, by injected humour, or randomised words which don't look even
-                            slightly believable. </p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlasaudi3.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Blanditiis irure inventore officia ex consequat M </span>
-                        </a>
-                        <p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                            piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlacapt5.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                At sunt ut sed qui voluptas cupidatat enim velit </span>
-                        </a>
-                        <p> There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable.</p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlasaudi2.png" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Molestias enim exercitationem doloribus porro culp </span>
-                        </a>
-                        <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia volupta
-                        </p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlaahly-players-talaee-2020.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Al Ahly to the league table with maximum points </span>
-                        </a>
-                        <p> In a dramatic opener to the new pan-African tournament, Simba recovered from a goal down
-                            to lead before Al Ahly hit back to ensure the first-leg tie is evenly poised.
-
-                            The first half was tightly contested until Al Ahly struck against the run of play thr
-                        </p>
-                    </div>
-                </div>
+                
 
             </div>
         </section>
@@ -606,12 +500,12 @@ include 'header.php';
                 <a href="about.php">About Us</a>
             </div>
 
-            <div class="advert" id="advert">
+            <!-- <div class="advert" id="advert">
                 <div class="advertContainer grid">
                     <div class="advertImgDiv">
                         <img src="./assets/1.png" alt="Image" style="width: 100px;">
                     </div>
-                    <div class="advertText">
+                    <!-- <div class="advertText">
                         <h2>SPECIAL NOTE</h2>
                         <span>This project is still under development and any copy is not final. <br> Contact developer for more information.</span>
                         <div class="countdown">
@@ -622,12 +516,12 @@ include 'header.php';
                             00 <span>/ Seconds</span>
                         </div>
                         <span class="moreBtn"><a href="mailto:abagraphicx@gmail.com" style="color: white;">Contact Developer</a></span>
-                    </div>
-                    <div class="closeIconDiv" id="closeAdvertIconDiv">
+                    </div> -->
+                    <!-- <div class="closeIconDiv" id="closeAdvertIconDiv">
                         <i class="uil uil-times-circle icon"></i>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
+                <!-- </div>
+            </div> --> 
         </div>
         <!-- banner ends -->
 
@@ -675,22 +569,22 @@ include 'header.php';
                         <div class="singleFixture">
                             <div class="teams flex">
                                 <div class="teamName_teamLogo flex">
-                                    <div class="name">River Plate</div>
+                                    <div class="name">Ellusion 73</div>
                                     <div class="teamLogoDiv">
 
-                                        <img src="uploads/smlateam%20%285%29.png" alt="Team Logo" class="teamLogo">
+                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                     </div>
                                 </div>
                                 <p class="time">21:15</p>
                                 <div class="teamName_teamLogo flex">
                                     <div class="teamLogoDiv">
 
-                                        <img src="uploads/smlateam%20%286%29.png" alt="Team Logo" class="teamLogo">
+                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                     </div>
-                                    <div class="name">Lions United</div>
+                                    <div class="name">Uplands</div>
                                 </div>
                             </div>
-                            <span class="venue"><strong>Venue: </strong>Vespucio Stadium</span>
+                            <span class="venue"><strong>Venue: </strong>Harare</span>
 
                         </div>
 
@@ -704,7 +598,7 @@ include 'header.php';
                     <div class="resultsDiv borderTop">
                         <span class="matchNumber"> Matchweek 1 Results </span>
                         <div class="leagueLogo">
-                            <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                            <img src="./static/images/logo.png" alt="Logo" class="logo">
                         </div>
                         <small>Results from week 1</small>
                         <div class="date">Sunday 21 April</div>
@@ -712,18 +606,18 @@ include 'header.php';
                             <div class="teamName_teamLogo flex">
                                 <div class="name">Team 3</div>
                                 <div class="teamLogoDiv">
-                                    <img src="assets/logos/team%20%288%29.png" alt="Team Logo" class="teamLogo">
+                                    <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                 </div>
                             </div>
                             <p class="results">2-0</p>
                             <div class="teamName_teamLogo flex">
                                 <div class="teamLogoDiv">
-                                    <img src="assets/logos/team%20%283%29.png" alt="Team Logo" class="teamLogo">
+                                    <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                 </div>
                                 <div class="name">Team 4</div>
                             </div>
                         </div>
-                        <span class="venue"><strong>Venue: </strong>Pitch One</span>
+                        <span class="venue"><strong>Venue: </strong>Gweru</span>
 
                         <div class="detailsLink">
                             <a href="results.php">
@@ -733,7 +627,7 @@ include 'header.php';
                     </div>
                     <div class="tableDiv">
                         <div class="tableLogoDiv">
-                            <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                            <img src="./static/images/logo.png"" alt="Logo" class="logo">
                         </div>
 
                         <div class="table">
@@ -756,7 +650,7 @@ include 'header.php';
                                     <td class="pos green leader">1</td>
                                     <td class="flex">
                                         <div class="teamLogoDiv">
-                                            <img src="assets/logos/team%20%281%29.png" alt="Team Logo" class="teamLogo">
+                                            <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                         </div>
                                         <div class="name">Team 1</div>
                                     </td>
@@ -791,7 +685,7 @@ include 'header.php';
                                     <td class="pos">3</td>
                                     <td class="flex">
                                         <div class="teamLogoDiv">
-                                            <img src="assets/logos/team%20%283%29.png" alt="Team Logo" class="teamLogo">
+                                            <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
                                         </div>
                                         <div class="name">Team 3</div>
                                     </td>
@@ -962,12 +856,12 @@ include 'header.php';
                 <div class="topScorer borderTop">
                     <span class="matchNumber"> Matchweek 1 </span>
                     <div class="leagueLogo">
-                        <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                        <img src="./static/images/logo.png"" alt="Logo" class="logo">
                     </div>
-                    <small>Golden Boot Contenders</small>
+                    <small></small>
                     <div class="menTitle">Top Scorer</div>
                     <div class="imgDiv">
-                        <img src="assets/bahrain/h4.jpg" alt="Top Scorer image">
+                        <img src="uploads/PERSON.jpg" alt="Top Scorer image">
                     </div>
                     <div class="infoDiv">
                         <span class="honor">He's been exeptional over the weekend</span>
@@ -980,12 +874,12 @@ include 'header.php';
                 <div class="pow borderTop">
                     <span class="matchNumber"> Matchweek 1 </span>
                     <div class="leagueLogo">
-                        <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                        <img src="./static/images/logo.png"" alt="Logo" class="logo">
                     </div>
-                    <small>MVP Contender</small>
+                    <small></small>
                     <div class="menTitle">Player of the week</div>
                     <div class="imgDiv">
-                        <img src="assets/bahrain/capt3.jpg" alt="Top Scorer image">
+                        <img src="uploads/PERSON.jpg" alt="Top Scorer image">
                     </div>
                     <div class="infoDiv">
                         <span class="honor">He's been exeptional over the weekend</span>
@@ -998,12 +892,12 @@ include 'header.php';
                 <div class="tow borderTop">
                     <span class="matchNumber"> Matchweek 1 </span>
                     <div class="leagueLogo">
-                        <img src="assets/logo-blue-dark.png" alt="Logo" class="logo">
+                        <img src="./static/images/logo.png"" alt="Logo" class="logo">
                     </div>
-                    <small>Best 5 of the week</small>
+                    <small></small>
                     <div class="menTitle">Team of the week</div>
                     <div class="imgDiv">
-                        <img src="assets/bahrain/b8.jpeg" alt="Top Scorer image">
+                        <img src="uploads/PERSON.jpg" alt="Top Scorer image">
                     </div>
                     <div class="infoDiv">
                         <span class="honor">They been exeptional in their respective teams</span>
@@ -1026,7 +920,7 @@ include 'header.php';
         <!-- Middle banner section -->
         <section class="section container middleBanner grid">
             <div class="sectionText">
-                <h1>We are celebrating 10 years of amazing football!</h1>
+                <h1>We are celebrating 10 years of amazing snooker!</h1>
                 <div class="button">
                     <a href="about.php">Find Out</a>
                 </div>
@@ -1039,13 +933,14 @@ include 'header.php';
             <div class="sponsorsContainer swiper">
                 <div class="swiper-wrapper">
                     <div class="sponsor swiper-slide">
-                        <img src="assets/logos/logo%20%281%29.png" alt="sponsor logo" class="swiperImg" style="width: 150px; margin: auto">
+                        <img src="./static/images/hppa.png" alt="sponsor logo" class="swiperImg" style="width: 70px; margin: auto">
                     </div>
                     <div class="sponsor swiper-slide">
-                        <img src="assets/logos/logo%20%282%29.png" alt="sponsor logo" class="swiperImg" style="width: 150px; margin: 1rem auto 0">
+                        <img src="./static/images/hppa.png" alt="sponsor logo" class="swiperImg" style="width: 70px; margin: 1rem auto 0">
                     </div>
                     <div class="sponsor swiper-slide">
-                        <img src="assets/logos/logo%20%283%29.png" alt="sponsor logo" class="swiperImg" style="width: 100px; margin: auto">
+                        <img src="./static/images/hppa.png" alt="sponsor logo" class="swiperImg" style="width: 70px; margin: auto">
+                    
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -1062,12 +957,12 @@ include 'header.php';
                 <div class="singlePost flex">
                     <div class="postImg">
 
-                        <img src="uploads/smlab3.jpg" alt="Team Logo" class="">
+                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
                     </div>
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                                Aute ut harum eos dolor assumenda Aute eos dolor </span>
+                                Article Title 1 </span>
                         </a>
                         <p> It is a long established fact that a reader will be distracted by the readable content
                             of a page when looking at its layout. The point of using Lorem I</p>
@@ -1076,12 +971,12 @@ include 'header.php';
                 <div class="singlePost flex">
                     <div class="postImg">
 
-                        <img src="uploads/smlacapt6.jpg" alt="Team Logo" class="">
+                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
                     </div>
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                                Libero quasi pariatur Tempora harum consectetur </span>
+                            Article Title 2 </span>
                         </a>
                         <p> There are many variations of passages of Lorem Ipsum available, but the majority have
                             suffered alteration in some form, by injected humour, or randomised words which don't
@@ -1091,12 +986,12 @@ include 'header.php';
                 <div class="singlePost flex">
                     <div class="postImg">
 
-                        <img src="uploads/smlab5.jpg" alt="Team Logo" class="">
+                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
                     </div>
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                                Pariatur Atque nemo quaerat aut eos sequi aperiam </span>
+                            Article Title 3 </span>
                         </a>
                         <p> There are many variations of passages of Lorem Ipsum available, but the majority have
                             suffered alteration in some form, by injected humour, or randomised words which don't
@@ -1106,108 +1001,16 @@ include 'header.php';
                 <div class="singlePost flex">
                     <div class="postImg">
 
-                        <img src="uploads/smlab8.jpeg" alt="Team Logo" class="">
+                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
                     </div>
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                                Ducimus quaerat exercitation perspiciatis home </span>
+                            Article Title 4 </span>
                         </a>
                         <p> It is a long established fact that a reader will be distracted by the readable content
                             of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
                             more-or-less normal distribution of letters, as opposed </p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlab7.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Velit sit debitis quia sit cumque et eum ipsam au </span>
-                        </a>
-                        <p> It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop pu</p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlah4.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Autem eos a quibusdam ut hic Autem eos a quibusdam </span>
-                        </a>
-                        <p> Many variations of passages of Lorem Ipsum available, but the majority have suffered
-                            alteration in some form, by injected humour, or randomised words which don't look even
-                            slightly believable. </p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlasaudi3.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Blanditiis irure inventore officia ex consequat M </span>
-                        </a>
-                        <p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                            piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlacapt5.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                At sunt ut sed qui voluptas cupidatat enim velit </span>
-                        </a>
-                        <p> There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable.</p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlasaudi2.png" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Molestias enim exercitationem doloribus porro culp </span>
-                        </a>
-                        <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia volupta
-                        </p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
-
-                        <img src="uploads/smlaahly-players-talaee-2020.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Al Ahly to the league table with maximum points </span>
-                        </a>
-                        <p> In a dramatic opener to the new pan-African tournament, Simba recovered from a goal down
-                            to lead before Al Ahly hit back to ensure the first-leg tie is evenly poised.
-
-                            The first half was tightly contested until Al Ahly struck against the run of play thr
-                        </p>
                     </div>
                 </div>
 
@@ -1227,7 +1030,7 @@ include 'header.php';
             <div class="galleryContainer grid">
                 <div class="mainImage">
                     <div class="imgDiv">
-                        <img src="assets/bahrain/saudi2.png" alt="Action Image">
+                        <img src="uploads/PERSON.jpg" alt="Action Image">
                         <div class="iconDiv flex">
                             <i class="uil uil-camera icon"></i>
                             <span>11</span>
@@ -1243,28 +1046,28 @@ include 'header.php';
                 </div>
                 <div class="smallImages grid">
                     <div class="small_imgDiv">
-                        <img src="assets/bahrain/b2.jpg" alt="Action Image">
+                        <img src="uploads/PERSON.jpg" alt="Action Image">
                         <div class="iconDiv flex">
                             <i class="uil uil-camera icon"></i>
                             <span>9</span>
                         </div>
                     </div>
                     <div class="small_imgDiv">
-                        <img src="assets/bahrain/b3.jpg" alt="Action Image">
+                        <img src="uploads/PERSON.jpg" alt="Action Image">
                         <div class="iconDiv flex">
                             <i class="uil uil-camera icon"></i>
                             <span>11</span>
                         </div>
                     </div>
                     <div class="small_imgDiv">
-                        <img src="assets/bahrain/b5.jpg" alt="Action Image">
+                        <img src="uploads/PERSON.jpg" alt="Action Image">
                         <div class="iconDiv flex">
                             <i class="uil uil-camera icon"></i>
                             <span>17</span>
                         </div>
                     </div>
                     <div class="small_imgDiv">
-                        <img src="assets/bahrain/b7.jpg" alt="Action Image">
+                        <img src="uploads/PERSON.jpg" alt="Action Image">
                         <div class="iconDiv flex">
                             <i class="uil uil-camera icon"></i>
                             <span>21</span>
@@ -1472,7 +1275,7 @@ include 'header.php';
         <!-- funZone Section ends ========================== -->
 
         <!-- Social Platform Section ========================== -->
-        <section class="section container twitterSection sectionDesign">
+        <!-- <section class="section container twitterSection sectionDesign">
             <div class="sectionIntro">
                 <h2>Social Account</h2>
                 <span class="sectionSubTitle">Follow us on twitter</span>
@@ -1484,7 +1287,7 @@ include 'header.php';
 
                 <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100054418333702&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId=974562837372460" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
-        </section>
+        </section> -->
         <!-- Social Platform Section ends ========================== -->
 
         <!-- swiper.js link -->

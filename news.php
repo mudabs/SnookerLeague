@@ -22,7 +22,7 @@
                                      <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (1).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -30,7 +30,7 @@
                                                  <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (2).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -38,7 +38,7 @@
                                                  <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (6).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -46,7 +46,7 @@
                                                  <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (4).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -54,7 +54,7 @@
                                                  <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (5).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -62,7 +62,7 @@
                                                  <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (7).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -70,7 +70,7 @@
                                                  <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (10).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -78,7 +78,7 @@
                                                  <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (8).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -86,7 +86,7 @@
                                                  <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (9).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -94,7 +94,7 @@
                                                  <a href="clubs.php"
                         >                                          
                                           <img
-                                            src="https://slma.isratechyt.com/uploads/smlateam (3).png"
+                                            src="static/images/logo.png"
                                             alt="Team Logo"
                                             class="teamLogo"
                                           />
@@ -104,7 +104,7 @@
         <div class="lowerSection">
             
             <div class="logoDiv">
-               <img src="./static/images/logo.png" alt="Logo" class="logo">
+               <img src="static/images/logo.png" alt="Logo" class="logo">
             </div>
             
             <div class="navBar">
@@ -162,7 +162,7 @@
                         Matchweek 1
                     </span>
                     <div class="leagueLogo">
-                        <img src="./static/images/logo.png" alt="Logo" class="logo">
+                        <img src="static/images/logo.png" alt="Logo" class="logo">
                     </div>
                     <small>Best 5 of the week</small>
                     <div class="menTitle">
@@ -185,7 +185,7 @@
                         Matchweek 1
                     </span>
                     <div class="leagueLogo">
-                        <img src="./static/images/logo.png" alt="Logo" class="logo">
+                        <img src="static/images/logo.png" alt="Logo" class="logo">
                     </div>
                     <small>Golden Boot Contenders</small>
                     <div class="menTitle">
@@ -208,7 +208,7 @@
                         Matchweek 1
                     </span>
                     <div class="leagueLogo">
-                        <img src="./static/images/logo.png" alt="Logo" class="logo">
+                        <img src="static/images/logo.png" alt="Logo" class="logo">
                     </div>
                     <small>MVP Contender</small>
                     <div class="menTitle">
@@ -586,7 +586,7 @@ The first half was tightly contested until Al Ahly struck against the run of pla
 <div class="footer">
     <div class="footerContent container grid">
       <div class="col firstCol">
-          <img src="./static/images/logo.png" alt="Logo Image" class="footerLogo">
+          <img src="static/images/logo.png" alt="Logo Image" class="footerLogo">
           <span class="text">
             Nevsun Premier Pool League
           </span>

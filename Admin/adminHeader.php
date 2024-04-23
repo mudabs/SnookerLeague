@@ -28,7 +28,7 @@
             /* Set the desired width of the sidebar */
             height: 100vh;
             /* Set the height to 100vh (viewport height) for full-screen */
-            background-color: #f1f1f1;
+            background-color: #260229;
             /* Optional: Set a background color */
             padding: 0;
         }
