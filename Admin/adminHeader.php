@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nppl</title>
     <!-- Link bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 
     <!-- Link css -->
@@ -17,7 +17,7 @@
     <!-- link swiper.min.css -->
     <link rel="stylesheet" href="../swiper-bundle.min.css">
     <!-- Link fontawesome -->
-    
+
     <style>
         .fixed-sidebar {
             position: fixed;
@@ -39,7 +39,7 @@
             background-color: #260229;
             padding-left: 30px;
             padding-top: 10px;
-            font-size:small;
+            font-size: small;
         }
 
         .logo-navs {
@@ -77,11 +77,13 @@
             /* Pink color on hover */
         }
     </style>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    
 </head>
 
 <body>
-
+   
 
     <div class="container-fluid">
         <div class="row flex-nowrap">
@@ -100,45 +102,45 @@
                         <li class="navs"><i class="fas fa-users"></i> Teams </li>
                     </a>
                     <a href="Fixtures.php">
-                        
+
                         <li class="navs"><i class="fas fa-calendar-alt"></i> Fixtures </li>
                     </a>
                     <a href="Results.php">
-                        
+
                         <li class="navs"><i class="fas fa-trophy"></i> Results </li>
                     </a>
-                    
+
                     <a href="Player.php">
-                        
+
                         <li class="navs"><i class="fas fa-users"></i> Players </li>
                     </a>
 
                     <a href="Managers.php">
-                        
+
                         <li class="navs"><i class="fas fa-briefcase"></i> Managers </li>
                     </a>
                     <a href="News.php">
-                        
+
                         <li class="navs"><i class="fas fa-newspaper"></i> News </li>
                     </a>
                     <a href="History.php">
-                        
+
                         <li class="navs"><i class="fas fa-history"></i> History </li>
                     </a>
                     <a href="Gallery.php">
-                        
+
                         <li class="navs"><i class="fas fa-images"></i> Gallery </li>
                     </a>
                     <a href="Communication.php">
-                        
+
                         <li class="navs"><i class="fas fa-envelope"></i> Communication </li>
                     </a>
                     <a href="LeagueAnalysis.php">
-                        
+
                         <li class="navs"><i class="fas fa-chart-line"></i> League Analysis </li>
                     </a>
                     <a href="Settings.php">
-                        
+
                         <li class="navs"><i class="fas fa-cog"></i> Settings </li>
                     </a>
                 </div>
@@ -149,6 +151,10 @@
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" ></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>

@@ -14,13 +14,31 @@ if (isset($_POST['submit'])) {
 
     $insertQuery = "INSERT INTO `players`(`clubid`,`name`) VALUES ('$clubid','$name')";
 
-        if (mysqli_query($conn, $insertQuery)) {
-            echo "<script>alert('Executive added successfully')</script>";
-            // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
-        } else {
-            // There was an error inserting the record into the database. You can add any error handling code here.
-        }
+    if (mysqli_query($conn, $insertQuery)) {
+        echo "<script>alert('Player added successfully')</script>";
+    } else {
+        // There was an error inserting the record into the database. You can add any error handling code here.
+    }
 }
+
+//Update
+if (isset($_POST['submitEdit'])) {
+    $playerId = $_POST['id']; // Assuming a hidden field with player ID
+    $clubidEdit = $_POST['clubidEdit'];
+    $nameEdit = $_POST['nameEdit'];
+
+    // Update query with WHERE clause to specify the player to update
+    $updateQuery = "UPDATE `players` SET `clubid`='$clubidEdit', `name`='$nameEdit' WHERE `id` = '$playerId'";
+
+    if (mysqli_query($conn, $updateQuery)) {
+        echo "<script>alert('Player updated successfully')</script>";
+        // Update successful, additional logic here (e.g., redirect)
+    } else {
+        // Update failed, error handling here
+        echo "Error updating player: " . mysqli_error($conn);
+    }
+}
+
 
 // Delete
 
@@ -31,7 +49,7 @@ if (isset($_POST['delete_id'])) {
     if (is_numeric($delete_id)) {
 
         // Prepare SQL statement with parameter to prevent SQL injection
-        $sql = "DELETE FROM `executives` WHERE `id` = ?";
+        $sql = "DELETE FROM `players` WHERE `id` = ?";
         $stmt = mysqli_prepare($conn, $sql);
 
         // Bind parameter
@@ -78,44 +96,50 @@ if (isset($_POST['delete_id'])) {
         </div>
     </div>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add Players</button>
+    <br> <br>
 
 
-
+    <!-- Edit -->
     <?php
     $sql = "SELECT * FROM players";
     $result = mysqli_query($conn, $sql);
-
-    $fixtureCount = 0;
     while ($row = mysqli_fetch_assoc($result)) {
     ?>
         <div class="row">
             <div class="col-md-3">
-                <h5 style="text-align: center;"><?php echo $row["name"] ?></h5>
-                
-                <h5 style="text-align: center;"><?php echo $row["clubid"] ?></h5>
 
-                <form style="margin: 0 auto;" action="" method="post"><input type="hidden" name="id" value="<?php ($row["id"]) ?>"> </form>
-                <input type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $row["id"] ?>" value="Edit" style="width: 100%;">
+
                 <!-- Edit -->
                 <div class="modal fade" id="editModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="addClubModalLabel">Edit Executive</h5>
+                                <h5 class="modal-title" id="addClubModalLabel">Edit Player</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="" enctype="multipart/form-data">
+                                <form method="POST" action="">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" name="name"  value="<?php echo $row["name"] ?>" class="form-control">
+                                        <label for="name" class="form-label">Club</label>
+                                        <select class="form-select" id="team1" name="clubidEdit" required>
+                                            <option>Select Club</option>
+                                            <!-- Populate the team 1 options dynamically -->
+                                            <?php
+                                            $teamsQuery = "SELECT * FROM clubs";
+                                            $teamsResult = mysqli_query($conn, $teamsQuery);
+                                            while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
+                                                $selected = ($row["clubid"] == $teamRow["id"]) ? 'selected' : '';
+                                                echo "<option  value='" . $row["clubid"] . "' $selected>" . $teamRow["name"] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
 
                                     <div class="mb-3">
-                                        <img src="./images/executives/<?php echo $row["image"] ?>" style="width: 200px;" alt="">
-                                        <input type="file" class="form-control" id="my_image" name="my_imageEdit" value="<?php echo $row["image"] ?>" >
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" name="nameEdit" value="<?php echo $row["name"] ?>" class="form-control">
                                     </div>
-                                    <input type="hidden" name="id" value="<?php ($row["id"]) ?>"> 
+                                    <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                                     <button type="submit" name="submitEdit" class="btn btn-primary">Edit</button>
                                 </form>
                             </div>
@@ -132,6 +156,7 @@ if (isset($_POST['delete_id'])) {
 </div>
 
 
+<!-- Create -->
 <div class="modal fade" id="addNewsModal" tabindex="-1" aria-labelledby="addExecutivesModalLabel" aria-hidden="true">
     <!-- Modal content here -->
     <div class="modal-dialog modal-dialog-centered">
@@ -142,21 +167,24 @@ if (isset($_POST['delete_id'])) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="" enctype="multipart/form-data">
-                <select class="form-select" id="team1" name="fixture" required>
-                            <option>Select Club</option>
-                            <!-- Populate the team 1 options dynamically -->
-                            <?php
-                            $teamsQuery = "SELECT * FROM clubs";
-                            $teamsResult = mysqli_query($conn, $teamsQuery);
-                            while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                echo '<option name='."clubid".' value="' .$teamRow["id"]. '">' . $teamRow["name"] . ' </option>';
-                            }
-                            ?>
-                        </select>
+                <form method="POST" action="">
+                    <select class="form-select" id="team1" name="clubid" required>
+                        <option>Select Club</option>
+                        <!-- Populate the team 1 options dynamically -->
+                        <?php
+                        $teamsQuery = "SELECT * FROM clubs";
+                        $teamsResult = mysqli_query($conn, $teamsQuery);
+                        while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
+                            // echo '<option name='."clubid".' value="' .$teamRow["id"]. '">' . $teamRow["id"] . ' </option>';
+                        ?>
+                            <option value="<?php echo $teamRow["id"] ?>"><?php echo $teamRow["name"] ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label">Player Name</label>
                         <input type="text" name="name" class="form-control">
                     </div>
 
@@ -165,4 +193,78 @@ if (isset($_POST['delete_id'])) {
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="container" style="margin-left: 200px;">
+
+    <table id="myTable" class="table table-striped table-bordered tble-hover" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Club</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $sql = "SELECT * FROM players";
+            $result = mysqli_query($conn, $sql);
+            $fixtureCount = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <tr>
+                    <td><?php echo $row["name"] ?></td>
+                    <?php
+                    $cid = $row["clubid"];
+                    $sqls = "SELECT * FROM `clubs` WHERE id = '$cid'";
+                    $results = mysqli_query($conn, $sqls);
+                    while ($rows = mysqli_fetch_assoc($results)) {
+                    ?>
+                        <td>
+                            <img alt="Team Logo" class="teamLogo" src="./images/uploads/<?php echo $rows["logo"] ?>">
+                            <?php echo $rows["name"] ?>
+
+
+                        </td>
+                    <?php
+                    } ?>
+                    <td>
+                        <button class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $row["id"] ?>" style="margin-right: 10px;">Edit</button>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row["id"] ?>">Delete</button>
+                    </td>
+                </tr>
+
+
+                <div class="modal fade" id="deleteModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete <?php echo $row["name"] ?>? This action cannot be undone.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <form action="" method="post"> <input type="hidden" name="delete_id" value="<?php echo $row["id"] ?>"> <button type="submit" class="btn btn-danger">Delete</button> </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <?php }
+            ?>
+
+        </tbody>
+    </table>
+
+
+
+
+
 </div>
