@@ -1918,16 +1918,7 @@ The first half was tightly contested until Al Ahly struck against the run of pla
         
       </div>
     </div>
-    <div class="copyRight">
-        <div class="copyRightDiv">
-            <span class="left">&copy; ISRATECH 2022</span>
-            <span class="middle">CONTACT US FOR FAIR & LEGAL USE OF THIS PROJECT</span>
-            <span class="right flex">
-                <img src="./assets/1.png" alt="" style="width:30px; height:auto;">
-                <h3 style="color:rgb(71, 51, 166)">IsraTech</h3>
-            </span>
-        </div>
-    </div>
+   
 </div>
 
 <!-- footer section ends here =============================================================-->

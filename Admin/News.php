@@ -36,8 +36,8 @@ if (isset($_POST['submit'])) {
 
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     $new_img_name = $title . '.' . $img_ex_lc;
-                    $img_upload_path = 'images/news/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
-                    
+                    $img_upload_path = '../static/images/news/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
+
                     // Check if upload is successful using move_uploaded_file return value
                     if (move_uploaded_file($tmp_name, $img_upload_path)) {
                         $image = $new_img_name;
@@ -110,26 +110,7 @@ if (isset($_POST['delete_id'])) {
 
 
 <div class="container" style="margin-left: 200px;">
-    <!-- Clubs section =================================== -->
-    <div class="clubsSection section" id="clubs">
-        <div class="sectionHeader flex">
-            <div class="seasonYear">
-                <h6>League Teams</h6>
-            </div>
-            <div class="logoDiv">
-                <img src="../static/images/logo.png" alt="Logo Image">
-            </div>
-        </div>
-        <div style="width: 100%; height:15px;background-color:#37003c;"></div>
-        <div class="sectionHeader flex" style="background-color: #f3f0f2;">
-            <div class="seasonYear">
-                <h6 style="color:#37003c; text-align:center;">Latest News</h6>
-            </div>
-        </div>
-    </div>
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add News Feed</button>
-    <hr>
-
+    
 
 
     <?php
@@ -140,28 +121,15 @@ if (isset($_POST['delete_id'])) {
     while ($row = mysqli_fetch_assoc($result)) {
     ?>
         <div class="row">
-            <div class="col-md-1">
-                <img src="./images/news/<?php echo ($row["coverImage"]) ?>" alt="">
-            </div>
-
-            <div class="col">
-
-                <h5><?php echo $row["title"] ?></h5>
-
-                <p><?php echo $row["feed"] ?></p>
-                <p style="position: relative; left:85%; bottom:50%;"><?php echo date('D-d-M-Y', strtotime($row["date"])) ?></p>
-                <p style="position: relative; left:85%; bottom:55%;"><?php echo date('H-m', strtotime($row["date"])) ?></p>
-            </div>
-
+            
             <div class="col-md-2">
-                <a class="btn btn-primary mb-1" style="width: 100%;" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $row["id"] ?>">Edit Post</a>
-
+                
                 <!-- Edit -->
                 <div class="modal fade" id="editModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="addClubModalLabel">Add Fixture</h5>
+                                <h5 class="modal-title" id="addClubModalLabel">Add News Feed</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -172,11 +140,12 @@ if (isset($_POST['delete_id'])) {
                                     </div>
                                     <div class="mb-3">
                                         <label for="feed" class="form-label">Feed</label>
-                                        <textarea type="text" name="feed" value="<?php echo $row["feed"] ?>" class="form-control" rows="10"></textarea>
+                                        <input type="text" name="feed" value="<?php echo $row["feed"] ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label for="date" class="form-label">Date</label>
                                         <input type="date" class="form-control" value="<?php echo $row["date"] ?> id=" date" name="date" required>
+                                        <small><?php echo date('D-d-M-Y', strtotime($row["date"])) ?> </small>
                                     </div>
 
                                     <div class="mb-3">
@@ -192,8 +161,7 @@ if (isset($_POST['delete_id'])) {
                     </div>
                 </div>
                 <!-- Delete -->
-                <a href="" class="btn btn-primary" style="width: 100%;" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row["id"] ?>">Delete Feed</a>
-
+            
                 <div class="modal fade" id="deleteModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -215,10 +183,50 @@ if (isset($_POST['delete_id'])) {
 
             </div>
         </div>
+
     <?php }
 
     ?>
     <hr>
+
+
+    <section class="section newsSection container">
+        <div class="sectionHeader">
+            <span class="newsTitle">Club News</span>
+            <span style="position: absolute; right:2%;"><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add News Feed</button></span>
+        </div>
+        <div class="pb-5">
+
+        </div>
+        <div class="newContent grid">
+            <?php
+            $sql = "SELECT * FROM news";
+            $result = mysqli_query($conn, $sql);
+
+            $fixtureCount = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <div class="singlePost flex">
+                    <div class="postImg">
+                        <img src="../static/images/news/<?php echo $row['coverImage'] ?>" alt="Cover Image" class="">
+                    </div>
+                    <div class="newsTxt">
+                        <a href="news.php">
+                            <span style="position: absolute; right:13%;"><?php echo date('D-d-M-Y', strtotime($row["date"])) ?> </span>
+                            <span class="title"><?php echo $row['title']  ?></span>
+
+                        </a>
+                        <p> <?php echo $row['feed']  ?></p>
+                    </div>
+                    <div class="postImg">
+                        <a class="btn btn-primary mb-1" style="width: 100%;" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $row["id"] ?>">Edit Post</a>
+                        <a href="" class="btn btn-primary" style="width: 100%;" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row["id"] ?>">Delete </a>
+
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </section>
 </div>
 
 

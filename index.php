@@ -1,5 +1,6 @@
 ﻿<?php
 include 'header.php';
+require_once('databaseConn.php');
 ?>
 
 <div class="bodyFlex">
@@ -49,7 +50,7 @@ include 'header.php';
                     <div class="resultsDiv borderTop">
                         <span class="matchNumber"> Matchweek 1 Results </span>
                         <div class="leagueLogo">
-                            <img src="./static/images/logo.png"" alt="Logo" class="logo">
+                            <img src="./static/images/logo.png"" alt=" Logo" class="logo">
                         </div>
                         <small>Results from week 1</small>
                         <div class="date">Sunday 21 April</div>
@@ -97,7 +98,7 @@ include 'header.php';
                         <span class="matchNumber"> Matchweek 2 Fixtures </span>
 
                         <div class="leagueLogo">
-                            <img src="./static/images/logo.png"" alt="Logo" class="logo">
+                            <img src="./static/images/logo.png"" alt=" Logo" class="logo">
                         </div>
                         <small>All times shown are local</small>
                         <div class="date">Thursday 28 April</div>
@@ -206,7 +207,7 @@ include 'header.php';
 
                     <div class="tableDiv">
                         <div class="tableLogoDiv">
-                            <img src="./static/images/logo.png"" alt="Logo" class="logo">
+                            <img src="./static/images/logo.png"" alt=" Logo" class="logo">
                         </div>
                         <div class="table">
                             <table>
@@ -351,9 +352,9 @@ include 'header.php';
         <!-- League Logs Section end -->
 
         <!-- Weekly Team Section Starts -->
-        <section class="section container weeklyTeam sectionDesign">
+        <!-- <section class="section container weeklyTeam sectionDesign">
             <div class="sectionIntro">
-                <h2 class="title">Men Of The Week</h2>
+                <h2 class="title">Executives</h2>
                 <span class="subTitle"> They were unstoppable! </span>
             </div>
             <div class="menDiv grid">
@@ -418,7 +419,7 @@ include 'header.php';
                     </a>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- Weekly Team section ends here -->
 
         <!-- Social Platform Section ========================== -->
@@ -440,51 +441,29 @@ include 'header.php';
                 <span class="newsTitle">Club News</span>
             </div>
             <div class="newContent grid">
-                <div class="singlePost flex">
-                    <div class="postImg">
 
-                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Article 1 Title </span>
-                        </a>
-                        <p> It is a long established fact that a reader will be distracted by the readable content
-                            of a page when looking at its layout. The point of using Lorem I</p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
 
-                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
-                    </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Article 2 Title </span>
-                        </a>
-                        <p> There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable. If you are going to use a passage of Lorem Ipsum, yo</p>
-                    </div>
-                </div>
-                <div class="singlePost flex">
-                    <div class="postImg">
+                <?php
+                $sql = "SELECT * FROM news";
+                $result = mysqli_query($conn, $sql);
 
-                        <img src="uploads/PERSON.jpg" alt="Team Logo" class="">
+                $fixtureCount = 0;
+                while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                    <div class="singlePost flex">
+                        <div class="postImg">
+                            <img src="./static/images/news/<?php echo $row['coverImage'] ?>" alt="Cover Image" class="">
+                        </div>
+                        <div class="newsTxt">
+                            <a href="news.php">
+                                <span style="position: absolute; right:13%;"><?php echo date('D-d-M-Y', strtotime($row["date"])) ?> </span>
+                                <span class="title"><?php echo $row['title']  ?></span>
+
+                            </a>
+                            <p> <?php echo $row['feed']  ?></p>
+                        </div>
                     </div>
-                    <div class="newsTxt">
-                        <a href="news.php">
-                            <span class="title">
-                                Article 3 Title </span>
-                        </a>
-                        <p> There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable. If you are going to use a passage of Lorem Ipsum, yo</p>
-                    </div>
-                </div>
-                
+                <?php } ?>
 
             </div>
         </section>
@@ -517,11 +496,11 @@ include 'header.php';
                         </div>
                         <span class="moreBtn"><a href="mailto:abagraphicx@gmail.com" style="color: white;">Contact Developer</a></span>
                     </div> -->
-                    <!-- <div class="closeIconDiv" id="closeAdvertIconDiv">
+            <!-- <div class="closeIconDiv" id="closeAdvertIconDiv">
                         <i class="uil uil-times-circle icon"></i>
                     </div> -->
-                <!-- </div>
-            </div> --> 
+            <!-- </div>
+            </div> -->
         </div>
         <!-- banner ends -->
 
@@ -627,7 +606,7 @@ include 'header.php';
                     </div>
                     <div class="tableDiv">
                         <div class="tableLogoDiv">
-                            <img src="./static/images/logo.png"" alt="Logo" class="logo">
+                            <img src="./static/images/logo.png"" alt=" Logo" class="logo">
                         </div>
 
                         <div class="table">
@@ -849,32 +828,40 @@ include 'header.php';
         <!-- Weekly Team Section end -->
         <section class="section container weeklyTeam sectionDesign">
             <div class="sectionIntro">
-                <h2 class="title">Men Of The Week</h2>
-                <span class="subTitle"> They were unstoppable! </span>
+                <h2 class="title">Executives</h2>
+                <span class="subTitle"> Our Board of Directors! </span>
             </div>
             <div class="menDiv grid">
-                <div class="topScorer borderTop">
-                    <span class="matchNumber"> Matchweek 1 </span>
-                    <div class="leagueLogo">
-                        <img src="./static/images/logo.png"" alt="Logo" class="logo">
+                <?php
+                $sql = "SELECT * FROM executives";
+                $result = mysqli_query($conn, $sql);
+
+                $fixtureCount = 0;
+                while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                    <div class="topScorer borderTop">
+                        <span class="matchNumber"> <?php echo $row["name"] ?> </span> 
+                        <div class="leagueLogo">
+                            <img src="./Admin/images/executives/.png" alt=" Logo" class="logo">
+                        </div>
+                        <small></small>
+                        <div class="menTitle"><?php echo $row["name"] ?></div>
+                        <div class="imgDiv">
+                            <img src="uploads/PERSON.jpg" alt="Top Scorer image">
+                        </div>
+                        <div class="infoDiv">
+                            <span class="honor">He's been exeptional over the weekend</span>
+                            <span class="topScorerText">
+                                Name who plays for Team 1 is the league leading goal scorer
+                                with a maximum of 5 goals in 1 game.
+                            </span>
+                        </div>
                     </div>
-                    <small></small>
-                    <div class="menTitle">Top Scorer</div>
-                    <div class="imgDiv">
-                        <img src="uploads/PERSON.jpg" alt="Top Scorer image">
-                    </div>
-                    <div class="infoDiv">
-                        <span class="honor">He's been exeptional over the weekend</span>
-                        <span class="topScorerText">
-                            Name who plays for Team 1 is the league leading goal scorer
-                            with a maximum of 5 goals in 1 game.
-                        </span>
-                    </div>
-                </div>
+                <?php } ?>
                 <div class="pow borderTop">
                     <span class="matchNumber"> Matchweek 1 </span>
                     <div class="leagueLogo">
-                        <img src="./static/images/logo.png"" alt="Logo" class="logo">
+                        <img src="./static/images/logo.png"" alt=" Logo" class="logo">
                     </div>
                     <small></small>
                     <div class="menTitle">Player of the week</div>
@@ -892,7 +879,7 @@ include 'header.php';
                 <div class="tow borderTop">
                     <span class="matchNumber"> Matchweek 1 </span>
                     <div class="leagueLogo">
-                        <img src="./static/images/logo.png"" alt="Logo" class="logo">
+                        <img src="./static/images/logo.png"" alt=" Logo" class="logo">
                     </div>
                     <small></small>
                     <div class="menTitle">Team of the week</div>
@@ -940,7 +927,7 @@ include 'header.php';
                     </div>
                     <div class="sponsor swiper-slide">
                         <img src="./static/images/hppa.png" alt="sponsor logo" class="swiperImg" style="width: 70px; margin: auto">
-                    
+
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -949,7 +936,7 @@ include 'header.php';
         <!-- league  sponsors section ends =============================-->
 
         <!-- News section =================================== -->
-        <section class="section newsSection container">
+        <!-- <section class="section newsSection container">
             <div class="sectionHeader">
                 <span class="newsTitle">Latest News</span>
             </div>
@@ -976,7 +963,7 @@ include 'header.php';
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                            Article Title 2 </span>
+                                Article Title 2 </span>
                         </a>
                         <p> There are many variations of passages of Lorem Ipsum available, but the majority have
                             suffered alteration in some form, by injected humour, or randomised words which don't
@@ -991,7 +978,7 @@ include 'header.php';
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                            Article Title 3 </span>
+                                Article Title 3 </span>
                         </a>
                         <p> There are many variations of passages of Lorem Ipsum available, but the majority have
                             suffered alteration in some form, by injected humour, or randomised words which don't
@@ -1006,7 +993,7 @@ include 'header.php';
                     <div class="newsTxt">
                         <a href="news.php">
                             <span class="title">
-                            Article Title 4 </span>
+                                Article Title 4 </span>
                         </a>
                         <p> It is a long established fact that a reader will be distracted by the readable content
                             of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
@@ -1015,7 +1002,7 @@ include 'header.php';
                 </div>
 
             </div>
-        </section>
+        </section> -->
         <!-- News section ends =================================== -->
 
         <!-- gallery section  starts-->
