@@ -73,6 +73,7 @@
                     <li class="navItem"><a href="clubs.php" class="navLink">Clubs</a></li>
                     <li class="navItem"><a href="fixtures.php" class="navLink">Fixtures</a></li>
                     <li class="navItem"><a href="results.php" class="navLink">Results</a></li>
+                    <li class="navItem"><a href="downloads.php.php" class="navLink">Resources</a></li>
                     <li class="navItem"><a href="news.php" class="navLink">News</a></li>
                     <!-- <li class="navItem"><a href="funZone.php" class="navLink">Fun Zone</a></li> -->
                 </ul>

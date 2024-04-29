@@ -840,66 +840,24 @@ require_once('databaseConn.php');
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                     <div class="topScorer borderTop">
-                        <span class="matchNumber"> <?php echo $row["name"] ?> </span> 
-                        <div class="leagueLogo">
-                            <img src="./Admin/images/executives/.png" alt=" Logo" class="logo">
-                        </div>
-                        <small></small>
-                        <div class="menTitle"><?php echo $row["name"] ?></div>
                         <div class="imgDiv">
-                            <img src="uploads/PERSON.jpg" alt="Top Scorer image">
+                        <img src="./Admin/images/executives/<?php echo $row["image"] ?>" alt=" Logo" >
                         </div>
                         <div class="infoDiv">
-                            <span class="honor">He's been exeptional over the weekend</span>
+                            <span class="honor" style="width: 100%;"><?php echo $row["name"] ?></span>
                             <span class="topScorerText">
-                                Name who plays for Team 1 is the league leading goal scorer
-                                with a maximum of 5 goals in 1 game.
+                            Secretary General
                             </span>
-                        </div>
+                        </div> 
                     </div>
                 <?php } ?>
-                <div class="pow borderTop">
-                    <span class="matchNumber"> Matchweek 1 </span>
-                    <div class="leagueLogo">
-                        <img src="./static/images/logo.png"" alt=" Logo" class="logo">
-                    </div>
-                    <small></small>
-                    <div class="menTitle">Player of the week</div>
-                    <div class="imgDiv">
-                        <img src="uploads/PERSON.jpg" alt="Top Scorer image">
-                    </div>
-                    <div class="infoDiv">
-                        <span class="honor">He's been exeptional over the weekend</span>
-                        <span class="topScorerText">
-                            Name who plays for Team 1 is the league leading goal scorer
-                            with a maximum of 5 goals in 1 game.
-                        </span>
-                    </div>
-                </div>
-                <div class="tow borderTop">
-                    <span class="matchNumber"> Matchweek 1 </span>
-                    <div class="leagueLogo">
-                        <img src="./static/images/logo.png"" alt=" Logo" class="logo">
-                    </div>
-                    <small></small>
-                    <div class="menTitle">Team of the week</div>
-                    <div class="imgDiv">
-                        <img src="uploads/PERSON.jpg" alt="Top Scorer image">
-                    </div>
-                    <div class="infoDiv">
-                        <span class="honor">They been exeptional in their respective teams</span>
-                        <span class="topScorerText">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Veritatis, modi!
-                        </span>
-                    </div>
-                </div>
+                
 
-                <div class="detailsLink">
+                <!-- <div class="detailsLink">
                     <a href="results.php">
                         <span>View More <i class="uil uil-arrow-right icon"></i></span>
                     </a>
-                </div>
+                </div> -->
             </div>
         </section>
         <!-- Weekly Team section ends here -->
@@ -907,7 +865,7 @@ require_once('databaseConn.php');
         <!-- Middle banner section -->
         <section class="section container middleBanner grid">
             <div class="sectionText">
-                <h1>We are celebrating 10 years of amazing snooker!</h1>
+                <h1>Advertise With Us</h1>
                 <div class="button">
                     <a href="about.php">Find Out</a>
                 </div>
@@ -1285,7 +1243,9 @@ require_once('databaseConn.php');
 </div>
 
 <!-- footer section starts here =============================================================-->
-
+<?php
+include 'footer.php';
+?>
 
 <!-- footer section ends here =============================================================-->
 
@@ -1294,9 +1254,7 @@ require_once('databaseConn.php');
 <!-- link javascript -->
 <script src="main.js"></script>
 
-<?php
-include 'footer.php';
-?>
+
 </body>
 
 </html>
