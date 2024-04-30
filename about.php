@@ -24,16 +24,11 @@ require_once('databaseConn.php');
 
   <div class="mainBody">
     <div class="aboutBanner">
-      <span class="bannerText">
-        <i class="uil uil-analysis icon"></i>
-        <p>The Crane</p>
-        <h2>About Us</h2>
-      </span>
+      
       <div class="aboutButton flex">
         <a href="#info" class="aboutBtnActive">
           <i class="uil uil-info-circle icon"></i>Info</a>
-        <a href="#records"><i class="uil uil-notes icon"></i> Records</a>
-      </div>
+        </div>
     </div>
 
     <!-- About Information starts here =================================== -->
