@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
                 $img_ex = pathinfo($_FILES['my_image']['name'], PATHINFO_EXTENSION);
                 $img_ex_lc = strtolower($img_ex);
 
-                $allowed_exs = array("jpg", "jpeg", "png");
+                $allowed_exs = array("jpg", "jpeg", "png", "jfif");
 
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     $new_img_name = $clubName . '.' . $img_ex_lc;
@@ -65,6 +65,12 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
+        $clubId = mysqli_insert_id($conn); // Get the ID of the inserted club
+
+        // Insert record into logs table with the club ID as foreign key
+        $logSql = "INSERT INTO `log`(`position`, `clubId`, `played`, `wins`, `draws`, `loses`, `ff`, `fa`, `fd`, `points`) VALUES ('0','$clubId','0','0','0','0','0','0','0','0')"; // Initial points set to 0
+
+        $logResult = mysqli_query($conn, $logSql);
         echo "<script>alert('Record created successfully!');</script>";
     } else {
         echo "Failed: " . mysqli_error($conn);

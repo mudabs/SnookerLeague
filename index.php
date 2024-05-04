@@ -19,14 +19,26 @@ require_once('databaseConn.php');
                 <div class="singleClub">
                     <div class="singleClubTop flex">
                         <div class="leftRow flex">
-                            <div class="teamLogoDiv">
+                            <?php
+                            $sql = "SELECT c.name AS team_name, c.logo AS team_logo, c.estdate AS estdate, MAX(l.points) AS max_points
+                            FROM log l 
+                            INNER JOIN clubs c ON l.clubid = c.id
+                            GROUP BY c.id
+                            ORDER BY max_points DESC
+                            LIMIT 1;";
+                            $result = mysqli_query($conn, $sql);
 
-                                <img src="uploads/smlateam%20%282%29.png" alt="Team Logo" class="teamLogo">
-                            </div>
-                            <div class="clubName">
-                                <span class="name">HIT</span>
-                                <span class="classYear">Established: 2016</span>
-                            </div>
+                            while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                                <div class="teamLogoDiv">
+
+                                    <img src="./Admin/images/uploads/<?php echo $row["team_logo"] ?>" alt="Team Logo" class="teamLogo">
+                                </div>
+                                <div class="clubName">
+                                    <span class="name"><?php echo $row["team_name"] ?></span>
+                                    <span class="classYear">Established: <?php echo date('Y', strtotime($row["estdate"])) ?></span>
+                                </div>
+                            <?php } ?>
                         </div>
                         <div class="rightRow">
                             <a href="clubs.php"><i class="uil uil-angle-right icon"></i></a>
@@ -205,147 +217,6 @@ require_once('databaseConn.php');
                         </div>
                     </div>
 
-                    <div class="tableDiv">
-                        <div class="tableLogoDiv">
-                            <img src="./static/images/logo.png"" alt=" Logo" class="logo">
-                        </div>
-                        <div class="table">
-                            <table>
-                                <tr>
-                                    <th>Pos</th>
-                                    <th>Club</th>
-                                    <th>Pl</th>
-                                    <th>GD</th>
-                                    <th>Pts</th>
-                                </tr>
-                                <tr class="tr" style="padding: 1rem 0">
-                                    <td class="pos green leader">1</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 1</div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>+5</td>
-                                    <td class="points">3</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos green">2</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="assets/logos/team%20%282%29.png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 2</div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">3</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 3</div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">4</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="assets/logos/team%20%284%29.png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 4</div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <!-- <tr class="tr">
-                                            <td class="pos">5</td>
-                                            <td class="flex">
-                                                <div class="name">Team 5</div>
-                                                <div class="teamLogoDiv">
-                                                    <img src="./assets/logos/team (5).png" alt="Team Logo" class="teamLogo">
-                                                </div>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td class="points">0</td>
-                                        </tr>
-                                        <tr class="tr">
-                                            <td class="pos">6</td>
-                                            <td class="flex">
-                                                <div class="name">Team 6</div>
-                                                <div class="teamLogoDiv">
-                                                    <img src="./assets/logos/team (6).png" alt="Team Logo" class="teamLogo">
-                                                </div>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td class="points">0</td>
-                                        </tr>
-                                        <tr class="tr">
-                                            <td class="pos">7</td>
-                                            <td class="flex">
-                                                <div class="name">Team 7</div>
-                                                <div class="teamLogoDiv">
-                                                    <img src="./assets/logos/team (7).png" alt="Team Logo" class="teamLogo">
-                                                </div>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td class="points">0</td>
-                                        </tr>
-                                        <tr class="tr">
-                                            <td class="pos">8</td>
-                                            <td class="flex">
-                                                <div class="name">Team 8</div>
-                                                <div class="teamLogoDiv">
-                                                    <img src="./assets/logos/team (8).png" alt="Team Logo" class="teamLogo">
-                                                </div>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td class="points">0</td>
-                                        </tr>
-                                        <tr class="tr">
-                                            <td class="pos red">9</td>
-                                            <td class="flex">
-                                                <div class="name">Team 9</div>
-                                                <div class="teamLogoDiv">
-                                                    <img src="./assets/logos/team (9).png" alt="Team Logo" class="teamLogo">
-                                                </div>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td class="points">0</td>
-                                        </tr>
-                                        <tr class="tr">
-                                            <td class="pos red">10</td>
-                                            <td class="flex">
-                                                <div class="name">Team 10</div>
-                                                <div class="teamLogoDiv">
-                                                    <img src="./assets/logos/team (10).png" alt="Team Logo" class="teamLogo">
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>-5</td>
-                                            <td class="points">0</td>
-                                        </tr> -->
-                            </table>
-                            <div class="detailsLink">
-                                <a href="results.php">
-                                    <span>View Full Table <i class="uil uil-arrow-right icon"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -606,217 +477,98 @@ require_once('databaseConn.php');
                     </div>
                     <div class="tableDiv">
                         <div class="tableLogoDiv">
-                            <img src="./static/images/logo.png"" alt=" Logo" class="logo">
+                            <h2 style="color: white;">Results Log</h2>
                         </div>
-
                         <div class="table">
                             <table>
                                 <tr>
                                     <th>Pos</th>
                                     <th>Club</th>
-                                    <th>PL</th>
+                                    <th>P</th>
                                     <th>W</th>
-                                    <th>L</th>
                                     <th>D</th>
-                                    <th>GF</th>
-                                    <th>GA</th>
-                                    <th>GD</th>
+                                    <th>L</th>
+                                    <th>FF</th>
+                                    <th>FA</th>
+                                    <th>FD</th>
                                     <th>Pts</th>
                                 </tr>
 
+                                <?php
 
-                                <tr class="tr" style="padding: 1rem 0">
-                                    <td class="pos green leader">1</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 1</div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>5</td>
-                                    <td>0</td>
-                                    <td>+5</td>
-                                    <td class="points">3</td>
-                                </tr>
-                                <tr class="tr" style="padding: 1rem 0">
-                                    <td class="pos green leader">2</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="assets/logos/team%20%284%29.png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 2</div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>5</td>
-                                    <td>-5</td>
-                                    <td class="points">0</td>
+                                $countQuery = "SELECT COUNT(*) AS total_items FROM log;"; // Get item count
+                                $countResult = mysqli_query($conn, $countQuery);
 
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">3</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 3</div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">4</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="assets/logos/team%20%284%29.png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 4</div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="pos">5</td>
-                                    <td class="flex">
-                                        <div class="teamLogoDiv">
-                                            <img src="assets/logos/team%20%285%29.png" alt="Team Logo" class="teamLogo">
-                                        </div>
-                                        <div class="name">Team 5</div>
-                                    </td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="points">0</td>
-                                </tr>
-                                <!--<tr class="tr">-->
-                                <!--  <td class="pos">6</td>-->
-                                <!--  <td class="flex">-->
-                                <!--    <div class="teamLogoDiv">-->
-                                <!--      <img-->
-                                <!--        src="../assets/logos/team (6).png"-->
-                                <!--        alt="Team Logo"-->
-                                <!--        class="teamLogo"-->
-                                <!--      />-->
-                                <!--    </div>-->
-                                <!--    <div class="name">Team 6</div>-->
-                                <!--  </td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td class="points">0</td>-->
-                                <!--</tr>-->
-                                <!--<tr class="tr">-->
-                                <!--  <td class="pos">7</td>-->
-                                <!--  <td class="flex">-->
-                                <!--    <div class="teamLogoDiv">-->
-                                <!--      <img-->
-                                <!--        src="../assets/logos/team (7).png"-->
-                                <!--        alt="Team Logo"-->
-                                <!--        class="teamLogo"-->
-                                <!--      />-->
-                                <!--    </div>-->
-                                <!--    <div class="name">Team 7</div>-->
-                                <!--  </td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td class="points">0</td>-->
-                                <!--</tr>-->
-                                <!--<tr class="tr">-->
-                                <!--  <td class="pos">8</td>-->
-                                <!--  <td class="flex">-->
-                                <!--    <div class="teamLogoDiv">-->
-                                <!--      <img-->
-                                <!--        src="../assets/logos/team (8).png"-->
-                                <!--        alt="Team Logo"-->
-                                <!--        class="teamLogo"-->
-                                <!--      />-->
-                                <!--    </div>-->
-                                <!--    <div class="name">Team 8</div>-->
-                                <!--  </td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td class="points">0</td>-->
-                                <!--</tr>-->
-                                <!--<tr class="tr">-->
-                                <!--  <td class="pos red">9</td>-->
-                                <!--  <td class="flex">-->
-                                <!--    <div class="teamLogoDiv">-->
-                                <!--      <img-->
-                                <!--        src="../assets/logos/team (9).png"-->
-                                <!--        alt="Team Logo"-->
-                                <!--        class="teamLogo"-->
-                                <!--      />-->
-                                <!--    </div>-->
-                                <!--    <div class="name">Team 9</div>-->
-                                <!--  </td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td>0</td>-->
-                                <!--  <td class="points">0</td>-->
-                                <!--</tr>-->
-                                <!--<tr class="tr">-->
-                                <!--  <td class="pos red">10</td>-->
-                                <!--  <td class="flex">-->
-                                <!--    <div class="teamLogoDiv">-->
-                                <!--      <img-->
-                                <!--        src="../assets/logos/team (10).png"-->
-                                <!--        alt="Team Logo"-->
-                                <!--        class="teamLogo"-->
-                                <!--      />-->
-                                <!--    </div>-->
-                                <!--    <div class="name">Team 10</div>-->
-                                <!--  </td>-->
-                                <!--  <td>1</td>-->
-                                <!--  <td>-5</td>-->
-                                <!--  <td>-5</td>-->
-                                <!--  <td>-5</td>-->
-                                <!--  <td>-5</td>-->
-                                <!--  <td>-5</td>-->
-                                <!--  <td>-5</td>-->
-                                <!--  <td class="points">0</td>-->
-                                <!--</tr>-->
+                                if ($countResult) {
+                                    $rowCount = mysqli_fetch_assoc($countResult)['total_items']; // Get count from result
+                                } else {
+                                    echo "Error getting item count: " . mysqli_error($conn);
+                                    // Handle error gracefully (e.g., display a default message)
+                                }
+
+                                $counter = 1;
+
+                                $teamsQuery = "SELECT l.*, c.name AS team_name, c.logo AS team_logo
+                                                FROM log l 
+                                                INNER JOIN clubs c ON l.clubid = c.id
+                                                ORDER BY l.points DESC
+                                                LIMIT 4;"; // Use $fixture_id here
+
+                                $teamsResult = mysqli_query($conn, $teamsQuery);
+
+                                while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
+
+                                ?>
+
+
+
+                                    <tr class="tr" style="padding: 1rem 0">
+
+                                        <?php
+                                        if ($counter < 3) { ?>
+
+                                            <td class="pos green leader"><?php echo $counter ?></td>
+                                        <?php
+                                        } else if ($rowCount - 2 <= $counter) {
+                                        ?>
+                                            <td class="pos red"><?php echo $counter ?></td>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <td class="pos"><?php echo $counter ?></td>
+                                        <?php
+
+                                        }
+                                        ?>
+
+                                        <?php $counter++ ?>
+
+
+                                        <td class="flex">
+                                            <div class="teamLogoDiv">
+                                                <img src="./Admin/images/uploads/<?php echo $teamRow["team_logo"]  ?>" alt="Team Logo" class="teamLogo" />
+                                            </div>
+                                            <div class="name"><?php echo $teamRow["team_name"]  ?></div>
+                                        </td>
+                                        <td><?php echo $teamRow["played"]  ?></td>
+                                        <td><?php echo $teamRow["wins"]  ?></td>
+                                        <td><?php echo $teamRow["draws"]  ?></td>
+                                        <td><?php echo $teamRow["loses"]  ?></td>
+                                        <td><?php echo $teamRow["ff"]  ?></td>
+                                        <td><?php echo $teamRow["fa"]  ?></td>
+                                        <td><?php echo $teamRow["fd"]  ?></td>
+                                        <td class="points"><?php echo $teamRow["points"]  ?></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </table>
+
+                            <div class="detailsLink">
+                                <a href="results.php">
+                                    <span>View Full Table <i class="uil uil-arrow-right icon"></i></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -841,17 +593,17 @@ require_once('databaseConn.php');
                 ?>
                     <div class="topScorer borderTop">
                         <div class="imgDiv">
-                        <img src="./Admin/images/executives/<?php echo $row["image"] ?>" alt=" Logo" >
+                            <img src="./Admin/images/executives/<?php echo $row["image"] ?>" alt=" Logo">
                         </div>
                         <div class="infoDiv">
                             <span class="honor" style="width: 100%;"><?php echo $row["name"] ?></span>
                             <span class="topScorerText">
-                            Secretary General
+                                Secretary General
                             </span>
-                        </div> 
+                        </div>
                     </div>
                 <?php } ?>
-                
+
 
                 <!-- <div class="detailsLink">
                     <a href="results.php">

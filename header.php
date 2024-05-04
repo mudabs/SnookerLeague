@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,14 +13,21 @@
     <!-- link swiper.min.css -->
     <link rel="stylesheet" href="swiper-bundle.min.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    
+
 </head>
 
 <body>
 
-<!-- Facebook Link -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0&appId=974562837372460" nonce="WM7bOxXM"></script>
-<!-- Facebook Link -->
+    <!-- Facebook Link -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0&appId=974562837372460" nonce="WM7bOxXM"></script>
+    <!-- Facebook Link -->
 
 
     <div class="header">
@@ -74,7 +79,7 @@
                     <li class="navItem"><a href="fixtures.php" class="navLink">Fixtures</a></li>
                     <li class="navItem"><a href="results.php" class="navLink">Results</a></li>
                     <li class="navItem"><a href="gallery.php" class="navLink">Gallery</a></li>
-                   <li class="navItem"><a href="news.php" class="navLink">News</a></li>
+                    <li class="navItem"><a href="news.php" class="navLink">News</a></li>
                     <!-- <li class="navItem"><a href="funZone.php" class="navLink">Fun Zone</a></li> -->
                 </ul>
                 <div class="button">
@@ -88,5 +93,8 @@
                 <i class="uil uil-bars icon"></i>
             </div>
         </div>
-    </div>    
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </body>
