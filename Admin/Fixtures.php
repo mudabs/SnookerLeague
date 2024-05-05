@@ -18,23 +18,23 @@ function getTeamLogo($logoFileName)
 
 // Create
 
-        if (isset($_POST['submit'])) {
-            $team1 = $_POST['team1'];
-            $team2 = $_POST['team2'];
-            $venue = $_POST['venue'];
-            $date = $_POST['date'];
+if (isset($_POST['submit'])) {
+    $team1 = $_POST['team1'];
+    $team2 = $_POST['team2'];
+    $venue = $_POST['venue'];
+    $date = $_POST['date'];
 
-            // Assuming you have a table named "fixtures" with the respective columns
+    // Assuming you have a table named "fixtures" with the respective columns
 
-            $insertQuery = "INSERT INTO fixtures (team1id, team2id, venue, date) VALUES ('$team1', '$team2', '$venue', '$date')";
+    $insertQuery = "INSERT INTO fixtures (team1id, team2id, venue, date) VALUES ('$team1', '$team2', '$venue', '$date')";
 
-            if (mysqli_query($conn, $insertQuery)) {
-                echo "<script>alert('Fixture added successfully')</script>";
-                // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
-            } else {
-                // There was an error inserting the record into the database. You can add any error handling code here.
-            }
-        }
+    if (mysqli_query($conn, $insertQuery)) {
+        echo "<script>alert('Fixture added successfully')</script>";
+        // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
+    } else {
+        // There was an error inserting the record into the database. You can add any error handling code here.
+    }
+}
 
 // Delete
 
@@ -74,7 +74,7 @@ if (isset($_POST['delete_id'])) {
     <div class="clubsSection section" id="clubs">
         <div class="sectionHeader flex">
             <div class="seasonYear">
-                <h6>League Teams</h6>
+                <h6>League Fixtures</h6>
             </div>
             <div class="logoDiv">
                 <img src="../static/images/logo.png" alt="Logo Image">
@@ -88,143 +88,171 @@ if (isset($_POST['delete_id'])) {
         </div>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addClubModal">Add Fixture</button>
         <br><br>
-        <?php
-        $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
-                FROM fixtures f 
-                INNER JOIN clubs c1 ON f.team1id = c1.id 
-                INNER JOIN clubs c2 ON f.team2id = c2.id";
-        $result = mysqli_query($conn, $sql);
 
-        $fixtureCount = 0;
-        while ($row = mysqli_fetch_assoc($result)) {
-            if ($fixtureCount % 3 == 0) {
-                if ($fixtureCount != 0) {
-                    echo '</div>'; // Close previous row
-                }
-                echo '<div class="row">'; // Start new row
-            }
+        <div class="section fixturesSection container">
+            <div class="sectionContainer">
+                <div class="sectionContent  grid">
+                    <div class="fixtureDiv borderTop">
+                        <?php
 
-            // Retrieve team logos
-            $team1_logo = getTeamLogo($row["team1_logo"]);
-            $team2_logo = getTeamLogo($row["team2_logo"]);
-        ?>
+                        // Execute the first SQL query to get all dates
+                        $sql = "SELECT DISTINCT date FROM `fixtures`";
+                        $result = mysqli_query($conn, $sql);
 
-            <div class="col-md-4">
-                <div class="card" style="margin-bottom: 15px;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <img src="<?php echo $team1_logo; ?>" alt="" style="width: 100px;">
-                                <div class="team-name"><?php echo $row["team1_name"]; ?></div>
-                            </div>
-                            <div class="col game-time" style="text-align: center;">
-                                <div class="mt-4 pt-2" style="background-color: #f3f0f2; height:40px; width:70px; ">
-                                    <?php echo date('H-m', strtotime($row["date"])); ?>
+                        while ($dateRow = mysqli_fetch_assoc($result)) {
+                            $selectedDate = $dateRow["date"]; // Store the date from the first query
+
+
+                            $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
+                                FROM fixtures f 
+                                INNER JOIN clubs c1 ON f.team1id = c1.id 
+                                INNER JOIN clubs c2 ON f.team2id = c2.id
+                                WHERE f.date = '$selectedDate';";
+                            $fixtureResult = mysqli_query($conn, $sql);
+
+                            $fixtureCount = 0;
+                            while ($row = mysqli_fetch_assoc($fixtureResult)) {
+
+                                if (mysqli_num_rows($fixtureResult) > 0) {
+                        ?>
+
+                                    <div class="date">
+                                        <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
+                                    </div>
+                                <?php
+                                    if ($fixtureCount % 3 == 0) {
+                                        if ($fixtureCount != 0)
+                                            echo '</div>'; // Close previous row
+                                    }
+                                    echo '<div class="row">'; // Start new row
+                                }
+
+                                // Retrieve team logos
+                                $team1_logo = getTeamLogo($row["team1_logo"]);
+                                $team2_logo = getTeamLogo($row["team2_logo"]);
+                                ?>
+
+                                <div class="col-md-4">
+                                    <div class="card" style="margin-bottom: 15px;">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img src="<?php echo $team1_logo; ?>" alt="" style="width: 100px;">
+                                                    <div class="team-name"><?php echo $row["team1_name"]; ?></div>
+                                                </div>
+                                                <div class="col game-time" style="text-align: center;">
+                                                    <div class="mt-4 pt-2" style="background-color: #f3f0f2; height:40px; width:70px; ">
+                                                        <?php echo date('H-m', strtotime($row["date"])); ?>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col">
+                                                    <img src="<?php echo $team2_logo; ?>" alt="" style="width: 100px;">
+                                                    <div class="team-name"><?php echo $row["team2_name"]; ?></div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="text-align: center;">
+                                                <h6>Venue: <?php echo $row["venue"]; ?></h6>
+                                            </div>
+                                            <div class="row">
+                                                <a class="btn btn-primary" style="width: 50%; margin:0 auto;" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $row["id"] ?>" style="margin-right: 10px;">Edit Fixture</a>
+
+                                            </div>
+
+                                            <!-- Edit -->
+                                            <div class="modal fade" id="editModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="addClubModalLabel">Add Fixture</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="POST" action="">
+                                                                <div class="mb-3">
+                                                                    <label for="team1" class="form-label">Team 1</label>
+                                                                    <select class="form-select" id="team1" name="team1" required>
+                                                                        <!-- Populate the team 1 options dynamically -->
+                                                                        <option>Select Team 1</option>
+                                                                        <?php
+                                                                        $teamsQuery = "SELECT id, name FROM clubs";
+                                                                        $teamsResult = mysqli_query($conn, $teamsQuery);
+                                                                        while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
+                                                                            echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="team2" class="form-label">Team 2</label>
+                                                                    <select class="form-select" id="team2" name="team2" required>
+                                                                        <option>Select Team 2</option>
+                                                                        <!-- Populate the team 2 options dynamically -->
+                                                                        <?php
+                                                                        mysqli_data_seek($teamsResult, 0); // Reset the result pointer
+                                                                        while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
+                                                                            echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="venue" class="form-label">Venue</label>
+                                                                    <input type="text" class="form-control" id="venue" name="venue" required>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="date" class="form-label">Date</label>
+                                                                    <input type="date" class="form-control" id="date" name="date" required>
+                                                                </div>
+                                                                <button type="submit" name="submit" class="btn btn-primary">Edit</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <br>
+                                            <div class="row">
+                                                <!-- Delete -->
+                                                <a href="" class="btn btn-primary" style="width: 55%; margin:0 auto; background-color:#fe2883;" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row["id"] ?>">Delete Feed</a>
+
+                                                <div class="modal fade" id="deleteModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Are you sure you want to delete this News feed? This action cannot be undone.</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                <form action="" method="post"> <input type="hidden" name="delete_id" value="<?php echo $row["id"] ?>"> <button type="submit" class="btn btn-danger">Delete</button> </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
 
-                            </div>
-                            <div class="col">
-                                <img src="<?php echo $team2_logo; ?>" alt="" style="width: 100px;">
-                                <div class="team-name"><?php echo $row["team2_name"]; ?></div>
-                            </div>
-                        </div>
-                        <div class="row" style="text-align: center;">
-                            <h6>Venue: <?php echo $row["venue"]; ?></h6>
-                        </div>
-                        <div class="row">
-                            <a class="btn btn-primary" style="width: 50%; margin:0 auto;" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $row["id"] ?>" style="margin-right: 10px;">Edit Fixture</a>
+                        <?php
+                                $fixtureCount++;
+                            }
+                            echo '</div>'; // Close the last row
+                        }
+                        ?>
 
-                        </div>
-
-                        <!-- Edit -->
-                        <div class="modal fade" id="editModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="addClubModalLabel">Add Fixture</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form method="POST" action="">
-                                            <div class="mb-3">
-                                                <label for="team1" class="form-label">Team 1</label>
-                                                <select class="form-select" id="team1" name="team1" required>
-                                                    <!-- Populate the team 1 options dynamically -->
-                                                    <option>Select Team 1</option>
-                                                    <?php
-                                                    $teamsQuery = "SELECT id, name FROM clubs";
-                                                    $teamsResult = mysqli_query($conn, $teamsQuery);
-                                                    while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                                        echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="team2" class="form-label">Team 2</label>
-                                                <select class="form-select" id="team2" name="team2" required>
-                                                    <option>Select Team 2</option>
-                                                    <!-- Populate the team 2 options dynamically -->
-                                                    <?php
-                                                    mysqli_data_seek($teamsResult, 0); // Reset the result pointer
-                                                    while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                                        echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="venue" class="form-label">Venue</label>
-                                                <input type="text" class="form-control" id="venue" name="venue" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="date" class="form-label">Date</label>
-                                                <input type="date" class="form-control" id="date" name="date" required>
-                                            </div>
-                                            <button type="submit" name="submit" class="btn btn-primary">Edit</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <br>
-                        <div class="row">
-                            <!-- Delete -->
-                            <a href="" class="btn btn-primary" style="width: 55%; margin:0 auto; background-color:#fe2883;" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row["id"] ?>">Delete Feed</a>
-
-                            <div class="modal fade" id="deleteModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Are you sure you want to delete this News feed? This action cannot be undone.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <form action="" method="post"> <input type="hidden" name="delete_id" value="<?php echo $row["id"] ?>"> <button type="submit" class="btn btn-danger">Delete</button> </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
             </div>
-
-        <?php
-            $fixtureCount++;
-        }
-        echo '</div>'; // Close the last row
-        ?>
-
-        
+        </div>
     </div>
 </div>
 <div class="modal fade" id="addClubModal" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">

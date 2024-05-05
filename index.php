@@ -107,7 +107,7 @@ require_once('databaseConn.php');
                     </div>
 
                     <div class="fixtureDiv borderTop">
-                        <span class="matchNumber"> Matchweek 2 Fixtures </span>
+                        <span class="matchNumber"> Upcoming Fixtures </span>
 
                         <div class="leagueLogo">
                             <img src="./static/images/logo.png"" alt=" Logo" class="logo">

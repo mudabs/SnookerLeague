@@ -91,7 +91,6 @@ function getTeamLogo($logoFileName)
 
                 </div>
 
-                <!-- <small>*All time subjected to change.</small> -->
               <?php
               }
               ?>
