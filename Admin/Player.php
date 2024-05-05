@@ -219,8 +219,8 @@ if (isset($_POST['delete_id'])) {
                     <?php
                     $cid = $row["clubid"];
                     $sqls = "SELECT * FROM `clubs` WHERE id = '$cid'";
-                    $results = mysqli_query($conn, $sqls);
-                    while ($rows = mysqli_fetch_assoc($results)) {
+                    $resul = mysqli_query($conn, $sqls);
+                    while ($rows = mysqli_fetch_assoc($resul)) {
                     ?>
                         <td>
                             <img alt="Team Logo" class="teamLogo" src="./images/uploads/<?php echo $rows["logo"] ?>">

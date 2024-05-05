@@ -87,6 +87,34 @@ if (isset($_POST['submitEdit'])) {
         // There was an error inserting the record into the database. You can add any error handling code here.
     }
 }
+
+
+// <!-- Edit -->
+
+if (isset($_POST['submitEditLog'])) {
+    $logId = $_POST['logId'];
+    $position = $_POST['position'];
+    $clubId = $_POST['clubId'];
+    $played = $_POST['playedEdit'];
+    $wins = $_POST['winsEdit'];
+    $draws = $_POST['drawsEdit'];
+    $loses = $_POST['losesEdit'];
+    $ff = $_POST['ffEdit'];
+    $fa = $_POST['faEdit'];
+    $fd = $_POST['fdEdit'];
+    $points = $_POST['pointsEdit'];
+
+    // Assuming you have a table named "fixtures" with the respective columns
+
+    $sql = "UPDATE `log` SET `position`='$position',`clubId`='$clubId',`played`='$played',`wins`='$wins',`draws`='$draws',`loses`='$loses',`ff`='$ff',`fa`=' $fa',`fd`=' $fd',`points`='$points' WHERE `id` = '$logId'";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Results updated successfully')</script>";
+        // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
+    } else {
+        // There was an error inserting the record into the database. You can add any error handling code here.
+    }
+}
 ?>
 
 
@@ -109,7 +137,6 @@ if (isset($_POST['submitEdit'])) {
             </div>
         </div>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addClubModal">Add Result</button>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addClubModal">Modify Log</button>
         <br><br>
         <?php
         $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue, r1.team1Score AS team1_score, r1.team2Score AS team2_score, r1.id AS rId
@@ -345,12 +372,75 @@ if (isset($_POST['submitEdit'])) {
                                         <td><?php echo $teamRow["fa"]  ?></td>
                                         <td><?php echo $teamRow["fd"]  ?></td>
                                         <td class="points"><?php echo $teamRow["points"]  ?></td>
-                                        <td><button class="btn btn-primary">Modify</button></td>
+                                        <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $teamRow["id"] ?>">Modify</button></td>
                                     </tr>
+
+
+
+                                    <!-- Edit Log -->
+                                    <div class="modal fade" id="editModal<?php echo $teamRow["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addClubModalLabel">Edit Result</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="POST" action="">
+                                                        <input type="hidden" name="logId" value="<?php echo $teamRow['id'] ?>">
+                                                        <input type="hidden" name="position" value="<?php echo $counter ?>">
+                                                        <input type="hidden" name="clubId" value="<?php echo $teamRow['clubId'] ?>">
+                                                        <div class="mb-3">
+                                                            <label for="playedEdit" class="form-label">Played </label>
+                                                            <input type="number" class="form-control" id="playedEdit" name="playedEdit" value="<?php echo $teamRow['played'] ?>" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="winsEdit" class="form-label">Wins </label>
+                                                            <input type="number" class="form-control" id="winsEdit" name="winsEdit" value="<?php echo $teamRow['wins'] ?>" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="drawsEdit" class="form-label">Draws </label>
+                                                            <input type="number" class="form-control" id="drawsEdit" name="drawsEdit" value="<?php echo $teamRow['draws'] ?>" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="losesEdit" class="form-label">Loses </label>
+                                                            <input type="number" class="form-control" id="losesEdit" name="losesEdit" value="<?php echo $teamRow['loses'] ?>" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="ffEdit" class="form-label">FF </label>
+                                                            <input type="number" class="form-control" id="ffEdit" name="ffEdit" value="<?php echo $teamRow['ff'] ?>" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="faEdit" class="form-label">Frames Against </label>
+                                                            <input type="number" class="form-control" id="faEdit" name="faEdit" value="<?php echo $teamRow['fa'] ?>" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="fdEdit" class="form-label">FD </label>
+                                                            <input type="number" class="form-control" id="fdEdit" name="fdEdit" value="<?php echo $teamRow['fd'] ?>" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="pointsEdit" class="form-label">Points </label>
+                                                            <input type="number" class="form-control" id="pointsEdit" name="pointsEdit" value="<?php echo $teamRow['points'] ?>" required>
+                                                        </div>
+
+
+
+                                                        <button type="submit" name="submitEditLog" class="btn btn-primary">Update</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
                                 <?php
                                 }
                                 ?>
                             </table>
+
+
                         </div>
                     </div>
 

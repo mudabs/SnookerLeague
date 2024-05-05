@@ -10,6 +10,7 @@ require_once('../databaseConn.php');
 <?php
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
+    $role = $_POST['role'];
     $image = "image.png";
 
     // Upload Image
@@ -56,7 +57,7 @@ if (isset($_POST['submit'])) {
 
         // Assuming you have a table named "fixtures" with the respective columns
 
-        $insertQuery = "INSERT INTO `executives`(`name`, `image`) VALUES ('$name','$image')";
+        $insertQuery = "INSERT INTO `executives`(`name`,`role`, `image`) VALUES ('$name','$role','$image')";
 
         if (mysqli_query($conn, $insertQuery)) {
             echo "<script>alert('Executive added successfully')</script>";
@@ -73,6 +74,7 @@ if (isset($_POST['submit'])) {
 if (isset($_POST['submitEdit'])) {
     $idEdit = $_POST['id'];
     $name = $_POST['name'];
+    $role = $_POST['role'];
     $image = $_POST['my_imageEdit'];
 
     // Upload Image
@@ -119,7 +121,7 @@ if (isset($_POST['submitEdit'])) {
 
         // Assuming you have a table named "fixtures" with the respective columns
 
-        $sql = "UPDATE `executives` SET `name`='$name',`image`='$image' WHERE `id` = $idEdit";
+        $sql = "UPDATE `executives` SET `name`='$name',`role`='$role',`image`='$image' WHERE `id` = '$idEdit';";
 
         if (mysqli_query($conn, $sql)) {
             echo "<script>alert('Executive updated successfully')</script>";
@@ -188,21 +190,36 @@ if (isset($_POST['delete_id'])) {
     </div>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add Executive</button>
 
-
-
-    <?php
-    $sql = "SELECT * FROM executives";
-    $result = mysqli_query($conn, $sql);
-
-    $fixtureCount = 0;
-    while ($row = mysqli_fetch_assoc($result)) {
-    ?>
+    <div class="menDiv grid">
         <div class="row">
-            <div class="col-md-3">
-                <img src="./images/executives/<?php echo ($row["image"]) ?>" alt="" style="width:300px;">
-                <h5 style="text-align: center;"><?php echo $row["name"] ?></h5>
-                <form style="margin: 0 auto;" action="" method="post"><input type="hidden" name="id" value="<?php ($row["id"]) ?>"> </form>
-                <input type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $row["id"] ?>" value="Edit" style="width: 100%;">
+            <?php
+            $sql = "SELECT * FROM executives";
+            $result = mysqli_query($conn, $sql);
+
+            $fixtureCount = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+
+
+                <div class="col-md-4">
+                    <div class="topScorer borderTop">
+                        <div class="imgDiv">
+                            <img src="./images/executives/<?php echo $row["image"] ?>" alt=" Logo">
+                        </div>
+                        <div class="infoDiv">
+                            <span class="honor" style="width: 100%;"><?php echo $row["name"] ?></span>
+                            <span class="topScorerText">
+                                Secretary General
+                            </span>
+                        </div>
+                        <form style="margin: 0 auto;" action="" method="post"><input type="hidden" name="id" value="<?php ($row["id"]) ?>"> </form>
+                        <input type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $row["id"] ?>" value="Edit" style="width: 100%;">
+
+                    </div>
+                </div>
+
+
+
                 <!-- Edit -->
                 <div class="modal fade" id="editModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -215,27 +232,29 @@ if (isset($_POST['delete_id'])) {
                                 <form method="POST" action="" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" name="name"  value="<?php echo $row["name"] ?>" class="form-control">
+                                        <input type="text" name="name" value="<?php echo $row["name"] ?>" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="role" class="form-label">Role</label>
+                                        <input type="text" name="role" value="<?php echo $row["role"] ?>" class="form-control">
                                     </div>
 
                                     <div class="mb-3">
                                         <img src="./images/executives/<?php echo $row["image"] ?>" style="width: 200px;" alt="">
-                                        <input type="file" class="form-control" id="my_image" name="my_imageEdit" value="<?php echo $row["image"] ?>" >
+                                        <input type="file" class="form-control" id="my_image" name="my_imageEdit" value="<?php echo $row["image"] ?>">
                                     </div>
-                                    <input type="hidden" name="id" value="<?php ($row["id"]) ?>"> 
+                                    <input type="hidden" name="id" value="<?php ($row["id"]) ?>">
                                     <button type="submit" name="submitEdit" class="btn btn-primary">Edit</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
+            <?php }
 
-            </div>
-
+            ?>
         </div>
-    <?php }
-
-    ?>
+    </div>
 </div>
 
 
@@ -253,6 +272,10 @@ if (isset($_POST['delete_id'])) {
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" name="name" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Role</label>
+                        <input type="text" name="role" class="form-control">
                     </div>
 
                     <div class="mb-3">
