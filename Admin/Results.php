@@ -402,8 +402,6 @@ if (isset($_POST['submitEditLog'])) {
                                         <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $teamRow["id"] ?>">Modify</button></td>
                                     </tr>
 
-
-
                                     <!-- Edit Log -->
                                     <div class="modal fade" id="editModal<?php echo $teamRow["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
