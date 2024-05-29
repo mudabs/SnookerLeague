@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 10:47 AM
+-- Generation Time: May 29, 2024 at 03:55 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,10 +41,14 @@ CREATE TABLE `clubs` (
 --
 
 INSERT INTO `clubs` (`id`, `name`, `estdate`, `location`, `numplayers`, `logo`) VALUES
-(34, 'USB', '2024-04-06 00:00:00', 'DZ Extension', 20, 'USB.jpg'),
-(37, 'UZ Vikings', '2024-04-06 00:00:00', 'UZ', 200, 'UZ Vikings.jpg'),
-(38, 'HIT', '2023-09-07 00:00:00', 'HIT', 15, 'HIT.jpg'),
-(39, 'Ellusion 73', '2024-04-24 00:00:00', 'Mutare', 24, 'Ellusion 73.png');
+(41, 'Ellusion 73', '2024-05-04 00:00:00', 'DZ Extension', 20, 'Ellusion 73.jpg'),
+(42, 'HIT', '2024-05-04 00:00:00', 'Harare Institute Of Technology', 20, 'HIT.png'),
+(43, 'UZ Vikings', '2024-05-04 00:00:00', 'University of Zimbabwe', 20, 'UZ Vikings.jpeg'),
+(44, 'USB', '2024-05-04 00:00:00', 'DZ Extension', 20, 'USB.jpg'),
+(45, 'Mega 1 Pool Club', '2024-05-05 00:00:00', 'Granite Side', 130, 'Mega 1 Pool Club.jpg'),
+(46, 'Players Pool Club', '2024-05-05 00:00:00', 'CBD- Big Bite', 130, 'Mega 1 Pool Club.jpg'),
+(47, 'Muridzi Wenyaya', '2024-05-05 00:00:00', 'Parktown Waterfalls', 130, 'Muridzi Wenyaya.jpg'),
+(48, 'Legends Pool Club', '2024-05-05 00:00:00', 'Zindoga', 130, 'Legends Pool Club.jpg');
 
 -- --------------------------------------------------------
 
@@ -55,6 +59,7 @@ INSERT INTO `clubs` (`id`, `name`, `estdate`, `location`, `numplayers`, `logo`) 
 CREATE TABLE `executives` (
   `id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
+  `role` varchar(100) NOT NULL,
   `image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -62,8 +67,11 @@ CREATE TABLE `executives` (
 -- Dumping data for table `executives`
 --
 
-INSERT INTO `executives` (`id`, `name`, `image`) VALUES
-(3, 'Munashe Mudabura', '.png');
+INSERT INTO `executives` (`id`, `name`, `role`, `image`) VALUES
+(3, 'Munashe Mudabura', '', '.png'),
+(7, 'Tomas Mangwana', '', 'image.png'),
+(8, 'John Chingwaru', '', '.jpg'),
+(9, 'Michael Magz', '', '.png');
 
 -- --------------------------------------------------------
 
@@ -84,11 +92,42 @@ CREATE TABLE `fixtures` (
 --
 
 INSERT INTO `fixtures` (`id`, `team1id`, `team2id`, `date`, `venue`) VALUES
-(8, 38, 37, '2024-04-18 00:00:00', 'Mutare'),
-(9, 38, 37, '2024-04-18 00:00:00', 'Mutare'),
-(10, 37, 34, '2024-04-25 00:00:00', 'Mutare'),
-(11, 37, 34, '2024-04-25 00:00:00', 'Mutare'),
-(19, 39, 38, '2024-05-11 00:00:00', 'Harare');
+(28, 41, 42, '2024-05-29 00:00:00', 'CBD'),
+(29, 42, 45, '2024-05-29 00:00:00', 'Town');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log`
+--
+
+CREATE TABLE `log` (
+  `id` int(11) NOT NULL,
+  `position` int(11) NOT NULL,
+  `clubId` int(11) NOT NULL,
+  `played` int(11) NOT NULL,
+  `wins` int(11) NOT NULL,
+  `draws` int(11) NOT NULL,
+  `loses` int(11) NOT NULL,
+  `ff` int(11) NOT NULL,
+  `fa` int(11) NOT NULL,
+  `fd` int(11) NOT NULL,
+  `points` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `log`
+--
+
+INSERT INTO `log` (`id`, `position`, `clubId`, `played`, `wins`, `draws`, `loses`, `ff`, `fa`, `fd`, `points`) VALUES
+(1, 6, 41, 1, 0, 0, 1, 5, 7, -2, 0),
+(2, 6, 42, 1, 1, 0, 0, 7, 5, 2, 3),
+(3, 4, 43, 1, 0, 0, 1, 5, 6, -1, 0),
+(4, 4, 44, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, 0, 45, 0, 0, 0, 0, 0, 0, 0, 0),
+(6, 6, 46, 1, 1, 0, 0, 6, 5, 1, 3),
+(7, 2, 47, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, 2, 48, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -99,8 +138,7 @@ INSERT INTO `fixtures` (`id`, `team1id`, `team2id`, `date`, `venue`) VALUES
 CREATE TABLE `logs` (
   `id` int(11) NOT NULL,
   `position` int(11) DEFAULT NULL,
-  `team_logo` varchar(255) DEFAULT NULL,
-  `team_name` varchar(255) DEFAULT NULL,
+  `clubid` int(11) NOT NULL,
   `played` int(11) DEFAULT NULL,
   `goal_difference` int(11) DEFAULT NULL,
   `points` int(11) DEFAULT NULL
@@ -110,12 +148,12 @@ CREATE TABLE `logs` (
 -- Dumping data for table `logs`
 --
 
-INSERT INTO `logs` (`id`, `position`, `team_logo`, `team_name`, `played`, `goal_difference`, `points`) VALUES
-(1, 1, 'path/to/team1_logo.png', 'Team 1', 10, 5, 30),
-(2, 2, 'path/to/team2_logo.png', 'Team 2', 10, 2, 25),
-(3, 3, 'path/to/team3_logo.png', 'Team 3', 10, 0, 20),
-(4, 4, 'path/to/team4_logo.png', 'Team 4', 10, -3, 15),
-(5, 5, 'path/to/team5_logo.png', 'Team 5', 10, -5, 10);
+INSERT INTO `logs` (`id`, `position`, `clubid`, `played`, `goal_difference`, `points`) VALUES
+(1, 1, 0, 10, 5, 30),
+(2, 2, 0, 10, 2, 25),
+(3, 3, 0, 10, 0, 20),
+(4, 4, 0, 10, -3, 15),
+(5, 5, 0, 10, -5, 10);
 
 -- --------------------------------------------------------
 
@@ -126,9 +164,9 @@ INSERT INTO `logs` (`id`, `position`, `team_logo`, `team_name`, `played`, `goal_
 CREATE TABLE `news` (
   `id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `feed` varchar(1000) NOT NULL,
-  `date` datetime NOT NULL,
-  `coverImage` varchar(50) NOT NULL
+  `feed` text NOT NULL,
+  `date` date NOT NULL,
+  `coverImage` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -136,7 +174,52 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `title`, `feed`, `date`, `coverImage`) VALUES
-(10, 'ertygdtr', 'swdetgyuj', '2024-04-17 00:00:00', 'ertygdtr.png');
+(14, 'News Feed 1', 'awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello', '2024-05-07', 'image.png'),
+(15, 'News Feed 2', ' Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello', '2024-05-01', 'image.png'),
+(17, 'asfdgg', 'edhdgsfasdfndvcvbvc', '2024-05-09', 'asfdgg.jpg'),
+(26, 'Sink the Colors: A Quick Guide to Snooker', 'Php code to create a news article with form to enter name of article, the article feed along with a cover image and the date. The feed should have no limit on text and provide code to create the database table for articles. Php code to create a news article with form to enter name of article, the article feed along with a cover image and the date. The feed should have no limit on text and provide code to create the database table for articles. Php code to create a news article with form to enter name of article, the article feed along with a cover image and the date. The feed should have no limit on text and provide code to create the database table for articles\r\n', '2024-05-27', 'Sink the C.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `old_fixtures`
+--
+
+CREATE TABLE `old_fixtures` (
+  `id` int(11) NOT NULL,
+  `team1id` int(11) NOT NULL,
+  `team2id` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `venue` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `old_fixtures`
+--
+
+INSERT INTO `old_fixtures` (`id`, `team1id`, `team2id`, `date`, `venue`) VALUES
+(1, 41, 42, '2024-05-29 00:00:00', 'CBD'),
+(2, 42, 45, '2024-05-29 00:00:00', 'Town');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `players`
+--
+
+CREATE TABLE `players` (
+  `id` int(11) NOT NULL,
+  `clubid` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `players`
+--
+
+INSERT INTO `players` (`id`, `clubid`, `name`) VALUES
+(16, 42, 'Munashe Sam Mudabura'),
+(17, 42, 'Simbarashe Manene');
 
 -- --------------------------------------------------------
 
@@ -150,13 +233,6 @@ CREATE TABLE `results` (
   `team1Score` int(11) NOT NULL,
   `team2Score` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `results`
---
-
-INSERT INTO `results` (`id`, `fixtureId`, `team1Score`, `team2Score`) VALUES
-(2, 10, 12, 5);
 
 -- --------------------------------------------------------
 
@@ -210,6 +286,13 @@ ALTER TABLE `fixtures`
   ADD KEY `fk_team2Id` (`team2id`);
 
 --
+-- Indexes for table `log`
+--
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_clubid` (`clubId`);
+
+--
 -- Indexes for table `logs`
 --
 ALTER TABLE `logs`
@@ -220,6 +303,19 @@ ALTER TABLE `logs`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `old_fixtures`
+--
+ALTER TABLE `old_fixtures`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `players`
+--
+ALTER TABLE `players`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_clubid` (`clubid`);
 
 --
 -- Indexes for table `results`
@@ -242,19 +338,25 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `clubs`
 --
 ALTER TABLE `clubs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `executives`
 --
 ALTER TABLE `executives`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `fixtures`
 --
 ALTER TABLE `fixtures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `log`
+--
+ALTER TABLE `log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `logs`
@@ -266,13 +368,25 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `old_fixtures`
+--
+ALTER TABLE `old_fixtures`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `players`
+--
+ALTER TABLE `players`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -290,6 +404,12 @@ ALTER TABLE `teams`
 ALTER TABLE `fixtures`
   ADD CONSTRAINT `fk_team1Id` FOREIGN KEY (`team1id`) REFERENCES `clubs` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_team2Id` FOREIGN KEY (`team2id`) REFERENCES `clubs` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `log`
+--
+ALTER TABLE `log`
+  ADD CONSTRAINT `fk_clubid` FOREIGN KEY (`clubId`) REFERENCES `clubs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `results`

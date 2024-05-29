@@ -27,8 +27,16 @@ if (isset($_POST['submit'])) {
     // Assuming you have a table named "fixtures" with the respective columns
 
     $insertQuery = "INSERT INTO fixtures (team1id, team2id, venue, date) VALUES ('$team1', '$team2', '$venue', '$date')";
+    $insertQuery2 = "INSERT INTO old_fixtures (team1id, team2id, venue, date) VALUES ('$team1', '$team2', '$venue', '$date')";
 
     if (mysqli_query($conn, $insertQuery)) {
+        echo "<script>alert('Fixture added successfully')</script>";
+        // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
+    } else {
+        // There was an error inserting the record into the database. You can add any error handling code here.
+    }
+
+    if (mysqli_query($conn, $insertQuery2)) {
         echo "<script>alert('Fixture added successfully')</script>";
         // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
     } else {
@@ -83,7 +91,8 @@ if (isset($_POST['delete_id'])) {
         <div style="width: 100%; height:15px;background-color:#37003c;"></div>
         <div class="sectionHeader flex" style="background-color: #f3f0f2;">
             <div class="seasonYear">
-                <h6 style="color:#37003c; text-align:center;"><?php $currentYear = date('Y'); echo $currentYear; ?></h6>
+                <h6 style="color:#37003c; text-align:center;"><?php $currentYear = date('Y');
+                                                                echo $currentYear; ?></h6>
             </div>
         </div>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addClubModal">Add Fixture</button>
@@ -101,7 +110,12 @@ if (isset($_POST['delete_id'])) {
 
                         while ($dateRow = mysqli_fetch_assoc($result)) {
                             $selectedDate = $dateRow["date"]; // Store the date from the first query
+                        ?>
+                            <div class="date">
+                                <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
+                            </div>
 
+                            <?php
 
                             $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
                                 FROM fixtures f 
@@ -114,16 +128,14 @@ if (isset($_POST['delete_id'])) {
                             while ($row = mysqli_fetch_assoc($fixtureResult)) {
 
                                 if (mysqli_num_rows($fixtureResult) > 0) {
-                        ?>
+                            ?>
 
-                                    <div class="date">
-                                        <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
-                                    </div>
+
                                 <?php
-                                    if ($fixtureCount % 3 == 0) {
-                                        if ($fixtureCount != 0)
-                                            echo '</div>'; // Close previous row
-                                    }
+                                    // if ($fixtureCount % 3 == 0) {
+                                    //     if ($fixtureCount != 0)
+                                    //         echo '</div>'; // Close previous row
+                                    // }
                                     echo '<div class="row">'; // Start new row
                                 }
 
