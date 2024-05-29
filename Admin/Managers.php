@@ -184,11 +184,11 @@ if (isset($_POST['delete_id'])) {
         <div style="width: 100%; height:15px;background-color:#37003c;"></div>
         <div class="sectionHeader flex" style="background-color: #f3f0f2;">
             <div class="seasonYear">
-                <h6 style="color:#37003c; text-align:center;">Latest News</h6>
+                <h6 style="color:#37003c; text-align:center;"><?php $currentYear = date('Y'); echo $currentYear; ?></h6>
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add Executive</button>
+    <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add Executive</button>
 
     <div class="menDiv grid">
         <div class="row">

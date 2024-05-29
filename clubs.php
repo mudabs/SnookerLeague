@@ -18,7 +18,7 @@ require_once('databaseConn.php');
     <div class="clubsSection section" id="clubs">
       <div class="sectionHeader flex">
         <div class="seasonYear">
-          <h6>2024</h6>
+          <h6><?php $currentYear = date('Y'); echo $currentYear; ?></h6>
         </div>
       </div>
 

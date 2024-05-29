@@ -82,7 +82,7 @@ if (isset($_POST['delete_id'])) {
     <div class="clubsSection section" id="clubs">
         <div class="sectionHeader flex">
             <div class="seasonYear">
-                <h6>League Executives</h6>
+                <h6>League Players</h6>
             </div>
             <div class="logoDiv">
                 <img src="../static/images/logo.png" alt="Logo Image">
@@ -91,7 +91,7 @@ if (isset($_POST['delete_id'])) {
         <div style="width: 100%; height:15px;background-color:#37003c;"></div>
         <div class="sectionHeader flex" style="background-color: #f3f0f2;">
             <div class="seasonYear">
-                <h6 style="color:#37003c; text-align:center;">Club Players</h6>
+                <h6 style="color:#37003c; text-align:center;"><?php $currentYear = date('Y'); echo $currentYear; ?></h6>
             </div>
         </div>
     </div>

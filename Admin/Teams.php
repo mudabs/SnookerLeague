@@ -196,7 +196,7 @@ if (isset($_POST["submitEdit"])) {
         </div>
         <div class="sectionHeader flex" style="background-color: #f3f0f2; ">
             <div class="seasonYear">
-                <h6 style="color:#37003c;">2023/4</h6>
+                <h6 style="color:#37003c;"><?php $currentYear = date('Y'); echo $currentYear; ?></h6>
             </div>
         </div>
 

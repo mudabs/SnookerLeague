@@ -83,7 +83,7 @@ if (isset($_POST['delete_id'])) {
         <div style="width: 100%; height:15px;background-color:#37003c;"></div>
         <div class="sectionHeader flex" style="background-color: #f3f0f2;">
             <div class="seasonYear">
-                <h6 style="color:#37003c; text-align:center;">2023/4</h6>
+                <h6 style="color:#37003c; text-align:center;"><?php $currentYear = date('Y'); echo $currentYear; ?></h6>
             </div>
         </div>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addClubModal">Add Fixture</button>

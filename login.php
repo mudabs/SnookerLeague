@@ -258,7 +258,7 @@ close.addEventListener('click', function () {
     </div>
     <div class="copyRight">
         <div class="copyRightDiv">
-            <span class="left">&copy; NPPL 2024</span>
+            <span class="left">&copy; NPPL <?php $currentYear = date('Y'); echo $currentYear; ?></span>
             <span class="middle">CONTACT US FOR FAIR & LEGAL USE OF THIS PROJECT</span>
             <span class="right flex">
                 <img src="./assets/1.png" alt="" style="width:30px; height:auto;">

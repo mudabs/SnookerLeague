@@ -109,106 +109,81 @@ require_once('databaseConn.php');
                     <div class="fixtureDiv borderTop">
                         <span class="matchNumber"> Upcoming Fixtures </span>
 
+                       
+
                         <div class="leagueLogo">
                             <img src="./static/images/logo.png"" alt=" Logo" class="logo">
                         </div>
-                        <small>All times shown are local</small>
-                        <div class="date">Thursday 28 April</div>
-                        <div class="singleFixture">
-                            <div class="teams flex">
-                                <div class="teamName_teamLogo flex">
-                                    <div class="name">Hyundai FC</div>
-                                    <div class="teamLogoDiv">
+                        <?php
 
-                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                    </div>
+
+                        // Execute the first SQL query to get all dates
+                        $sql = "SELECT DISTINCT date FROM `fixtures` LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($dateRow = mysqli_fetch_assoc($result)) {
+                            $selectedDate = $dateRow["date"]; // Store the date from the first query
+
+                            // Second SQL query to select items for the current date
+                            $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
+       FROM fixtures f 
+       INNER JOIN clubs c1 ON f.team1id = c1.id 
+       INNER JOIN clubs c2 ON f.team2id = c2.id
+       WHERE f.date = '$selectedDate'
+       ORDER BY f.date ASC
+       LIMIT 1"; // Fetch only the first row
+
+                            $fixtureResult = mysqli_query($conn, $sql);
+
+                            // Check if there are any fixtures for the date before displaying the date
+                            if (mysqli_num_rows($fixtureResult) > 0) {
+                        ?>
+
+                                <div class="date">
+                                    <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
                                 </div>
-                                <p class="time">13:17</p>
-                                <div class="teamName_teamLogo flex">
-                                    <div class="teamLogoDiv">
 
-                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                    </div>
-                                    <div class="name">Victory FC</div>
+                                <div class="teamsflex">
+                                    <?php
+                                    while ($row = mysqli_fetch_assoc($fixtureResult)) {
+
+                                        // Retrieve team logos
+                                        $team1_logo = getTeamLogo($row["team1_logo"]);
+                                        $team2_logo = getTeamLogo($row["team2_logo"]);
+
+
+
+                                    ?>
+                                        <div class="singleFixture">
+                                            <div class="teams flex">
+                                                <div class="teamName_teamLogo flex">
+                                                    <div class="name"><?php echo $row["team1_name"]; ?></div>
+                                                    <div class="teamLogoDiv">
+
+                                                        <img src="<?php echo $team1_logo; ?>" alt="Team Logo" class="teamLogo" />
+                                                    </div>
+                                                </div>
+                                                <p class="time"><?php echo date('H-m', strtotime($row["date"])); ?></p>
+                                                <div class="teamName_teamLogo flex">
+                                                    <div class="teamLogoDiv">
+
+                                                        <img src="<?php echo $team2_logo; ?>" alt="Team Logo" class="teamLogo" />
+                                                    </div>
+                                                    <div class="name"><?php echo $row["team2_name"]; ?></div>
+                                                </div>
+                                            </div>
+                                            <span class="venue"><strong>Venue: </strong><?php echo $row["venue"]; ?></span>
+                                        </div>
+                                    <?php } ?>
+
                                 </div>
-                            </div>
-                            <span class="venue"><strong>Venue: </strong>Harare</span>
 
-                        </div>
-                        <div class="singleFixture">
-                            <div class="teams flex">
-                                <div class="teamName_teamLogo flex">
-                                    <div class="name">Ellusion 73</div>
-                                    <div class="teamLogoDiv">
-
-                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                    </div>
-                                </div>
-                                <p class="time">21:15</p>
-                                <div class="teamName_teamLogo flex">
-                                    <div class="teamLogoDiv">
-
-                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                    </div>
-                                    <div class="name">UZ Vikings</div>
-                                </div>
-                            </div>
-                            <span class="venue"><strong>Venue: </strong>Harare</span>
-
-                        </div>
-
-                        <!-- <div class="singleFixture">
-              <div class="teams flex">
-                <div class="teamName_teamLogo flex">
-                  <div class="name">Team 1</div>
-                  <div class="teamLogoDiv">
-                    <img
-                      src="./assets/logos/team (1).png"
-                      alt="Team Logo"
-                      class="teamLogo"
-                    />
-                  </div>
-                </div>
-                <p class="time">11:15</p>
-                <div class="teamName_teamLogo flex">
-                  <div class="teamLogoDiv">
-                    <img
-                      src="./assets/logos/team (4).png"
-                      alt="Team Logo"
-                      class="teamLogo"
-                    />
-                  </div>
-                  <div class="name">Team 4</div>
-                </div>
-              </div>
-              <span class="venue"><strong>Venue: </strong>Pitch One</span>
-            </div>
-            <div class="singleFixture">
-              <div class="teams flex">
-                <div class="teamName_teamLogo flex">
-                  <div class="name">Team 7</div>
-                  <div class="teamLogoDiv">
-                    <img
-                      src="./assets/logos/team (7).png"
-                      alt="Team Logo"
-                      class="teamLogo"
-                    />
-                  </div>
-                </div>
-                <p class="time">11:15</p>
-                <div class="teamName_teamLogo flex">
-                  <div class="teamLogoDiv">
-                    <img
-                      src="./assets/logos/team (2).png"
-                      alt="Team Logo"
-                      class="teamLogo"
-                    />
-                  </div>
-                  <div class="name">Team 2</div>
-                </div>
-              </div>
-              <span class="venue"><strong>Venue: </strong>Pitch One</span>
-            </div> -->
+                            <?php
+                            }
+                            ?>
+                        <?php
+                        }
+                        ?>
 
                         <div class="detailsLink">
                             <a href="fixtures.php">
@@ -410,33 +385,94 @@ require_once('databaseConn.php');
 
                 <div class="sectionContent grid">
                     <div class="fixtureDiv borderTop">
-                        <span class="matchNumber"> Matchweek 2 </span>
+                        <span class="matchNumber"> Upcoming Fixtures </span>
                         <div class="leagueLogo">
                             <img src="./static/images/logo.png" alt="Logo" class="logo">
                         </div>
-                        <small>All times shown are local</small>
-                        <div class="date">Thursday 28 April</div>
-                        <div class="singleFixture">
-                            <div class="teams flex">
-                                <div class="teamName_teamLogo flex">
-                                    <div class="name">Ellusion 73</div>
-                                    <div class="teamLogoDiv">
+                        <?php
 
-                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                    </div>
+
+                        function getTeamLogo($logoFileName)
+                        {
+                            // Assuming the team logos are stored in the "images/logos/" directory
+                            $logoPath = "./Admin/images/uploads/" . $logoFileName;
+
+                            // Check if the logo file exists
+                            if (file_exists($logoPath)) {
+                                return $logoPath;
+                            } else {
+                                // If the logo file doesn't exist, you can provide a default logo or handle the situation as per your requirements
+                                return "./Admin/images/default_logo.png";
+                            }
+                        }
+
+                        // Execute the first SQL query to get all dates
+                        $sql = "SELECT DISTINCT date FROM `fixtures` LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($dateRow = mysqli_fetch_assoc($result)) {
+                            $selectedDate = $dateRow["date"]; // Store the date from the first query
+
+                            // Second SQL query to select items for the current date
+                            $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
+       FROM fixtures f 
+       INNER JOIN clubs c1 ON f.team1id = c1.id 
+       INNER JOIN clubs c2 ON f.team2id = c2.id
+       WHERE f.date = '$selectedDate'
+       ORDER BY f.date ASC
+       LIMIT 1"; // Fetch only the first row
+
+                            $fixtureResult = mysqli_query($conn, $sql);
+
+                            // Check if there are any fixtures for the date before displaying the date
+                            if (mysqli_num_rows($fixtureResult) > 0) {
+                        ?>
+
+                                <div class="date">
+                                    <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
                                 </div>
-                                <p class="time">21:15</p>
-                                <div class="teamName_teamLogo flex">
-                                    <div class="teamLogoDiv">
 
-                                        <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                    </div>
-                                    <div class="name">Uplands</div>
+                                <div class="teamsflex">
+                                    <?php
+                                    while ($row = mysqli_fetch_assoc($fixtureResult)) {
+
+                                        // Retrieve team logos
+                                        $team1_logo = getTeamLogo($row["team1_logo"]);
+                                        $team2_logo = getTeamLogo($row["team2_logo"]);
+
+
+
+                                    ?>
+                                        <div class="singleFixture">
+                                            <div class="teams flex">
+                                                <div class="teamName_teamLogo flex">
+                                                    <div class="name"><?php echo $row["team1_name"]; ?></div>
+                                                    <div class="teamLogoDiv">
+
+                                                        <img src="<?php echo $team1_logo; ?>" alt="Team Logo" class="teamLogo" />
+                                                    </div>
+                                                </div>
+                                                <p class="time"><?php echo date('H-m', strtotime($row["date"])); ?></p>
+                                                <div class="teamName_teamLogo flex">
+                                                    <div class="teamLogoDiv">
+
+                                                        <img src="<?php echo $team2_logo; ?>" alt="Team Logo" class="teamLogo" />
+                                                    </div>
+                                                    <div class="name"><?php echo $row["team2_name"]; ?></div>
+                                                </div>
+                                            </div>
+                                            <span class="venue"><strong>Venue: </strong><?php echo $row["venue"]; ?></span>
+                                        </div>
+                                    <?php } ?>
+
                                 </div>
-                            </div>
-                            <span class="venue"><strong>Venue: </strong>Harare</span>
 
-                        </div>
+                            <?php
+                            }
+                            ?>
+                        <?php
+                        }
+                        ?>
 
 
                         <div class="detailsLink">
@@ -446,28 +482,82 @@ require_once('databaseConn.php');
                         </div>
                     </div>
                     <div class="resultsDiv borderTop">
-                        <span class="matchNumber"> Matchweek 1 Results </span>
+                        <span class="matchNumber"> Past Results </span>
                         <div class="leagueLogo">
                             <img src="./static/images/logo.png" alt="Logo" class="logo">
                         </div>
-                        <small>Results from week 1</small>
-                        <div class="date">Sunday 21 April</div>
-                        <div class="teams flex">
+                        
+                        <?php
+                // Execute the first SQL query to get all dates
+                $sql = "SELECT DISTINCT date FROM `fixtures` LIMIT 1";
+                $result = mysqli_query($conn, $sql);
+
+                while ($dateRow = mysqli_fetch_assoc($result)) {
+                  $selectedDate = $dateRow["date"]; // Store the date from the first query
+
+                  // Second SQL query to select items for the current date
+                  $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue, r1.team1Score AS team1_score, r1.team2Score AS team2_score, r1.id AS rId
+                  FROM fixtures f 
+                  INNER JOIN clubs c1 ON f.team1id = c1.id 
+                  INNER JOIN clubs c2 ON f.team2id = c2.id
+                  INNER JOIN results r1 on f.id = r1.fixtureId
+                  WHERE f.date = '$selectedDate';"; // Filter by the selected date
+                  $fixtureResult = mysqli_query($conn, $sql);
+
+                  // Check if there are any fixtures for the date before displaying the date
+                  if (mysqli_num_rows($fixtureResult) == 0) {
+                    echo "No Results to display";
+                  }
+
+                  elseif (mysqli_num_rows($fixtureResult) > 0) {
+                ?>
+
+                    <div class="date">
+                      <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
+                    </div>
+
+                    <div class="teamsflex">
+                      <?php
+                      while ($row = mysqli_fetch_assoc($fixtureResult)) {
+
+                        // Retrieve team logos
+                        $team1_logo = getTeamLogo($row["team1_logo"]);
+                        $team2_logo = getTeamLogo($row["team2_logo"]);
+
+
+
+                      ?>
+                        <div class="singleFixture">
+                          <div class="teams flex">
                             <div class="teamName_teamLogo flex">
-                                <div class="name">Team 3</div>
-                                <div class="teamLogoDiv">
-                                    <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                </div>
+                              <div class="name"><?php echo $row["team1_name"]; ?></div>
+                              <div class="teamLogoDiv">
+
+                                <img src="<?php echo $team1_logo; ?>" alt="Team Logo" class="teamLogo" />
+                              </div>
                             </div>
-                            <p class="results">2-0</p>
+                            <p class="time">5-0</p>
                             <div class="teamName_teamLogo flex">
-                                <div class="teamLogoDiv">
-                                    <img src="static/images/logo.png" alt="Team Logo" class="teamLogo">
-                                </div>
-                                <div class="name">Team 4</div>
+                              <div class="teamLogoDiv">
+
+                                <img src="<?php echo $team2_logo; ?>" alt="Team Logo" class="teamLogo" />
+                              </div>
+                              <div class="name"><?php echo $row["team2_name"]; ?></div>
                             </div>
+                          </div>
+                          <span class="venue"><strong>Venue: </strong><?php echo $row["venue"]; ?></span>
                         </div>
-                        <span class="venue"><strong>Venue: </strong>Gweru</span>
+                      <?php } ?>
+
+                    </div>
+
+                    <!-- <small>*All time subjected to change.</small> -->
+                  <?php
+                  }
+                  ?>
+                <?php
+                }
+                ?>
 
                         <div class="detailsLink">
                             <a href="results.php">
@@ -511,7 +601,8 @@ require_once('databaseConn.php');
                                 $teamsQuery = "SELECT l.*, c.name AS team_name, c.logo AS team_logo
                                                 FROM log l 
                                                 INNER JOIN clubs c ON l.clubid = c.id
-                                                ORDER BY l.points DESC
+                                                -- ORDER BY l.points DESC
+                                                ORDER BY l.points DESC, l.fd DESC
                                                 LIMIT 4;"; // Use $fixture_id here
 
                                 $teamsResult = mysqli_query($conn, $teamsQuery);

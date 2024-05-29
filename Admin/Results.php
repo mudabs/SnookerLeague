@@ -133,7 +133,8 @@ if (isset($_POST['submitEditLog'])) {
         <div style="width: 100%; height:15px;background-color:#37003c;"></div>
         <div class="sectionHeader flex" style="background-color: #f3f0f2;">
             <div class="seasonYear">
-                <h6 style="color:#37003c; text-align:center;">2023/4</h6>
+                <h6 style="color:#37003c; text-align:center;"><?php $currentYear = date('Y');
+                                                                echo $currentYear; ?></h6>
             </div>
         </div>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addClubModal">Add Result</button>
@@ -278,7 +279,7 @@ if (isset($_POST['submitEditLog'])) {
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Are you sure you want to delete this News feed? This action cannot be undone.</p>
+                                                                    <p>Are you sure you want to delete this Fixture Result? This action cannot be undone.</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -350,9 +351,9 @@ if (isset($_POST['submitEditLog'])) {
                                 $counter = 1;
 
                                 $teamsQuery = "SELECT l.*, c.name AS team_name, c.logo AS team_logo
-                                                FROM log l 
-                                                INNER JOIN clubs c ON l.clubid = c.id
-                                                ORDER BY l.points DESC;"; // Use $fixture_id here
+                                 FROM log l
+                                 INNER JOIN clubs c ON l.clubid = c.id
+                                 ORDER BY l.points DESC, l.fd DESC;";
 
                                 $teamsResult = mysqli_query($conn, $teamsQuery);
 

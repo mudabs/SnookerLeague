@@ -1,10 +1,9 @@
 <?php
 include './adminHeader.php';
 require_once('../databaseConn.php');
-
-
-
 ?>
+
+
 
 <!-- Create -->
 <?php
@@ -34,8 +33,8 @@ if (isset($_POST['submit'])) {
 
                 $allowed_exs = array("jpg", "jpeg", "png");
 
-                if (in_array($img_ex_lc, $allowed_exs)) {
-                    $new_img_name = $title . '.' . $img_ex_lc;
+               if (in_array($img_ex_lc, $allowed_exs)) {
+                    $new_img_name = substr($title,0,10) . '.' . $img_ex_lc;
                     $img_upload_path = '../static/images/news/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
 
                     // Check if upload is successful using move_uploaded_file return value
@@ -107,10 +106,8 @@ if (isset($_POST['delete_id'])) {
 
 
 
-
-
 <div class="container" style="margin-left: 200px;">
-    
+
 
 
     <?php
@@ -121,15 +118,15 @@ if (isset($_POST['delete_id'])) {
     while ($row = mysqli_fetch_assoc($result)) {
     ?>
         <div class="row">
-            
+
             <div class="col-md-2">
-                
+
                 <!-- Edit -->
                 <div class="modal fade" id="editModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="addClubModalLabel">Add News Feed</h5>
+                                <h5 class="modal-title" id="addClubModalLabel">Edit News Feed</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -140,11 +137,11 @@ if (isset($_POST['delete_id'])) {
                                     </div>
                                     <div class="mb-3">
                                         <label for="feed" class="form-label">Feed</label>
-                                        <input type="text" name="feed" value="<?php echo $row["feed"] ?>" class="form-control">
+                                        <textarea  name="feed" rows="10" class="form-control"><?php echo $row["feed"] ?></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="date" class="form-label">Date</label>
-                                        <input type="date" class="form-control" value="<?php echo $row["date"] ?> id=" date" name="date" required>
+                                        <input type="date" class="form-control" value="<?php echo $row["date"] ?>" id="date" name="date" required>
                                         <small><?php echo date('D-d-M-Y', strtotime($row["date"])) ?> </small>
                                     </div>
 
@@ -153,7 +150,7 @@ if (isset($_POST['delete_id'])) {
                                         <input type="file" class="form-control" id="my_image" name="my_image" required>
                                         <img src="./images/news/<?php echo $row["coverImage"] ?>" alt="Image">
                                     </div>
-                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                    <button type="submit" name="submit" class="btn btn-primary">Edit</button>
                                 </form>
 
                             </div>
@@ -161,7 +158,7 @@ if (isset($_POST['delete_id'])) {
                     </div>
                 </div>
                 <!-- Delete -->
-            
+
                 <div class="modal fade" id="deleteModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -180,6 +177,32 @@ if (isset($_POST['delete_id'])) {
                     </div>
                 </div>
 
+                <!-- View -->
+
+                <div class="modal fade" id="viewModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addClubModalLabel"><?php echo $row["title"] ?></h5>
+
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <small class="ml-3"><?php echo date('D-d-M-Y', strtotime($row["date"])) ?> </small>
+                                <br> <br>
+                                <h4><?php echo $row["feed"] ?></h4>
+                                <br> <br>
+                                <img src="../static/images/news/<?php echo $row["coverImage"] ?>" alt="Image">
+                                <br> <br>
+                                <button type="submit" name="submit" class="btn btn-primary">Add</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -193,14 +216,29 @@ if (isset($_POST['delete_id'])) {
     <section class="section newsSection container">
         <div class="sectionHeader">
             <span class="newsTitle">Club News</span>
+
+
+
             <span style="position: absolute; right:2%;"><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add News Feed</button></span>
         </div>
+
+        <!-- Search Feature -->
+
+        <div class="container mt-5">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="search" placeholder="Search News..." aria-label="Search News">
+                <button class="btn btn-outline-primary" type="button" disabled>Search</button>
+            </div>
+            <div id="search-results"></div>
+        </div>
+
+        <!-- Search Feature -->
         <div class="pb-5">
 
         </div>
         <div class="newContent grid">
             <?php
-            $sql = "SELECT * FROM news";
+            $sql = "SELECT * FROM news ORDER BY `date` DESC";
             $result = mysqli_query($conn, $sql);
 
             $fixtureCount = 0;
@@ -211,7 +249,7 @@ if (isset($_POST['delete_id'])) {
                         <img src="../static/images/news/<?php echo $row['coverImage'] ?>" alt="Cover Image" class="">
                     </div>
                     <div class="newsTxt">
-                        <a href="news.php">
+                        <a data-bs-toggle='modal' data-bs-target='#viewModal<?php echo $row["id"] ?>'>
                             <span style="position: absolute; right:13%;"><?php echo date('D-d-M-Y', strtotime($row["date"])) ?> </span>
                             <span class="title"><?php echo $row['title']  ?></span>
 
@@ -243,11 +281,11 @@ if (isset($_POST['delete_id'])) {
                 <form method="POST" action="" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" name="title" class="form-control">
+                        <input type="text" id="title" name="title" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="team2" class="form-label">Feed</label>
-                        <textarea type="text" name="feed" class="form-control" rows="10"></textarea>
+                        <label for="feed" class="form-label">Feed</label>
+                        <textarea type="text" id="feed" name="feed" class="form-control" rows="10"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">Date</label>
@@ -264,3 +302,30 @@ if (isset($_POST['delete_id'])) {
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $("#search").keyup(function() {
+            var searchTerm = $(this).val();
+            if (searchTerm) {
+                $("#search-results").html("Loading...");
+                $.ajax({
+                    url: "newsQuery.php",
+                    type: "POST",
+                    data: {
+                        search: searchTerm
+                    },
+                    success: function(response) {
+                        $("#search-results").html(response);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error(textStatus, errorThrown);
+                        $("#search-results").html("An error occurred!");
+                    }
+                });
+            } else {
+                $("#search-results").html("");
+            }
+        });
+    });
+</script>

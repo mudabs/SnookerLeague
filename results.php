@@ -37,7 +37,7 @@ function getTeamLogo($logoFileName)
 
 
         <div class="mainBody">
-         
+
         </div>
       </div>
 
@@ -45,7 +45,7 @@ function getTeamLogo($logoFileName)
       <!-- Results Section ================================ -->
       <div class="section container resultsSection" id="results">
         <div class="sectionContainer">
-          <div class="sectionIntro borderBottom">
+          <div class="sectionIntro ">
             <h2>Ongoing Season</h2>
             <span class="sectionSubTitle">Our current league stats</span>
           </div>
@@ -53,276 +53,188 @@ function getTeamLogo($logoFileName)
           <div class="sectionContent grid">
             <!-- Results div ============== -->
             <div class="sectionContainer">
-                <div class="fixtureDiv borderTop">
+              <div class="fixtureDiv borderTop">
 
 
-                  <?php
-                  // Execute the first SQL query to get all dates
-                  $sql = "SELECT DISTINCT date FROM `fixtures`";
-                  $result = mysqli_query($conn, $sql);
+                <?php
+                // Execute the first SQL query to get all dates
+                $sql = "SELECT DISTINCT date FROM `fixtures`";
+                $result = mysqli_query($conn, $sql);
 
-                  while ($dateRow = mysqli_fetch_assoc($result)) {
-                    $selectedDate = $dateRow["date"]; // Store the date from the first query
+                while ($dateRow = mysqli_fetch_assoc($result)) {
+                  $selectedDate = $dateRow["date"]; // Store the date from the first query
 
-                    // Second SQL query to select items for the current date
-                    $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
+                  // Second SQL query to select items for the current date
+                  $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
                     FROM fixtures f 
                     INNER JOIN clubs c1 ON f.team1id = c1.id 
                     INNER JOIN clubs c2 ON f.team2id = c2.id
                     WHERE f.date = '$selectedDate'"; // Filter by the selected date
-                    $fixtureResult = mysqli_query($conn, $sql);
+                  $fixtureResult = mysqli_query($conn, $sql);
 
-                    // Check if there are any fixtures for the date before displaying the date
-                    if (mysqli_num_rows($fixtureResult) > 0) {
-                  ?>
+                  // Check if there are any fixtures for the date before displaying the date
+                  if (mysqli_num_rows($fixtureResult) > 0) {
+                ?>
 
-                      <div class="date">
-                        <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
-                      </div>
+                    <div class="date">
+                      <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
+                    </div>
 
-                      <div class="allFixtures">
-                        <?php
-                        while ($row = mysqli_fetch_assoc($fixtureResult)) {
+                    <div class="allFixtures">
+                      <?php
+                      while ($row = mysqli_fetch_assoc($fixtureResult)) {
 
-                          // Retrieve team logos
-                          $team1_logo = getTeamLogo($row["team1_logo"]);
-                          $team2_logo = getTeamLogo($row["team2_logo"]);
+                        // Retrieve team logos
+                        $team1_logo = getTeamLogo($row["team1_logo"]);
+                        $team2_logo = getTeamLogo($row["team2_logo"]);
 
 
 
-                        ?>
-                          <div class="singleFixture">
-                            <div class="teams flex">
-                              <div class="teamName_teamLogo flex">
-                                <div class="name"><?php echo $row["team1_name"]; ?></div>
-                                <div class="teamLogoDiv">
+                      ?>
+                        <div class="singleFixture">
+                          <div class="teams flex">
+                            <div class="teamName_teamLogo flex">
+                              <div class="name"><?php echo $row["team1_name"]; ?></div>
+                              <div class="teamLogoDiv">
 
-                                  <img src="<?php echo $team1_logo; ?>" alt="Team Logo" class="teamLogo" />
-                                </div>
-                              </div>
-                              <p class="time">5-0</p>
-                              <div class="teamName_teamLogo flex">
-                                <div class="teamLogoDiv">
-
-                                  <img src="<?php echo $team2_logo; ?>" alt="Team Logo" class="teamLogo" />
-                                </div>
-                                <div class="name"><?php echo $row["team2_name"]; ?></div>
+                                <img src="<?php echo $team1_logo; ?>" alt="Team Logo" class="teamLogo" />
                               </div>
                             </div>
-                            <span class="venue"><strong>Venue: </strong><?php echo $row["venue"]; ?></span>
+                            <p class="time">5-0</p>
+                            <div class="teamName_teamLogo flex">
+                              <div class="teamLogoDiv">
+
+                                <img src="<?php echo $team2_logo; ?>" alt="Team Logo" class="teamLogo" />
+                              </div>
+                              <div class="name"><?php echo $row["team2_name"]; ?></div>
+                            </div>
                           </div>
-                        <?php } ?>
+                          <span class="venue"><strong>Venue: </strong><?php echo $row["venue"]; ?></span>
+                        </div>
+                      <?php } ?>
 
-                      </div>
+                    </div>
 
-                      <!-- <small>*All time subjected to change.</small> -->
-                    <?php
-                    }
-                    ?>
+                    <!-- <small>*All time subjected to change.</small> -->
                   <?php
                   }
                   ?>
-                </div>
+                <?php
+                }
+                ?>
+              </div>
 
             </div>
 
             <!-- Table and team of the week ==================== -->
-            <div class="table__WeekPlayers grid">
-              <div class="tableDiv">
-                <div class="tableLogoDiv">
-                  <h2 style="color: white;">Results Log</h2>
-                </div>
-                <div class="table">
-                  <table>
-                    <tr>
-                      <th>Pos</th>
-                      <th>Club</th>
-                      <th>P</th>
-                      <th>W</th>
-                      <th>D</th>
-                      <th>L</th>
-                      <th>FF</th>
-                      <th>FA</th>
-                      <th>FD</th>
-                      <th>Pts</th>
-                    </tr>
+            <section class="section container logSection ">
+              <div class="sectionContainer">
+
+                <div class="sectionContent ">
+                  <div class="table__WeekPlayers grid">
+                    <div class="tableDiv">
+                      <div class="tableLogoDiv">
+                        <h2 style="color: white;">Results Log</h2>
+                      </div>
+                      <div class="table">
+                        <table>
+                          <tr>
+                            <th>Pos</th>
+                            <th>Club</th>
+                            <th>P</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>FF</th>
+                            <th>FA</th>
+                            <th>FD</th>
+                            <th>Pts</th>
+                            <th></th>
+                          </tr>
+
+                          <?php
+
+                          $countQuery = "SELECT COUNT(*) AS total_items FROM log;"; // Get item count
+                          $countResult = mysqli_query($conn, $countQuery);
+
+                          if ($countResult) {
+                            $rowCount = mysqli_fetch_assoc($countResult)['total_items']; // Get count from result
+                          } else {
+                            echo "Error getting item count: " . mysqli_error($conn);
+                            // Handle error gracefully (e.g., display a default message)
+                          }
+
+                          $counter = 1;
+
+                          $teamsQuery = "SELECT l.*, c.name AS team_name, c.logo AS team_logo
+                                 FROM log l
+                                 INNER JOIN clubs c ON l.clubid = c.id
+                                 ORDER BY l.points DESC, l.fd DESC;";
+
+                          $teamsResult = mysqli_query($conn, $teamsQuery);
+
+                          while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
+
+                          ?>
 
 
-                    <tr class="tr" style="padding: 1rem 0">
-                      <td class="pos green leader">1</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (1).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 1</div>
-                      </td>
-                      <td>1</td>
-                      <td>1</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>5</td>
-                      <td>0</td>
-                      <td>+5</td>
-                      <td class="points">3</td>
-                    </tr>
-                    <tr class="tr" style="padding: 1rem 0">
-                      <td class="pos green leader">2</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (4).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 2</div>
-                      </td>
-                      <td>1</td>
-                      <td>0</td>
-                      <td>1</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>5</td>
-                      <td>-5</td>
-                      <td class="points">0</td>
 
-                    <tr class="tr">
-                      <td class="pos">3</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (3).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 3</div>
-                      </td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td class="points">0</td>
-                    </tr>
-                    <tr class="tr">
-                      <td class="pos">4</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (4).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 4</div>
-                      </td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td class="points">0</td>
-                    </tr>
-                    <tr class="tr">
-                      <td class="pos">5</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (5).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 5</div>
-                      </td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td class="points">0</td>
-                    </tr>
-                    <tr class="tr">
-                      <td class="pos">6</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (6).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 6</div>
-                      </td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td class="points">0</td>
-                    </tr>
-                    <tr class="tr">
-                      <td class="pos">7</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (7).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 7</div>
-                      </td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td class="points">0</td>
-                    </tr>
-                    <tr class="tr">
-                      <td class="pos">8</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (8).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 8</div>
-                      </td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td class="points">0</td>
-                    </tr>
-                    <tr class="tr">
-                      <td class="pos red">9</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (9).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 9</div>
-                      </td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td class="points">0</td>
-                    </tr>
-                    <tr class="tr">
-                      <td class="pos red">10</td>
-                      <td class="flex">
-                        <div class="teamLogoDiv">
-                          <img src="../assets/logos/team (10).png" alt="Team Logo" class="teamLogo" />
-                        </div>
-                        <div class="name">Team 10</div>
-                      </td>
-                      <td>1</td>
-                      <td>-5</td>
-                      <td>-5</td>
-                      <td>-5</td>
-                      <td>-5</td>
-                      <td>-5</td>
-                      <td>-5</td>
-                      <td class="points">0</td>
-                    </tr>
-                  </table>
+                            <tr class="tr" style="padding: 1rem 0">
+
+                              <?php
+                              if ($counter < 3) { ?>
+
+                                <td class="pos green leader"><?php echo $counter ?></td>
+                              <?php
+                              } else if ($rowCount - 2 <= $counter) {
+                              ?>
+                                <td class="pos red"><?php echo $counter ?></td>
+                              <?php
+                              } else {
+                              ?>
+                                <td class="pos"><?php echo $counter ?></td>
+                              <?php
+
+                              }
+                              ?>
+
+                              <?php $counter++ ?>
+
+
+                              <td class="flex">
+                                <div class="teamLogoDiv">
+                                  <img src="./Admin/images/uploads/<?php echo $teamRow["team_logo"]  ?>" alt="Team Logo" class="teamLogo" />
+                                </div>
+                                <div class="name"><?php echo $teamRow["team_name"]  ?></div>
+                              </td>
+                              <td><?php echo $teamRow["played"]  ?></td>
+                              <td><?php echo $teamRow["wins"]  ?></td>
+                              <td><?php echo $teamRow["draws"]  ?></td>
+                              <td><?php echo $teamRow["loses"]  ?></td>
+                              <td><?php echo $teamRow["ff"]  ?></td>
+                              <td><?php echo $teamRow["fa"]  ?></td>
+                              <td><?php echo $teamRow["fd"]  ?></td>
+                              <td class="points"><?php echo $teamRow["points"]  ?></td>
+                            </tr>
+
+
+
+
+
+
+                          <?php
+                          }
+                          ?>
+                        </table>
+
+
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
-
-            </div>
+            </section>
           </div>
 
 
