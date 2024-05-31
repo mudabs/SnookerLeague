@@ -82,7 +82,7 @@ if (isset($_POST['delete_id'])) {
     <div class="clubsSection section" id="clubs" style="margin-left: 10px;">
         <div class="sectionHeader flex">
             <div class="seasonYear">
-                <h6>League Fixtures</h6>
+                <h6>Past Fixtures</h6>
             </div>
             <div class="logoDiv">
                 <img src="../static/images/logo.png" alt="Logo Image">
@@ -95,9 +95,7 @@ if (isset($_POST['delete_id'])) {
                                                                 echo $currentYear; ?></h6>
             </div>
         </div>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addClubModal">Add Fixture</button>
-        <br><br>
-
+        
         <div class="section fixturesSection container">
             <div class="sectionContainer">
                 <div class="sectionContent  grid">
@@ -119,7 +117,7 @@ if (isset($_POST['delete_id'])) {
                                 <?php
 
                                 $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
-                                FROM fixtures f 
+                                FROM old_fixtures f 
                                 INNER JOIN clubs c1 ON f.team1id = c1.id 
                                 INNER JOIN clubs c2 ON f.team2id = c2.id
                                 WHERE f.date = '$selectedDate';";
@@ -162,88 +160,9 @@ if (isset($_POST['delete_id'])) {
                                                 <div class="row" style="text-align: center;">
                                                     <h6>Venue: <?php echo $row["venue"]; ?></h6>
                                                 </div>
-                                                <div class="row">
-                                                    <a class="btn btn-primary" style="width: 50%; margin:0 auto;" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $row["id"] ?>" style="margin-right: 10px;">Edit Fixture</a>
-
-                                                </div>
-
-                                                <!-- Edit -->
-                                                <div class="modal fade" id="editModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="addClubModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="addClubModalLabel">Add Fixture</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form method="POST" action="">
-                                                                    <div class="mb-3">
-                                                                        <label for="team1" class="form-label">Team 1</label>
-                                                                        <select class="form-select" id="team1" name="team1" required>
-                                                                            <!-- Populate the team 1 options dynamically -->
-                                                                            <option>Select Team 1</option>
-                                                                            <?php
-                                                                            $teamsQuery = "SELECT id, name FROM clubs";
-                                                                            $teamsResult = mysqli_query($conn, $teamsQuery);
-                                                                            while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                                                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
-                                                                            }
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="team2" class="form-label">Team 2</label>
-                                                                        <select class="form-select" id="team2" name="team2" required>
-                                                                            <option>Select Team 2</option>
-                                                                            <!-- Populate the team 2 options dynamically -->
-                                                                            <?php
-                                                                            mysqli_data_seek($teamsResult, 0); // Reset the result pointer
-                                                                            while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                                                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
-                                                                            }
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="venue" class="form-label">Venue</label>
-                                                                        <input type="text" class="form-control" id="venue" name="venue" required>
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="date" class="form-label">Date</label>
-                                                                        <input type="date" class="form-control" id="date" name="date" required>
-                                                                    </div>
-                                                                    <button type="submit" name="submit" class="btn btn-primary">Edit</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
+                                                
 
                                                 <br>
-                                                <div class="row">
-                                                    <!-- Delete -->
-                                                    <a href="" class="btn btn-primary" style="width: 55%; margin:0 auto; background-color:#fe2883;" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row["id"] ?>">Delete Fixture</a>
-
-                                                    <div class="modal fade" id="deleteModal<?php echo $row["id"] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p>Are you sure you want to delete this News feed? This action cannot be undone.</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <form action="" method="post"> <input type="hidden" name="delete_id" value="<?php echo $row["id"] ?>"> <button type="submit" class="btn btn-danger">Delete</button> </form>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
                                             </div>
                                         </div>

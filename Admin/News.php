@@ -106,7 +106,7 @@ if (isset($_POST['delete_id'])) {
 
 
 
-<div class="container" style="margin-left: 200px;">
+<div class="" style="margin-left: 200px;">
 
 
 

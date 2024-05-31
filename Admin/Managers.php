@@ -170,9 +170,9 @@ if (isset($_POST['delete_id'])) {
 
 
 
-<div class="container" style="margin-left: 200px;">
+<div class="" style="margin-left: 200px;">
     <!-- Clubs section =================================== -->
-    <div class="clubsSection section" id="clubs">
+    <div class="clubsSection section" id="clubs" style="margin-left: 10px;">
         <div class="sectionHeader flex">
             <div class="seasonYear">
                 <h6>League Executives</h6>
@@ -188,9 +188,9 @@ if (isset($_POST['delete_id'])) {
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add Executive</button>
+    <button type="button" class="btn btn-success mb-2 " data-bs-toggle="modal" data-bs-target="#addNewsModal" style="margin-left: 10px;">Add Executive</button>
 
-    <div class="menDiv grid">
+    <div class="menDiv grid" style="margin-left: 10px; margin-right: 10px;">
         <div class="row">
             <?php
             $sql = "SELECT * FROM executives";
@@ -201,7 +201,7 @@ if (isset($_POST['delete_id'])) {
             ?>
 
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="topScorer borderTop">
                         <div class="imgDiv">
                             <img src="./images/executives/<?php echo $row["image"] ?>" alt=" Logo">

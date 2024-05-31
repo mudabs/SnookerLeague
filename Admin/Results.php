@@ -27,6 +27,9 @@ if (isset($_POST['submit'])) {
 
     $insertQuery = "INSERT INTO results (`fixtureId`, `team1Score`, `team2Score`) VALUES ('$fixtureId', '$result1', '$result2')";
 
+
+
+
     if (mysqli_query($conn, $insertQuery)) {
         echo "<script>alert('Fixture added successfully')</script>";
         // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
@@ -119,9 +122,9 @@ if (isset($_POST['submitEditLog'])) {
 
 
 
-<div class="container" style="margin-left: 200px;">
+<div class="" style="margin-left: 200px;">
     <!-- Clubs section =================================== -->
-    <div class="clubsSection section" id="clubs">
+    <div class="clubsSection section" id="clubs" style="margin-left: 10px;">
         <div class="sectionHeader flex">
             <div class="seasonYear">
                 <h6>League Results</h6>
@@ -358,6 +361,14 @@ if (isset($_POST['submitEditLog'])) {
                                 $teamsResult = mysqli_query($conn, $teamsQuery);
 
                                 while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
+                                    $played = 0;
+                                    $fa = 0;
+                                    $ff = 0;
+                                    $fd = 0;
+                                    $wins = 0;
+                                    $draws = 0;
+                                    $loses = 0;
+                                    $points = 0;
 
                                 ?>
 
@@ -391,15 +402,144 @@ if (isset($_POST['submitEditLog'])) {
                                             </div>
                                             <div class="name"><?php echo $teamRow["team_name"]  ?></div>
                                         </td>
-                                        <td><?php echo $teamRow["played"]  ?></td>
-                                        <td><?php echo $teamRow["wins"]  ?></td>
-                                        <td><?php echo $teamRow["draws"]  ?></td>
-                                        <td><?php echo $teamRow["loses"]  ?></td>
-                                        <td><?php echo $teamRow["ff"]  ?></td>
-                                        <td><?php echo $teamRow["fa"]  ?></td>
-                                        <td><?php echo $teamRow["fd"]  ?></td>
-                                        <td class="points"><?php echo $teamRow["points"]  ?></td>
+                                        <td>
+                                            <?php
+
+                                            $playedQuery = "SELECT COUNT(*) AS total_matches
+                                                        FROM fixtures f
+                                                        INNER JOIN results r ON f.id = r.fixtureId
+                                                        WHERE f.team1Id = $teamRow[clubId] OR f.team2Id = $teamRow[clubId];";
+
+                                            $playedResult = mysqli_query($conn, $playedQuery);
+
+                                            while ($playedRow = mysqli_fetch_assoc($playedResult)) {
+
+                                                $played = $playedRow['total_matches'];
+                                                echo $playedRow['total_matches'];
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+
+
+                                                $winsQuery = "SELECT COUNT(*) AS total_wins
+                                            FROM results r
+                                            INNER JOIN fixtures f ON r.fixtureId = f.id
+                                            WHERE (f.team1Id = $teamRow[clubId] AND r.team1Score > r.team2Score)
+                                            OR (f.team2Id = $teamRow[clubId] AND r.team2Score > r.team1Score);";
+
+                                                $winsResult = mysqli_query($conn, $winsQuery);
+
+                                                while ($winsRow = mysqli_fetch_assoc($winsResult)) {
+
+                                                    $wins = $winsRow['total_wins'];
+                                                    echo $winsRow['total_wins'];
+                                                }
+                                            ?>
+
+
+                                        </td>
+                                        <td>
+                                            <?php
+
+
+                                                $winsQuery = "SELECT COUNT(*) AS total_draws
+                                            FROM results r
+                                            INNER JOIN fixtures f ON r.fixtureId = f.id
+                                            WHERE (f.team1Id = $teamRow[clubId] AND r.team1Score = r.team2Score)
+                                            OR (f.team2Id = $teamRow[clubId] AND r.team2Score = r.team1Score);";
+
+                                                $winsResult = mysqli_query($conn, $winsQuery);
+
+                                                while ($winsRow = mysqli_fetch_assoc($winsResult)) {
+
+                                                    $draws = $winsRow['total_draws'];
+                                                    echo $winsRow['total_draws'];
+                                                }
+                                            ?>
+
+
+                                        </td>
+                                        <td>
+                                            <?php
+
+
+                                                $winsQuery = "SELECT COUNT(*) AS total_draws
+                                                FROM results r
+                                                INNER JOIN fixtures f ON r.fixtureId = f.id
+                                                WHERE (f.team1Id = $teamRow[clubId] AND r.team1Score < r.team2Score)
+                                                OR (f.team2Id = $teamRow[clubId] AND r.team2Score < r.team1Score);";
+
+                                                $winsResult = mysqli_query($conn, $winsQuery);
+
+                                                while ($losesRow = mysqli_fetch_assoc($winsResult)) {
+
+                                                    $loses = $losesRow['total_draws'];
+                                                    echo $losesRow['total_draws'];
+                                                }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+
+
+                                                $ffQuery = "SELECT SUM(CASE WHEN f.team1Id = $teamRow[clubId] THEN r.team1Score ELSE 0 END) + 
+                                                SUM(CASE WHEN f.team2Id = $teamRow[clubId] THEN r.team2Score ELSE 0 END) AS total_team_score
+                                                FROM results r
+                                                INNER JOIN fixtures f ON r.fixtureId = f.id;";
+
+                                                $ffResult = mysqli_query($conn, $ffQuery);
+
+                                                while ($ffRow = mysqli_fetch_assoc($ffResult)) {
+                                                    $ff = $ffRow["total_team_score"];
+                                                    echo $ffRow["total_team_score"];
+                                                }
+                                            ?>
+
+                                        </td>
+                                        <td>
+                                            <?php
+
+
+                                                $faQuery = "SELECT SUM(CASE WHEN f.team1Id != $teamRow[clubId] AND f.team2Id = $teamRow[clubId] THEN r.team1Score 
+                                                WHEN f.team2Id != $teamRow[clubId] AND f.team1Id = $teamRow[clubId] THEN r.team2Score 
+                                                ELSE 0 END) AS total_opposing_score
+                                                FROM results r
+                                                INNER JOIN fixtures f ON r.fixtureId = f.id;";
+
+                                                $faResult = mysqli_query($conn, $faQuery);
+
+                                                while ($faRow = mysqli_fetch_assoc($faResult)) {
+                                                    $fa =  $faRow["total_opposing_score"];
+                                                    echo $faRow["total_opposing_score"];
+                                                }
+                                            ?>
+
+                                        </td>
+                                        <td>
+                                            <?php
+                                                $fd = $ff - $fa;
+                                                echo $fd;
+                                            ?>
+                                        </td>
+                                        <td class="points"><?php $points = ($wins * 3) + $draws;
+                                                            echo $points ?></td>
+
                                         <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $teamRow["id"] ?>">Modify</button></td>
+
+                                        <?php
+
+                                                $sqlQuery = "UPDATE `log` SET `position`='1',`played`='$played',`wins`='$wins',`draws`='$draws',`loses`='$loses',`ff`='$ff',`fa`=' $fa',`fd`=' $fd',`points`='$points' WHERE `clubId` = '$teamRow[clubId]'";
+
+                                                if (mysqli_query($conn, $sqlQuery)) {
+                                                    // echo "<script>alert('Results updated successfully')</script>";
+                                                    // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
+                                                } else {
+                                                    // There was an error inserting the record into the database. You can add any error handling code here.
+                                                }
+
+                                        ?>
+
                                     </tr>
 
                                     <!-- Edit Log -->
@@ -460,9 +600,10 @@ if (isset($_POST['submitEditLog'])) {
 
 
 
-                                <?php
-                                }
-                                ?>
+                            <?php
+                                            }
+                                        }
+                            ?>
                             </table>
 
 

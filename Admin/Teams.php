@@ -178,12 +178,12 @@ if (isset($_POST["submitEdit"])) {
 
 ?>
 
-<div class="container" style="margin-left: 200px;">
+<div class="" style="margin-left: 200px;">
 
 
 
     <!-- Clubs section =================================== -->
-    <div class="clubsSection section" id="clubs">
+    <div class="clubsSection section" id="clubs" style="margin-left: 10px;">
         <div class="sectionHeader flex">
             <div class="seasonYear">
                 <h6>Leaague Teams</h6>

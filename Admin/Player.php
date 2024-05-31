@@ -77,9 +77,9 @@ if (isset($_POST['delete_id'])) {
 
 
 
-<div class="container" style="margin-left: 200px;">
+<div class="" style="margin-left: 200px;">
     <!-- Clubs section =================================== -->
-    <div class="clubsSection section" id="clubs">
+    <div class="clubsSection section" id="clubs" style="margin-left: 10px;">
         <div class="sectionHeader flex">
             <div class="seasonYear">
                 <h6>League Players</h6>
@@ -95,7 +95,7 @@ if (isset($_POST['delete_id'])) {
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add Players</button>
+    <button type="button" style="margin-left: 10px;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add Players</button>
     <br> <br>
 
 
@@ -198,7 +198,7 @@ if (isset($_POST['delete_id'])) {
 
 <div class="container" style="margin-left: 200px;">
 
-    <table id="myTable" class="table table-striped table-bordered tble-hover" style="width:100%">
+    <table id="myTable" class="table table-striped table-bordered tble-hover" style="width:100%; margin-left:10px; margin-right:10px;">
         <thead>
             <tr>
                 <th>Name</th>

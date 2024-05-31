@@ -26,7 +26,7 @@
     <div class="bodyFlex">
         <div class="sideBody">
             <!-- Clubs section =================================== -->
-            <div class="clubsSection section" id="clubs">
+            <div class="clubsSection section" id="clubs" style="margin-left: 10px;">
                 <div class="sectionHeader flex">
                     <div class="seasonYear">
                         <h6>2022/5</h6>

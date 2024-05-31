@@ -2,7 +2,7 @@
 include 'adminHeader.php';
 ?>
 
-<div class="container" style="margin-left: 200px;">  
+<div class="" style="margin-left: 200px;">  
 
 <p>Hello World!</p>  
 
