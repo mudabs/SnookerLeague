@@ -1,48 +1,68 @@
-<?php
-include './header.php';
-require_once('./databaseConn.php');
-?>
 
 
-<div class="bodyFlex; ">
-
-    <div style="margin-top:10rem;background-color:#f2efea; padding:2rem">
-        <div class="container" style="background-color: white; width:60%;">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="./static/images/drugs.webp" alt="">
-                    <img src="./static/images/hppa.png" alt="">
-                    <img src="./static/images/IMG-20240412-WA0003.jpg" alt="">
-                    <img src="./static/images/PERSON.jpg" alt="">
-                    <img src="./static/images/pooltable2.webp" alt="">
-                    <img src="./static/images/snookerBalls.jpg" alt="">
-                    <img src="./static/images/IMG-20240412-WA0002.jpg" alt="">
-                </div>
-                <div class="col-md-4">
-                    <img src="./static/images/drugs.webp" alt="">
-                    <img src="./static/images/drugs.webp" alt="">
-                    <img src="./static/images/drugs.webp" alt="">
-                    <img src="./static/images/drugs.webp" alt="">
-                    <img src="./static/images/drugs.webp" alt="">
-                    <img src="./static/images/drugs.webp" alt="">
-                    <img src="./static/images/drugs.webp" alt="">
-                </div>
-                <div class="col-md-4">
-                    <div class="row form-control mb-1 mt-1" style="width: 100%; text-align:center;">Year</div>
-                    <div class="row form-control" style="width: 100%; text-align:center;">Title</div>
-                </div>
-            </div>
+<link rel="stylesheet" href="./gallery.css">
+<script src="./gallery.js"></script>
 
 
-
-
-        </div>
-
-    </div>
-</div>
-
-
-
+<!--Font Awesome CDN-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+     <div class="container">
+ 
+         <div class="slide">
+ 
+             
+             <div class="item" style="background-image: url(https://i.ibb.co/qCkd9jS/img1.jpg);">
+                 <div class="content">
+                     <div class="name">Switzerland</div>
+                     <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                     <button>See More</button>
+                 </div>
+             </div>
+             <div class="item" style="background-image: url(https://i.ibb.co/jrRb11q/img2.jpg);">
+                 <div class="content">
+                     <div class="name">Finland</div>
+                     <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                     <button>See More</button>
+                 </div>
+             </div>
+             <div class="item" style="background-image: url(https://i.ibb.co/NSwVv8D/img3.jpg);">
+                 <div class="content">
+                     <div class="name">Iceland</div>
+                     <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                     <button>See More</button>
+                 </div>
+             </div>
+             <div class="item" style="background-image: url(https://i.ibb.co/Bq4Q0M8/img4.jpg);">
+                 <div class="content">
+                     <div class="name">Australia</div>
+                     <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                     <button>See More</button>
+                 </div>
+             </div>
+             <div class="item" style="background-image: url(https://i.ibb.co/jTQfmTq/img5.jpg);">
+                 <div class="content">
+                     <div class="name">Netherland</div>
+                     <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                     <button>See More</button>
+                 </div>
+             </div>
+             <div class="item" style="background-image: url(https://i.ibb.co/RNkk6L0/img6.jpg);">
+                 <div class="content">
+                     <div class="name">Ireland</div>
+                     <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                     <button>See More</button>
+                 </div>
+             </div>
+ 
+         </div>
+ 
+         <div class="button">
+             <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+             <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+         </div>
+ 
+     </div>
 
 
 
@@ -54,8 +74,6 @@ require_once('./databaseConn.php');
 
 <!-- footer section starts here =============================================================-->
 
-<?php
-include 'footer.php';
-?>
+
 
 <!-- footer section ends here =============================================================-->

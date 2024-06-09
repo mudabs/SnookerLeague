@@ -61,6 +61,7 @@ if (isset($_POST['submit'])) {
     // Prepare SQL statement (prevents SQL injection) with logo value if uploaded
     $sql = "INSERT INTO `clubs`( `name`, `estdate`, `location`, `numplayers`, `logo`) VALUES ('$clubName', '$estDate', '$location', $numPlayers, '$logo')";
 
+    
     // Prepare statement
     $result = mysqli_query($conn, $sql);
 
@@ -316,8 +317,7 @@ if (isset($_POST["submitEdit"])) {
                                                         <div class="mb-3">
                                                             <label for="establishmentDate" class="form-label">Establishment Date</label>
                                                             <input type="date" class="form-control" name="estDateEdit" id="establishmentDate" value="<?php echo $row["estdate"] ?>" required>
-                                                            <small>Set Date: <?php echo $row["estdate"] ?></small>
-                                                        </div>
+                                                            </div>
                                                         <div class="mb-3">
                                                             <label for="hostLocation" class="form-label">Location</label>
                                                             <input type="text" class="form-control" name="locationEdit" id="hostLocation" value="<?php echo $row["location"] ?>" required>

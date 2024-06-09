@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 
 
     if (mysqli_query($conn, $insertQuery)) {
-        echo "<script>alert('Fixture added successfully')</script>";
+        echo "<script>alert('Result added successfully')</script>";
         // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
     } else {
         // There was an error inserting the record into the database. You can add any error handling code here.
@@ -153,32 +153,30 @@ if (isset($_POST['submitEditLog'])) {
 
                         while ($dateRow = mysqli_fetch_assoc($resul)) {
                             $selectedDate = $dateRow["date"]; // Store the date from the first query
-
+                        ?>
+                            <div class="date">
+                                <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
+                            </div>
+                            <div class="row">
+                            <?php
 
                             $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue, r1.team1Score AS team1_score, r1.team2Score AS team2_score, r1.id AS rId
-                FROM fixtures f 
-                INNER JOIN clubs c1 ON f.team1id = c1.id 
-                INNER JOIN clubs c2 ON f.team2id = c2.id
-                INNER JOIN results r1 on f.id = r1.fixtureId
-                WHERE f.date = '$selectedDate';";
+                            FROM fixtures f 
+                            INNER JOIN clubs c1 ON f.team1id = c1.id 
+                            INNER JOIN clubs c2 ON f.team2id = c2.id
+                            INNER JOIN results r1 on f.id = r1.fixtureId
+                            WHERE f.date = '$selectedDate';";
                             $result = mysqli_query($conn, $sql);
 
                             $fixtureCount = 0;
                             while ($row = mysqli_fetch_assoc($result)) {
 
                                 if (mysqli_num_rows($result) > 0) {
-                        ?>
+                            ?>
 
-                                    <div class="date">
-                                        <?php echo date('D-d-M-Y', strtotime($selectedDate)); ?>
-                                    </div>
+
                                     <?php
-                                    if ($fixtureCount % 3 == 0) {
-                                        if ($fixtureCount != 0) {
-                                            echo '</div>'; // Close previous row
-                                        }
-                                        echo '<div class="row">'; // Start new row
-                                    }
+                                    
 
                                     $fixture_id = $row["id"];
                                     // Retrieve team logos
@@ -196,7 +194,7 @@ if (isset($_POST['submitEditLog'])) {
                                                     </div>
                                                     <div class="col game-time" style="text-align: center; text-align: center; padding-left: 30px; padding-right: 0px;">
                                                         <div class="mt-4 pt-2" style="background-color: #f3f0f2; height:40px; width:70px; ">
-                                                            <?php echo $row["team1_score"]; ?> ----
+                                                            <?php echo $row["team1_score"]; ?> -
                                                             <?php echo $row["team2_score"]; ?>
                                                         </div>
 
@@ -231,10 +229,10 @@ if (isset($_POST['submitEditLog'])) {
                                                                         <?php
                                                                         // $teamsQuery = "SELECT * FROM fixtures";
                                                                         $teamsQuery = "SELECT f.id, c1.name AS team1_name, c2.name AS team2_name
-                                                        FROM fixtures f 
-                                                        INNER JOIN clubs c1 ON f.team1id = c1.id 
-                                                        INNER JOIN clubs c2 ON f.team2id = c2.id
-                                                        WHERE f.id = $fixture_id"; // Use $fixture_id here
+                                                                    FROM fixtures f 
+                                                                    INNER JOIN clubs c1 ON f.team1id = c1.id 
+                                                                    INNER JOIN clubs c2 ON f.team2id = c2.id
+                                                                    WHERE f.id = $fixture_id"; // Use $fixture_id here
 
                                                                         $teamsResult = mysqli_query($conn, $teamsQuery);
 
@@ -299,9 +297,7 @@ if (isset($_POST['submitEditLog'])) {
                                     </div>
 
                         <?php
-                                    $fixtureCount++;
                                 }
-                                echo '</div>'; // Close the last row
                             }
                         }
                         ?>
@@ -356,7 +352,7 @@ if (isset($_POST['submitEditLog'])) {
                                 $teamsQuery = "SELECT l.*, c.name AS team_name, c.logo AS team_logo
                                  FROM log l
                                  INNER JOIN clubs c ON l.clubid = c.id
-                                 ORDER BY l.points DESC, l.fd DESC;";
+                                 ORDER BY l.points DESC;";
 
                                 $teamsResult = mysqli_query($conn, $teamsQuery);
 
@@ -638,9 +634,13 @@ if (isset($_POST['submitEditLog'])) {
                             <?php
                             // $teamsQuery = "SELECT * FROM fixtures";
                             $teamsQuery = "SELECT f.id, c1.name AS team1_name, c2.name AS team2_name
-                            FROM fixtures f 
-                            INNER JOIN clubs c1 ON f.team1id = c1.id 
-                            INNER JOIN clubs c2 ON f.team2id = c2.id";
+                            FROM fixtures f
+                            INNER JOIN clubs c1 ON f.team1id = c1.id
+                            INNER JOIN clubs c2 ON f.team2id = c2.id
+                            LEFT JOIN results r ON f.id = r.fixtureId
+                            WHERE r.fixtureId IS NULL;";
+
+
                             $teamsResult = mysqli_query($conn, $teamsQuery);
                             while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
                                 echo '<option  value="' . $teamRow["id"] . '">' . $teamRow["team1_name"] . ' vs ' . $teamRow["team2_name"] . '</option>';

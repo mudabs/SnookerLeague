@@ -65,11 +65,12 @@ function getTeamLogo($logoFileName)
                   $selectedDate = $dateRow["date"]; // Store the date from the first query
 
                   // Second SQL query to select items for the current date
-                  $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
-                    FROM fixtures f 
-                    INNER JOIN clubs c1 ON f.team1id = c1.id 
-                    INNER JOIN clubs c2 ON f.team2id = c2.id
-                    WHERE f.date = '$selectedDate'"; // Filter by the selected date
+                  $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue, r1.team1Score AS team1_score, r1.team2Score AS team2_score, r1.id AS rId
+                        FROM fixtures f 
+                        INNER JOIN clubs c1 ON f.team1id = c1.id 
+                        INNER JOIN clubs c2 ON f.team2id = c2.id
+                        INNER JOIN results r1 on f.id = r1.fixtureId
+                        WHERE f.date = '$selectedDate';"; // Filter by the selected date
                   $fixtureResult = mysqli_query($conn, $sql);
 
                   // Check if there are any fixtures for the date before displaying the date
@@ -100,7 +101,8 @@ function getTeamLogo($logoFileName)
                                 <img src="<?php echo $team1_logo; ?>" alt="Team Logo" class="teamLogo" />
                               </div>
                             </div>
-                            <p class="time">5-0</p>
+                            <p class="time"><?php echo $row["team1_score"]; ?> -
+                              <?php echo $row["team2_score"]; ?></p>
                             <div class="teamName_teamLogo flex">
                               <div class="teamLogoDiv">
 
@@ -169,7 +171,7 @@ function getTeamLogo($logoFileName)
                           $teamsQuery = "SELECT l.*, c.name AS team_name, c.logo AS team_logo
                                  FROM log l
                                  INNER JOIN clubs c ON l.clubid = c.id
-                                 ORDER BY l.points DESC, l.fd DESC;";
+                                 ORDER BY l.points DESC , l.fd DESC;";
 
                           $teamsResult = mysqli_query($conn, $teamsQuery);
 

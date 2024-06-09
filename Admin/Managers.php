@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
                 $allowed_exs = array("jpg", "jpeg", "png");
 
                 if (in_array($img_ex_lc, $allowed_exs)) {
-                    $new_img_name = $title . '.' . $img_ex_lc;
+                    $new_img_name = $name . '.' . $img_ex_lc;
                     $img_upload_path = 'images/executives/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
 
                     // Check if upload is successful using move_uploaded_file return value
@@ -73,15 +73,17 @@ if (isset($_POST['submit'])) {
 
 if (isset($_POST['submitEdit'])) {
     $idEdit = $_POST['id'];
-    $name = $_POST['name'];
-    $role = $_POST['role'];
-    $image = $_POST['my_imageEdit'];
+    $nameEdit = $_POST['nameEdit'];
+    $roleEdit = $_POST['roleEdit'];
+    $logo = $_POST['logo'];
 
     // Upload Image
     if (isset($_FILES['my_imageEdit'])) {
-        // Extract the original filename without extension
-        $originalFilename = pathinfo($_FILES['my_imageEdit']['name'], PATHINFO_FILENAME);
+        // echo "<pre>";
+        // print_r($_FILES['my_image']);
+        // echo "</pre>";
 
+        $img_name = $_FILES['my_imageEdit']['name'];
         $img_size = $_FILES['my_imageEdit']['size'];
         $tmp_name = $_FILES['my_imageEdit']['tmp_name'];
         $error = $_FILES['my_imageEdit']['error'];
@@ -94,22 +96,22 @@ if (isset($_POST['submitEdit'])) {
                 $img_ex = pathinfo($_FILES['my_imageEdit']['name'], PATHINFO_EXTENSION);
                 $img_ex_lc = strtolower($img_ex);
 
-                $allowed_exs = array("jpg", "jpeg", "png");
+                $allowed_exs = array("png", "jpg", "jpeg");
 
                 if (in_array($img_ex_lc, $allowed_exs)) {
-                    $new_img_name = $name . '.' . $img_ex_lc;
+                    $new_img_name = $nameEdit . '.' . $img_ex_lc;
                     $img_upload_path = 'images/executives/' . $new_img_name; // Assuming 'images/uploads' exists within your document root
 
                     // Check if upload is successful using move_uploaded_file return value
                     if (move_uploaded_file($tmp_name, $img_upload_path)) {
-                        $image = $new_img_name;
+                        $logo = $new_img_name;
                     } else {
                         $em = "Failed to upload image!";
                         echo "<script>$em</script>";
                     }
                 } else {
                     $em = "You can't upload files of this type";
-                    echo "<script>$em</script>";
+                    echo "<script>alert('$em')</script>";
                 }
             }
         } else {
@@ -117,18 +119,15 @@ if (isset($_POST['submitEdit'])) {
             $em = "Unknown error occurred during upload!";
             echo "<script>$em</script>";
         }
+    }
+    $sql = "UPDATE `executives` SET `name`='$nameEdit',`role`='$roleEdit',`image`='$logo' WHERE `id` = '$idEdit';";
 
-
-        // Assuming you have a table named "fixtures" with the respective columns
-
-        $sql = "UPDATE `executives` SET `name`='$name',`role`='$role',`image`='$image' WHERE `id` = '$idEdit';";
-
-        if (mysqli_query($conn, $sql)) {
-            echo "<script>alert('Executive updated successfully')</script>";
-            // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
-        } else {
-            // There was an error inserting the record into the database. You can add any error handling code here.
-        }
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Executive updated successfully $nameEdit, $roleEdit, $logo, $idEdit')</script>";
+        // The record was successfully inserted intothe database. You can add any additional code or logic here, such as displaying a success message or redirecting the user to another page.
+    } else {
+        echo "<script>alert('Record Edit Failed!');</script>";
+        // There was an error inserting the record into the database. You can add any error handling code here.
     }
 }
 
@@ -184,7 +183,8 @@ if (isset($_POST['delete_id'])) {
         <div style="width: 100%; height:15px;background-color:#37003c;"></div>
         <div class="sectionHeader flex" style="background-color: #f3f0f2;">
             <div class="seasonYear">
-                <h6 style="color:#37003c; text-align:center;"><?php $currentYear = date('Y'); echo $currentYear; ?></h6>
+                <h6 style="color:#37003c; text-align:center;"><?php $currentYear = date('Y');
+                                                                echo $currentYear; ?></h6>
             </div>
         </div>
     </div>
@@ -209,7 +209,7 @@ if (isset($_POST['delete_id'])) {
                         <div class="infoDiv">
                             <span class="honor" style="width: 100%;"><?php echo $row["name"] ?></span>
                             <span class="topScorerText">
-                                Secretary General
+                                <?php echo $row["role"] ?>
                             </span>
                         </div>
                         <form style="margin: 0 auto;" action="" method="post"><input type="hidden" name="id" value="<?php ($row["id"]) ?>"> </form>
@@ -230,19 +230,22 @@ if (isset($_POST['delete_id'])) {
                             </div>
                             <div class="modal-body">
                                 <form method="POST" action="" enctype="multipart/form-data">
+                                    <input type="hidden" name="idEdit" value="<?php $row["id"] ?>">
+                                    <input type="hidden" name="logo" value="<?php $row["image"] ?>">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" name="name" value="<?php echo $row["name"] ?>" class="form-control">
+                                        <input type="text" name="nameEdit" value="<?php echo $row["name"] ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label for="role" class="form-label">Role</label>
-                                        <input type="text" name="role" value="<?php echo $row["role"] ?>" class="form-control">
+                                        <input type="text" name="roleEdit" value="<?php echo $row["role"] ?>" class="form-control">
                                     </div>
 
                                     <div class="mb-3">
                                         <img src="./images/executives/<?php echo $row["image"] ?>" style="width: 200px;" alt="">
-                                        <input type="file" class="form-control" id="my_image" name="my_imageEdit" value="<?php echo $row["image"] ?>">
+                                        <input type="file" class="form-control" id="my_imageEdit" name="my_imageEdit">
                                     </div>
+
                                     <input type="hidden" name="id" value="<?php ($row["id"]) ?>">
                                     <button type="submit" name="submitEdit" class="btn btn-primary">Edit</button>
                                 </form>

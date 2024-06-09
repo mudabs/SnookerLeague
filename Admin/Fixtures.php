@@ -44,9 +44,28 @@ if (isset($_POST['submit'])) {
     }
 }
 
+//Update
+if (isset($_POST['submitEdit'])) {
+    $fixtureId = $_POST['id'];
+    $team1Edit = $_POST['team1']; // Assuming a hidden field with player ID
+    $team2Edit = $_POST['team2'];
+    $venueEdit = $_POST['venue'];
+    $dateEdit = $_POST['date'];
+
+    // Update query with WHERE clause to specify the player to update
+    $updateQuery = "UPDATE `fixtures` SET `team1id`='$team1Edit',`team2id`='$team2Edit',`date`='$dateEdit',`venue`='$venueEdit' WHERE  `id` = '$fixtureId'";
+
+    if (mysqli_query($conn, $updateQuery)) {
+        echo "<script>alert('Fixture updated successfully')</script>";
+        // Update successful, additional logic here (e.g., redirect)
+    } else {
+        // Update failed, error handling here
+        echo "Error updating fixture: " . mysqli_error($conn);
+    }
+}
+
+
 // Delete
-
-
 if (isset($_POST['delete_id'])) {
     $delete_id = $_POST['delete_id'];
 
@@ -118,7 +137,7 @@ if (isset($_POST['delete_id'])) {
                             <div class="row" style="height: 200px;">
                                 <?php
 
-                                $sql = "SELECT f.id, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, f.date, f.venue 
+                                $sql = "SELECT f.*, c1.name AS team1_name, c1.logo AS team1_logo, c2.name AS team2_name, c2.logo AS team2_logo, c1.id AS team1_id, c2.id AS team2_id, f.date, f.venue 
                                 FROM fixtures f 
                                 INNER JOIN clubs c1 ON f.team1id = c1.id 
                                 INNER JOIN clubs c2 ON f.team2id = c2.id
@@ -178,15 +197,20 @@ if (isset($_POST['delete_id'])) {
                                                             <div class="modal-body">
                                                                 <form method="POST" action="">
                                                                     <div class="mb-3">
+                                                                        <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                                                                         <label for="team1" class="form-label">Team 1</label>
                                                                         <select class="form-select" id="team1" name="team1" required>
-                                                                            <!-- Populate the team 1 options dynamically -->
-                                                                            <option>Select Team 1</option>
+                                                                            <option value="">Select Team 1</option>
                                                                             <?php
-                                                                            $teamsQuery = "SELECT id, name FROM clubs";
+                                                                            $teamsQuery = "SELECT f.*, c1.name AS team1_name, c2.name AS team2_name
+                                                                            FROM fixtures f
+                                                                            INNER JOIN clubs c1 ON f.team1id = c1.id
+                                                                            INNER JOIN clubs c2 ON f.team2id = c2.id";
+
                                                                             $teamsResult = mysqli_query($conn, $teamsQuery);
                                                                             while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                                                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
+                                                                                $selected = ($row["team1_id"] == $teamRow["team1id"]) ? 'selected' : '';
+                                                                                echo "<option value='" . $row["team1_id"] . "' $selected>" . $teamRow["team1_name"] . "</option>";
                                                                             }
                                                                             ?>
                                                                         </select>
@@ -194,30 +218,36 @@ if (isset($_POST['delete_id'])) {
                                                                     <div class="mb-3">
                                                                         <label for="team2" class="form-label">Team 2</label>
                                                                         <select class="form-select" id="team2" name="team2" required>
-                                                                            <option>Select Team 2</option>
-                                                                            <!-- Populate the team 2 options dynamically -->
+                                                                            <option value="">Select Team 2</option>
                                                                             <?php
-                                                                            mysqli_data_seek($teamsResult, 0); // Reset the result pointer
+                                                                            $teamsQuery = "SELECT f.*, c1.name AS team1_name, c2.name AS team2_name
+                                                                            FROM fixtures f
+                                                                            INNER JOIN clubs c1 ON f.team1id = c1.id
+                                                                            INNER JOIN clubs c2 ON f.team2id = c2.id";
+                                                                            $teamsResult = mysqli_query($conn, $teamsQuery);
                                                                             while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                                                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
+                                                                                $selected = ($row["team2_id"] == $teamRow["team2id"]) ? 'selected' : '';
+                                                                                echo "<option value='" . $row["team2_id"] . "' $selected>" . $teamRow["team2_name"] . "</option>";
                                                                             }
                                                                             ?>
                                                                         </select>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label for="venue" class="form-label">Venue</label>
-                                                                        <input type="text" class="form-control" id="venue" name="venue" required>
+                                                                        <input type="text" class="form-control" id="venue" name="venue" value="<?php echo $row['venue'] ?>" required>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label for="date" class="form-label">Date</label>
-                                                                        <input type="date" class="form-control" id="date" name="date" required>
+                                                                        <input type="date" class="form-control" id="date" name="date" value="<?php echo $row['date'] ?>" required>
                                                                     </div>
-                                                                    <button type="submit" name="submit" class="btn btn-primary">Edit</button>
+                                                                    <button type="submit" name="submitEdit" class="btn btn-primary">Edit</button>
                                                                 </form>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+
 
 
                                                 <br>
@@ -233,7 +263,7 @@ if (isset($_POST['delete_id'])) {
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Are you sure you want to delete this News feed? This action cannot be undone.</p>
+                                                                    <p>Are you sure you want to delete this Fixture? This action cannot be undone.</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -275,9 +305,8 @@ if (isset($_POST['delete_id'])) {
                 <form method="POST" action="">
                     <div class="mb-3">
                         <label for="team1" class="form-label">Team 1</label>
-                        <select class="form-select" id="team1" name="team1" required>
+                        <select class="form-select team1" id="team1" name="team1" required>
                             <option>Select Team 1</option>
-                            <!-- Populate the team 1 options dynamically -->
                             <?php
                             $teamsQuery = "SELECT id, name FROM clubs";
                             $teamsResult = mysqli_query($conn, $teamsQuery);
@@ -289,15 +318,8 @@ if (isset($_POST['delete_id'])) {
                     </div>
                     <div class="mb-3">
                         <label for="team2" class="form-label">Team 2</label>
-                        <select class="form-select" id="team2" name="team2" required>
-                            <option>Select Team 1</option>
-                            <!-- Populate the team 2 options dynamically -->
-                            <?php
-                            mysqli_data_seek($teamsResult, 0); // Reset the result pointer
-                            while ($teamRow = mysqli_fetch_assoc($teamsResult)) {
-                                echo '<option value="' . $teamRow["id"] . '">' . $teamRow["name"] . '</option>';
-                            }
-                            ?>
+                        <select class="form-select team2" id="team2" name="team2" required>
+                            <option value="">Select Team 2</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -314,3 +336,23 @@ if (isset($_POST['delete_id'])) {
         </div>
     </div>
 </div>
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".team1").change(function() {
+            var selectedTeam = $(this).val();
+            $(".team2").empty(); // Clear existing options in team2
+            $(".team2").append('<option value="">Select Team 2</option>'); // Add default option
+
+            // Fetch remaining teams excluding the selected one
+            $.each($(".team1 option"), function() {
+                if ($(this).val() != selectedTeam && $(this).val() != "" && $(this).val() != "Select Team 1") {
+                    $(".team2").append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>');
+                }
+            });
+        });
+    });
+</script>
