@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 03:55 PM
+-- Generation Time: Jun 17, 2024 at 01:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `clubs` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `estdate` datetime NOT NULL,
+  `estdate` date NOT NULL,
   `location` varchar(30) NOT NULL,
   `numplayers` int(11) NOT NULL,
   `logo` varchar(30) NOT NULL
@@ -41,14 +41,23 @@ CREATE TABLE `clubs` (
 --
 
 INSERT INTO `clubs` (`id`, `name`, `estdate`, `location`, `numplayers`, `logo`) VALUES
-(41, 'Ellusion 73', '2024-05-04 00:00:00', 'DZ Extension', 20, 'Ellusion 73.jpg'),
-(42, 'HIT', '2024-05-04 00:00:00', 'Harare Institute Of Technology', 20, 'HIT.png'),
-(43, 'UZ Vikings', '2024-05-04 00:00:00', 'University of Zimbabwe', 20, 'UZ Vikings.jpeg'),
-(44, 'USB', '2024-05-04 00:00:00', 'DZ Extension', 20, 'USB.jpg'),
-(45, 'Mega 1 Pool Club', '2024-05-05 00:00:00', 'Granite Side', 130, 'Mega 1 Pool Club.jpg'),
-(46, 'Players Pool Club', '2024-05-05 00:00:00', 'CBD- Big Bite', 130, 'Mega 1 Pool Club.jpg'),
-(47, 'Muridzi Wenyaya', '2024-05-05 00:00:00', 'Parktown Waterfalls', 130, 'Muridzi Wenyaya.jpg'),
-(48, 'Legends Pool Club', '2024-05-05 00:00:00', 'Zindoga', 130, 'Legends Pool Club.jpg');
+(41, 'Ellusion 73', '2024-05-04', 'DZ Extension', 130, 'Ellusion 73.jpg'),
+(42, 'HIT', '2024-05-04', 'Harare Institute Of Technology', 20, 'HIT.png'),
+(43, 'UZ Vikings', '2024-05-04', 'University of Zimbabwe', 20, 'UZ Vikings.jpeg'),
+(44, 'USB', '2024-05-04', 'DZ Extension', 20, 'USB.jpg'),
+(45, 'Mega 1 Pool Club', '2024-05-05', 'Granite Side', 130, 'Mega 1 Pool Club.jpg'),
+(46, 'Players Pool Club', '2024-05-05', 'CBD- Big Bite', 130, 'Mega 1 Pool Club.jpg'),
+(47, 'Muridzi Wenyaya', '2024-05-05', 'Parktown Waterfalls', 130, 'Muridzi Wenyaya.jpg'),
+(48, 'Legends Pool Club', '2024-05-05', 'Zindoga', 130, 'Legends Pool Club.jpg'),
+(49, 'Paukama', '2024-06-04', 'Warren Park 1', 50, 'Paukama.jpg'),
+(50, 'BnB', '2024-06-04', 'Ruwa', 50, 'BnB.jpg'),
+(51, 'Killarz', '2024-06-04', 'Hatfield', 30, 'Killarz.jpg'),
+(52, 'Leisure Center', '2024-06-04', 'Harare', 30, 'Leisure Center.jpg'),
+(53, 'Nice Day Select', '2024-06-04', 'Southlea Park', 30, 'Nice Day Select.jpg'),
+(54, 'BnB Magafa', '2024-06-04', 'Mabvuku Tafara', 30, 'BnB Magafa.jpg'),
+(55, 'Old Timers', '2024-06-04', 'Chadcomb', 30, 'Old Timers.jpg'),
+(56, 'Blazers', '2024-06-04', 'Budiriro', 30, 'Blazers.jpg'),
+(57, 'Top Snipers', '2024-06-04', 'CBD', 30, 'Top Snipers.jpg');
 
 -- --------------------------------------------------------
 
@@ -71,7 +80,8 @@ INSERT INTO `executives` (`id`, `name`, `role`, `image`) VALUES
 (3, 'Munashe Mudabura', '', '.png'),
 (7, 'Tomas Mangwana', '', 'image.png'),
 (8, 'John Chingwaru', '', '.jpg'),
-(9, 'Michael Magz', '', '.png');
+(9, 'Michael Magz', '', '.png'),
+(11, 'Old Timers', 'Marketing', 'Old Timers.jpg');
 
 -- --------------------------------------------------------
 
@@ -83,7 +93,7 @@ CREATE TABLE `fixtures` (
   `id` int(11) NOT NULL,
   `team1id` int(11) NOT NULL,
   `team2id` int(11) NOT NULL,
-  `date` datetime NOT NULL,
+  `date` date NOT NULL,
   `venue` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -92,8 +102,10 @@ CREATE TABLE `fixtures` (
 --
 
 INSERT INTO `fixtures` (`id`, `team1id`, `team2id`, `date`, `venue`) VALUES
-(28, 41, 42, '2024-05-29 00:00:00', 'CBD'),
-(29, 42, 45, '2024-05-29 00:00:00', 'Town');
+(29, 42, 45, '2024-05-29', 'Townn'),
+(30, 45, 45, '2024-05-29', 'Town'),
+(31, 43, 46, '2024-05-29', 'CBD'),
+(37, 47, 46, '2024-06-04', 'Mutare');
 
 -- --------------------------------------------------------
 
@@ -120,14 +132,23 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`id`, `position`, `clubId`, `played`, `wins`, `draws`, `loses`, `ff`, `fa`, `fd`, `points`) VALUES
-(1, 6, 41, 1, 0, 0, 1, 5, 7, -2, 0),
-(2, 6, 42, 1, 1, 0, 0, 7, 5, 2, 3),
-(3, 4, 43, 1, 0, 0, 1, 5, 6, -1, 0),
-(4, 4, 44, 0, 0, 0, 0, 0, 0, 0, 0),
-(5, 0, 45, 0, 0, 0, 0, 0, 0, 0, 0),
-(6, 6, 46, 1, 1, 0, 0, 6, 5, 1, 3),
-(7, 2, 47, 0, 0, 0, 0, 0, 0, 0, 0),
-(8, 2, 48, 0, 0, 0, 0, 0, 0, 0, 0);
+(1, 1, 41, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 1, 42, 1, 0, 0, 1, 4, 5, -1, 0),
+(3, 1, 43, 1, 1, 0, 0, 6, 5, 1, 3),
+(4, 1, 44, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, 1, 45, 1, 1, 0, 0, 5, 4, 1, 3),
+(6, 1, 46, 2, 0, 1, 1, 11, 12, -1, 1),
+(7, 1, 47, 1, 0, 1, 0, 6, 6, 0, 1),
+(8, 1, 48, 0, 0, 0, 0, 0, 0, 0, 0),
+(10, 1, 49, 0, 0, 0, 0, 0, 0, 0, 0),
+(11, 1, 50, 0, 0, 0, 0, 0, 0, 0, 0),
+(12, 1, 51, 0, 0, 0, 0, 0, 0, 0, 0),
+(13, 1, 52, 0, 0, 0, 0, 0, 0, 0, 0),
+(14, 1, 53, 0, 0, 0, 0, 0, 0, 0, 0),
+(15, 1, 54, 0, 0, 0, 0, 0, 0, 0, 0),
+(16, 1, 55, 0, 0, 0, 0, 0, 0, 0, 0),
+(17, 1, 56, 0, 0, 0, 0, 0, 0, 0, 0),
+(18, 1, 57, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -177,7 +198,7 @@ INSERT INTO `news` (`id`, `title`, `feed`, `date`, `coverImage`) VALUES
 (14, 'News Feed 1', 'awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello awxdrbuhjnimko,l;. Hello', '2024-05-07', 'image.png'),
 (15, 'News Feed 2', ' Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello', '2024-05-01', 'image.png'),
 (17, 'asfdgg', 'edhdgsfasdfndvcvbvc', '2024-05-09', 'asfdgg.jpg'),
-(26, 'Sink the Colors: A Quick Guide to Snooker', 'Php code to create a news article with form to enter name of article, the article feed along with a cover image and the date. The feed should have no limit on text and provide code to create the database table for articles. Php code to create a news article with form to enter name of article, the article feed along with a cover image and the date. The feed should have no limit on text and provide code to create the database table for articles. Php code to create a news article with form to enter name of article, the article feed along with a cover image and the date. The feed should have no limit on text and provide code to create the database table for articles\r\n', '2024-05-27', 'Sink the C.jpg');
+(27, 'Sink the Colors: A Quick Guide to Snooker', 'Php code to create a news article with form to enter name of article, the article feed along with a cover image and the date. The feed should have no limit on text and provide code to create the database table for articles. Php code to create a news article with form to enter name of article, the article feed along with a cover image and the date. The feed should have no limit on text and provide code to create the database table for articles. Php code to create a news article with form to enter name of article, the article feed along with a cover image and the date. The feed should have no limit on text and provide code to create the database table for articles\r\n', '2024-05-27', 'Sink the C.jpg');
 
 -- --------------------------------------------------------
 
@@ -199,7 +220,18 @@ CREATE TABLE `old_fixtures` (
 
 INSERT INTO `old_fixtures` (`id`, `team1id`, `team2id`, `date`, `venue`) VALUES
 (1, 41, 42, '2024-05-29 00:00:00', 'CBD'),
-(2, 42, 45, '2024-05-29 00:00:00', 'Town');
+(2, 42, 45, '2024-05-29 00:00:00', 'Town'),
+(3, 45, 45, '2024-05-29 00:00:00', 'Town'),
+(4, 43, 46, '2024-05-29 00:00:00', 'CBD'),
+(5, 43, 46, '2024-05-29 00:00:00', 'CBD'),
+(6, 45, 45, '2024-05-29 00:00:00', 'Town'),
+(7, 41, 43, '2024-05-30 00:00:00', 'CBD'),
+(8, 42, 45, '2024-05-30 00:00:00', 'Town'),
+(9, 42, 43, '2024-05-30 00:00:00', 'UZ'),
+(10, 47, 46, '2024-06-04 00:00:00', 'Mutare'),
+(11, 49, 42, '2024-06-04 00:00:00', 'Harare'),
+(12, 53, 54, '2024-06-05 00:00:00', 'Marondera'),
+(13, 42, 45, '2024-05-29 00:00:00', 'CBBBBD');
 
 -- --------------------------------------------------------
 
@@ -219,7 +251,8 @@ CREATE TABLE `players` (
 
 INSERT INTO `players` (`id`, `clubid`, `name`) VALUES
 (16, 42, 'Munashe Sam Mudabura'),
-(17, 42, 'Simbarashe Manene');
+(17, 42, 'Simbarashe Manene'),
+(18, 47, 'Sam Mudabs');
 
 -- --------------------------------------------------------
 
@@ -233,6 +266,15 @@ CREATE TABLE `results` (
   `team1Score` int(11) NOT NULL,
   `team2Score` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `results`
+--
+
+INSERT INTO `results` (`id`, `fixtureId`, `team1Score`, `team2Score`) VALUES
+(9, 29, 4, 5),
+(13, 31, 6, 5),
+(14, 37, 6, 6);
 
 -- --------------------------------------------------------
 
@@ -338,25 +380,25 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `clubs`
 --
 ALTER TABLE `clubs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `executives`
 --
 ALTER TABLE `executives`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `fixtures`
 --
 ALTER TABLE `fixtures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `logs`
@@ -368,25 +410,25 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `old_fixtures`
 --
 ALTER TABLE `old_fixtures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `teams`
