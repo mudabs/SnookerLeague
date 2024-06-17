@@ -164,6 +164,7 @@ if (isset($_POST["submitEdit"])) {
             echo "<script>$em</script>";
         }
     }
+
     $idEdit = (string)$idEdit;
     $sql = "UPDATE `clubs` SET `id`='$idEdit',`name`='$nameEdit',`estdate`='$estdateEdit',`location`='$locationEdit',`numplayers`='$numplayersEdit' ,`logo`='$logo' WHERE `id` = $idEdit";
 
@@ -179,6 +180,7 @@ if (isset($_POST["submitEdit"])) {
 
 ?>
 
+<!-- // -->
 <div class="" style="margin-left: 200px;">
 
 
